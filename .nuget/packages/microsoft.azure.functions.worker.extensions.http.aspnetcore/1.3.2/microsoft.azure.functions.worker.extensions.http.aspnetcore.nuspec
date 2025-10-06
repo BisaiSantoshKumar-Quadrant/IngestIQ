@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore</id>
+    <version>1.3.2</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <projectUrl>https://github.com/Azure/azure-functions-dotnet-worker</projectUrl>
+    <iconUrl>https://aka.ms/azure-functions-package-icon</iconUrl>
+    <description>ASP.NET Core extensions for .NET isolated functions</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <repository type="git" url="https://github.com/Azure/azure-functions-dotnet-worker" commit="efd0aefe0a6564759f4aac57be8d6a7b8293ca86" />
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Microsoft.Azure.Functions.Worker.Extensions.Abstractions" version="1.3.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.Analyzers" version="1.0.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Azure.Functions.Worker.Extensions.Http" version="3.2.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Azure.Functions.Worker" version="1.22.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+</package>

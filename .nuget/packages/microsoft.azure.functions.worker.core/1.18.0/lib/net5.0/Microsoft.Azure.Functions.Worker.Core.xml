@@ -1,0 +1,2189 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.Functions.Worker.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.Functions.Worker.Core.CollectionModelBindingData">
+            <summary>
+            A representation of Collection of Microsoft.Azure.WebJobs.ParameterBindingData
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.CollectionModelBindingData.ModelBindingData">
+            <summary>
+            Gets a ModelBindingData array
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Core.WorkerExtensionStartup">
+            <summary>
+            The base type for worker extension startup implementations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Core.WorkerExtensionStartup.Configure(Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder)">
+            <summary>
+            Configures the function worker application builder option.
+            Called once during app startup.
+            </summary>
+            <param name="applicationBuilder">The IFunctionsWorkerApplicationBuilder instance.</param>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Core.WorkerExtensionStartupAttribute">
+            <summary>
+            An assembly level attribute to inform that this assembly contains a worker extension startup implementation type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Core.WorkerExtensionStartupAttribute.#ctor(System.Type)">
+            <summary>
+            Constructs a new instance of <see cref="T:Microsoft.Azure.Functions.Worker.Core.WorkerExtensionStartupAttribute"/>.
+            </summary>
+            <param name="startupType">The type of the extension startup class implementation.</param>
+            <exception cref="T:System.ArgumentNullException">Throws when startupType is null.</exception>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.WorkerExtensionStartupAttribute.StartupType">
+            <summary>
+            Gets the type of the startup class implementation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Core.WorkerExtensionStartupCodeExecutorInfoAttribute">
+            <summary>
+            An assembly level attribute to inform that this assembly contains information about 
+            extension startup code executor type (The auto generated class which has calls to 
+            each of the participating extension's Configure method).
+            If any of the extensions are participating in the startup, our source generator will
+            add this assembly attribute with information about the extension startup code executor type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Core.WorkerExtensionStartupCodeExecutorInfoAttribute.#ctor(System.Type)">
+            <summary>
+            Constructs a new instance of <see cref="T:Microsoft.Azure.Functions.Worker.Core.WorkerExtensionStartupCodeExecutorInfoAttribute"/>.
+            </summary>
+            <param name="extensionStartupCodeExecutorType">The type of the extension startup code executor class.</param>
+            <exception cref="T:System.ArgumentNullException">Throws when startupType is null.</exception>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.WorkerExtensionStartupCodeExecutorInfoAttribute.StartupCodeExecutorType">
+            <summary>
+            Gets the type of the startup code executor.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultFunctionMetadata">
+            <summary>
+            Local representation of FunctionMetadata
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultFunctionMetadata.FunctionId">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultFunctionMetadata.IsProxy">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultFunctionMetadata.Language">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultFunctionMetadata.ManagedDependencyEnabled">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultFunctionMetadata.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultFunctionMetadata.EntryPoint">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultFunctionMetadata.RawBindings">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultFunctionMetadata.ScriptFile">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultFunctionMetadata.Retry">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultRetryOptions">
+            <summary>
+            Function execution retry policy to use on invocation failures.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultRetryOptions.MaxRetryCount">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultRetryOptions.DelayInterval">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultRetryOptions.MinimumInterval">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultRetryOptions.MaximumInterval">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.DefaultRetryOptions.Strategy">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IFunctionMetadata">
+            <summary>
+            Public interface that represents properties in function metadata.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IFunctionMetadata.FunctionId">
+            <summary>
+            Unique function id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IFunctionMetadata.IsProxy">
+            <summary>
+            If function is a proxy function return true, else return false.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IFunctionMetadata.Language">
+            <summary>
+            Language that the function is written in.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IFunctionMetadata.ManagedDependencyEnabled">
+            <summary>
+            If managed dependency is enabled return true, else return false.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IFunctionMetadata.Name">
+            <summary>
+            Name of function.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IFunctionMetadata.EntryPoint">
+            <summary>
+            Function entrypoint (ex. HttpTrigger.Run).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IFunctionMetadata.RawBindings">
+            <summary>
+            List of function's bindings in json string format.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IFunctionMetadata.ScriptFile">
+            <summary>
+            The function app assembly (ex. FunctionApp.dll).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IFunctionMetadata.Retry">
+            <summary>
+            The optional function execution retry strategy to use on invocation failures.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IFunctionMetadataProvider">
+            <summary>
+            Returns function metadata information from an app.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IFunctionMetadataProvider.GetFunctionMetadataAsync(System.String)">
+            <summary>
+            Gets all function metadata that this provider knows about asynchronously
+            </summary>
+            <returns>A Task with IEnumerable of FunctionMetadata</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IRetryOptions">
+            <summary>
+            Function execution retry policy to use on invocation failures.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IRetryOptions.MaxRetryCount">
+            <summary>
+            The maximum number of retries allowed per function execution. -1 means to retry indefinitely.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IRetryOptions.DelayInterval">
+            <summary>
+            The delay used between retries when using a fixed delay strategy.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IRetryOptions.MinimumInterval">
+            <summary>
+            The minimum retry delay when using an exponential backoff strategy.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IRetryOptions.MaximumInterval">
+            <summary>
+            The maximum retry delay when using an exponential backoff strategy.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.IRetryOptions.Strategy">
+            <summary>
+            The retry strategy being used (fixed delay or exponential backoff).
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.RetryStrategy">
+            <summary>
+            The retry strategy used in the case of function invocation failure.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.RetryStrategy.ExponentialBackoff">
+            <summary>
+            Exponential backoff strategy. The first retry waits for the minimum delay. On subsequent retries, time is added exponentially to the initial duration for each retry, until the maximum delay is reached.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Core.FunctionMetadata.RetryStrategy.FixedDelay">
+            <summary>
+            A fixed delay strategy.A specified amount of time is allowed to elapse between each retry.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Core.Invocation.FunctionActivatorExtensions">
+            <summary>
+            Contains extension methods to work with <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionActivator"/> instances.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Core.Invocation.FunctionActivatorExtensions.CreateInstance``1(Microsoft.Azure.Functions.Worker.IFunctionActivator,Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Creates an instance of the specified generic type argument, <typeparamref name="T"/>, to be used as the target of the invocation.
+            </summary>
+            <typeparam name="T">The type of the instance to create.</typeparam>
+            <param name="activator">The <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionActivator"/> instance to use when creating the instance.</param>
+            <param name="context">The <see cref="T:Microsoft.Azure.Functions.Worker.FunctionContext"/> for the invocation triggering the instance creation.</param>
+            <returns>The created instance.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Core.ModelBindingData">
+            <summary>
+            A representation of a Microsoft.Azure.WebJobs.ParameterBindingData
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.ModelBindingData.Version">
+            <summary>
+            Gets the version of the binding data content
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.ModelBindingData.Source">
+            <summary>
+            Gets the extension source of the binding data i.e CosmosDB, AzureStorageBlobs
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.ModelBindingData.Content">
+            <summary>
+            Gets the binding data content
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Core.ModelBindingData.ContentType">
+            <summary>
+            Gets the content type of the binding data content i.e. "application/json"
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.BindingContext">
+            <summary>
+            Exposes binding infomation for a given function context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.BindingContext.BindingData">
+            <summary>
+            Gets the binding data information for the current context.
+            This contains all of the trigger defined metadata.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.DefaultBindingCache`1">
+            <summary>
+            In memory cache for binding data (per invocation)
+            </summary>
+            <typeparam name="T">The type of cache entry value.</typeparam>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Context.Features.DefaultInputConversionFeature">
+            <summary>
+            Default implementation of <see cref="T:Microsoft.Azure.Functions.Worker.Context.Features.IInputConversionFeature"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Context.Features.DefaultInputConversionFeature.ConvertAsync(Microsoft.Azure.Functions.Worker.Converters.ConverterContext)">
+            <summary>
+            Executes a conversion operation with the context information provided.
+            </summary>
+            <param name="converterContext">The converter context.</param>
+            <returns>An instance of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConversionResult"/> representing the result of the conversion.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Context.Features.DefaultInputConversionFeature.GetConverterFromContext(Microsoft.Azure.Functions.Worker.Converters.ConverterContext)">
+            <summary>
+            Gets an <see cref="T:Microsoft.Azure.Functions.Worker.Converters.IInputConverter"/> instance if converter context has information about what converter to be used.
+            </summary>
+            <param name="context">The converter context.</param>
+            <returns>An IInputConverter instance or null</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Context.Features.DefaultInputConversionFeature.GetExplicitConverterTypes(Microsoft.Azure.Functions.Worker.Converters.ConverterContext)">
+            <summary>
+            Gets all converters advertised by the Binding Attribute along with supported types by each converter
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Context.Features.DefaultInputConversionFeature.GetConverterTypeNameFromAttributeOnType(System.Type)">
+            <summary>
+            Checks a type has an "InputConverter" attribute decoration present
+            and if present, return the assembly qualified name of the "ConverterType" property.
+            else return null.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Context.Features.DefaultInputConversionFeature.IsConverterFallbackAllowed(Microsoft.Azure.Functions.Worker.Converters.ConverterContext)">
+            <summary>
+            Returns boolean value indicating whether fallback to registered converters allowed by the binding attribute
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Context.Features.DefaultInputConversionFeature.IsTargetTypeSupportedByConverter(System.Collections.Generic.List{System.Type},System.Type)">
+            <summary>
+            Returns boolean value indicating whether Target type is supported by the converter
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Context.Features.DefaultInputConversionFeatureProvider">
+            <summary>
+            Provider to get DefaultInputConversionFeature instance.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Context.Features.FunctionInputBindingResult">
+            <summary>
+            A type representing the result of binding function inputs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Context.Features.FunctionInputBindingResult.#ctor(System.Object[])">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.Azure.Functions.Worker.Context.Features.FunctionInputBindingResult"/>
+            </summary>
+            <param name="values">An array of function input values.</param>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Context.Features.FunctionInputBindingResult.Values">
+            <summary>
+            Gets the values of bound function inputs.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Context.Features.IFunctionInputBindingFeature">
+            <summary>
+            Provides a mechanism to bind function inputs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Context.Features.IFunctionInputBindingFeature.BindFunctionInputAsync(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Asynchronously binds the function inputs.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.Azure.Functions.Worker.FunctionContext"/> instance.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask`1"/>that will contain an instance of the <see cref="T:Microsoft.Azure.Functions.Worker.Context.Features.FunctionInputBindingResult"/>.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Context.Features.IInputConversionFeature">
+            <summary>
+            A feature which allow us to do a single conversion from a source to target type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Context.Features.IInputConversionFeature.ConvertAsync(Microsoft.Azure.Functions.Worker.Converters.ConverterContext)">
+            <summary>
+            Executes a conversion operation with the context information provided.
+            </summary>
+            <param name="converterContext">The converter context.</param>
+            <returns>An instance of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConversionResult"/> representing the result of the conversion.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Context.Features.IInputConversionFeatureProvider">
+            <summary>
+            Provider abstraction to get IInputConversionFeature instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Context.Features.IInputConversionFeatureProvider.TryCreate(System.Type,Microsoft.Azure.Functions.Worker.Context.Features.IInputConversionFeature@)">
+            <summary>
+            Tries to create an instance of IInputConversionFeature feature.
+            </summary>
+            <param name="type">The feature type.</param>
+            <param name="feature">The IInputConversionFeature instance created or null.</param>
+            <returns>True if the creation was successful, else False.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.IInvocationFeatures">
+            <summary>
+            Represents a collection of invocation features.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.IInvocationFeatures.Set``1(``0)">
+            <summary>
+            Sets a feature of the provided type.
+            </summary>
+            <typeparam name="T">The feature Type.</typeparam>
+            <param name="instance">The instance of the feature.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.IInvocationFeatures.Get``1">
+            <summary>
+            Gets a feature with the specified type for the current invocation.
+            </summary>
+            <typeparam name="T">The feature Type.</typeparam>
+            <returns>The feature instance, or null.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.InvocationsFeaturesExtensions">
+            <summary>
+            Extension methods for getting features from <see cref="T:Microsoft.Azure.Functions.Worker.IInvocationFeatures" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.InvocationsFeaturesExtensions.GetRequired``1(Microsoft.Azure.Functions.Worker.IInvocationFeatures)">
+            <summary>
+            Gets a feature of type <typeparamref name="T"/> from the <see cref="T:Microsoft.Azure.Functions.Worker.IInvocationFeatures"/>.
+            </summary>
+            <typeparam name="T">The type of the feature to get.</typeparam>
+            <param name="features">The <see cref="T:Microsoft.Azure.Functions.Worker.IInvocationFeatures"/>.</param>
+            <returns>A feature object of type <typeparamref name="T"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">There is no feature of type <typeparamref name="T"/>.</exception>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.InvocationsFeaturesExtensions.TryGet``1(Microsoft.Azure.Functions.Worker.IInvocationFeatures,``0@)">
+            <summary>
+            Tries to get a feature of type <typeparamref name="T"/> from the <see cref="T:Microsoft.Azure.Functions.Worker.IInvocationFeatures"/>.
+            </summary>
+            <typeparam name="T">The type of the feature to get.</typeparam>
+            <param name="features">The <see cref="T:Microsoft.Azure.Functions.Worker.IInvocationFeatures"/>.</param>
+            <param name="feature">The feature, if found. Otherwise, null.</param>
+            <returns>True if the feature was found. Otherwise, false.</returns>        
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.FunctionContext">
+            <summary>
+            Encapsulates the information about a function execution.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionContext.InvocationId">
+            <summary>
+            Gets the invocation ID.
+            This identifier is unique to an invocation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionContext.FunctionId">
+            <summary>
+            Gets the function ID, typically assigned by the host.
+            This identifier is unique to a function and stable across invocations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionContext.TraceContext">
+            <summary>
+            Gets the distributed tracing context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionContext.BindingContext">
+            <summary>
+            Gets the binding context for the current function invocation.
+            This context is used to retrieve binding data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionContext.RetryContext">
+            <summary>
+            Gets the retry context containing information about retry activity for the event that triggered
+            the current function invocation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionContext.InstanceServices">
+            <summary>
+            Gets or sets the <see cref="T:System.IServiceProvider"/> that provides access to this execution's services.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionContext.FunctionDefinition">
+            <summary>
+            Gets the <see cref="P:Microsoft.Azure.Functions.Worker.FunctionContext.FunctionDefinition"/> that describes the function being executed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionContext.Items">
+            <summary>
+            Gets or sets a key/value collection that can be used to share data within the scope of this invocation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionContext.Features">
+            <summary>
+            Gets a collection containing the features supported by this context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionContext.CancellationToken">
+            <summary>
+            Gets the <see cref="P:Microsoft.Azure.Functions.Worker.FunctionContext.CancellationToken"/> that signals a function invocation is being cancelled.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.FunctionContextBindingFeatureExtensions">
+            <summary>
+            FunctionContext extension methods for binding data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionContextBindingFeatureExtensions.BindInputAsync``1(Microsoft.Azure.Functions.Worker.FunctionContext,Microsoft.Azure.Functions.Worker.BindingMetadata)">
+            <summary>
+            Binds an input binding item for the requested <see cref="T:Microsoft.Azure.Functions.Worker.BindingMetadata"/> instance.
+            </summary>
+            <param name="context">The function context.</param>
+            <param name="bindingMetadata">The BindingMetadata instance for which input data should bound to.</param>
+            <returns>An instance of <see cref="T:Microsoft.Azure.Functions.Worker.InputBindingData`1"/> which wraps the input binding operation result value.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionContextBindingFeatureExtensions.GetInvocationResult``1(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Gets the invocation result of the current function invocation.
+            </summary>
+            <param name="context">The function context instance.</param>
+            <returns>An instance of <see cref="T:Microsoft.Azure.Functions.Worker.InvocationResult`1"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">Throws when the invocation result is not of the requested type.</exception>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionContextBindingFeatureExtensions.GetInvocationResult(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Gets the invocation result of the current function invocation.
+            </summary>
+            <param name="context">The function context instance.</param>
+            <returns>An instance of <see cref="T:Microsoft.Azure.Functions.Worker.InvocationResult"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionContextBindingFeatureExtensions.GetOutputBindings``1(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Gets the output binding entries for the current function invocation.
+            </summary>
+            <param name="context">The function context instance.</param>
+            <returns>Collection of OutputBindingData instances where the Value is converted to T type.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionContextBindingFeatureExtensions.GetConvertedValueFromInputConversionFeature(Microsoft.Azure.Functions.Worker.FunctionContext,Microsoft.Azure.Functions.Worker.BindingMetadata,System.Type)">
+            <summary>
+            Executes the input conversion feature to bind the value of the parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionContextFunctionBindingExtensions.GetBindings(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Gets the function bindings feature for the current context.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>The <see cref="T:Microsoft.Azure.Functions.Worker.Context.Features.IFunctionBindingsFeature"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">If there is no registered <see cref="T:Microsoft.Azure.Functions.Worker.Context.Features.IFunctionBindingsFeature"/>.</exception>        
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.FunctionContextHttpRequestExtensions">
+            <summary>
+            FunctionContext extensions for http trigger function invocations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionContextHttpRequestExtensions.GetHttpRequestDataAsync(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpRequestData"/> instance if the invocation is for an http trigger.
+            </summary>
+            <param name="context">The FunctionContext instance.</param>
+            <returns>HttpRequestData instance if the invocation is http, else null</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionContextHttpRequestExtensions.GetHttpResponseData(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpResponseData"/> instance if the invocation is for an http trigger.
+            </summary>
+            <param name="context">The FunctionContext instance.</param>
+            <returns>HttpResponseData instance if the invocation is http, else null</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.FunctionContextLoggerExtensions">
+            <summary>
+            <see cref="T:Microsoft.Azure.Functions.Worker.FunctionContext" /> extensions for <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionContextLoggerExtensions.GetLogger``1(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.Extensions.Logging.ILogger"/> instance using the full name of the given type.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionContextLoggerExtensions.GetLogger(Microsoft.Azure.Functions.Worker.FunctionContext,System.String)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.Extensions.Logging.ILogger"/> instance for the specified <see cref="T:Microsoft.Azure.Functions.Worker.FunctionContext"/>.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="categoryName">The category name for messages produced by the logger.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.FunctionInvocation">
+            <summary>
+            A representation of the a single function invocation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionInvocation.Id">
+            <summary>
+            The invocation id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionInvocation.FunctionId">
+            <summary>
+            The function id, typically assigned by the host.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionInvocation.TraceContext">
+            <summary>
+            Gets the distributed tracing context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.IBindingCache`1.Item(System.String)">
+            <summary>
+            Gets or sets the value associated with the specified key.
+            </summary>
+            <param name="key">The key of the value to get or set.</param>
+            <returns>The value at the specified index.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.IBindingCache`1.TryGetValue(System.String,`0@)">
+            <summary>
+            Attempts to get the value associated with the specified key.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <param name="value">The value of the cache entry for the requested key.</param>
+            <returns>true if the key was found in the cache, else false.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.IBindingCache`1.TryAdd(System.String,`0)">
+            <summary>
+            Attempts to add the specified key and value to the cache.
+            </summary>
+            <param name="key">The key of the cache entry.</param>
+            <param name="value">The value of the cache entry.</param>
+            <returns>true if the key/value pair was added to the cache, else false.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.RetryContext">
+            <summary>
+            Exposes information about retry activity for the event that triggered
+            the current function invocation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.RetryContext.RetryCount">
+            <summary>
+            The the retry count for the current event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.RetryContext.MaxRetryCount">
+            <summary>
+            The maximum number of retry attempts that will be made by the trigger/host
+            before the event is considered undeliverable.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.TraceContext">
+            <summary>
+            The trace context for the current invocation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.TraceContext.TraceParent">
+            <summary>
+            Gets the identity of the incoming invocation in a tracing system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.TraceContext.TraceState">
+            <summary>
+            Gets the state data.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.ConversionResult">
+            <summary>
+            A type representing the result of function input conversion operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.ConversionResult.#ctor(Microsoft.Azure.Functions.Worker.Converters.ConversionStatus,System.Object,System.Exception)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConversionResult"/> instance.
+            </summary>
+            <param name="status">The status of conversion operation.</param>
+            <param name="value">The value produced from the successful conversion.</param>
+            <param name="error">The exception which caused the conversion to fail.</param>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.ConversionResult.Status">
+            <summary>
+            Gets the status of the conversion.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.ConversionResult.Value">
+            <summary>
+            Gets the value produced from the conversion if it was successful.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.ConversionResult.Error">
+            <summary>
+            Gets the error which caused the conversion to fail.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.ConversionResult.Unhandled">
+            <summary>
+            Creates a new <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConversionResult"/> instance to represent an unhandled input conversion.
+            </summary>
+            <returns>A new instance of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConversionResult"/> where the Status property value is set to Unhandled.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.ConversionResult.Success(System.Object)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConversionResult"/> instance to represent a successful input conversion.
+            </summary>
+            <returns>A new instance of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConversionResult"/> to represent a successful conversion.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.ConversionResult.Failed(System.Exception)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConversionResult"/> instance to represent a failed input conversion.
+            </summary>
+            <param name="exception">The exception representing the cause of the failed conversion.</param>
+            <exception cref="T:System.ArgumentNullException">Throws when the <paramref name="exception"/> argument is null.</exception>
+            <returns>A new instance of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConversionResult"/> to represent a failed input conversion.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.ConversionStatus">
+            <summary>
+            Conversion status enumeration.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Converters.ConversionStatus.Unhandled">
+            <summary>
+            Converter did not act on the input to execute a conversion operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Converters.ConversionStatus.Succeeded">
+            <summary>
+            Conversion operation was successful.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Converters.ConversionStatus.Failed">
+            <summary>
+            Conversion operation failed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.ConverterContext">
+            <summary>
+            A type defining the information needed for an input conversion operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.ConverterContext.TargetType">
+            <summary>
+            The target type to which conversion should happen.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.ConverterContext.Source">
+            <summary>
+            The source data used for conversion.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.ConverterContext.FunctionContext">
+            <summary>
+            The function context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.ConverterContext.Properties">
+            <summary>
+            Property bag of additional meta information used for conversion.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.ConverterContextExtensions">
+            <summary>
+            Provides extension methods to work with an <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConverterContext"/> instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.ConverterContextExtensions.TryGetBindingAttribute``1(Microsoft.Azure.Functions.Worker.Converters.ConverterContext,System.Object@)">
+            <summary>
+            Tries to retrieve the binding attribute from the <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConverterContext"/>.
+            </summary>
+            <param name="context">The converter context.</param>
+            <param name="bindingAttribute">When this method returns, contains the binding attribute if found; otherwise, <c>null</c>.</param>
+            <returns><c>true</c> if the binding attribute is found in the converter context; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.ConverterContextExtensions.TryGetBindingAttribute(Microsoft.Azure.Functions.Worker.Converters.ConverterContext,System.Type,System.Object@)">
+            <summary>
+            Tries to retrieve the binding attribute from the <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConverterContext"/>.
+            </summary>
+            <param name="context">The converter context.</param>
+            <param name="type">Binding attribute type.</param>
+            <param name="bindingAttribute">When this method returns, contains the binding attribute if found; otherwise, <c>null</c>.</param>
+            <returns><c>true</c> if the binding attribute is found in the converter context; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.ConverterFallbackBehavior">
+            <summary>
+            Specifies the fallback behavior for a converter.
+            The default behavior is <see cref="F:Microsoft.Azure.Functions.Worker.Converters.ConverterFallbackBehavior.Allow"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Converters.ConverterFallbackBehavior.Allow">
+            <summary>
+            Allows fallback to built-in converters. This is the default behavior.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Converters.ConverterFallbackBehavior.Disallow">
+            <summary>
+            Disallows fallback to built-in converters.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Converters.ConverterFallbackBehavior.Default">
+            <summary>
+            Specifies the default fallback behavior as <see cref="F:Microsoft.Azure.Functions.Worker.Converters.ConverterFallbackBehavior.Allow"/>
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.ConverterFallbackBehaviorAttribute">
+            <summary>
+            An attribute that specifies if converter fallback is allowed or disallowed.
+            Converter fallback refers to the ability to use built-in converters when custom converters
+            cannot handle a given request.
+            The default converter fallback behavior is <see cref="F:Microsoft.Azure.Functions.Worker.Converters.ConverterFallbackBehavior.Allow"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.ConverterFallbackBehaviorAttribute.Behavior">
+            <summary>
+            Gets the value of the converter fallback behavior.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.ConverterFallbackBehaviorAttribute.#ctor(Microsoft.Azure.Functions.Worker.Converters.ConverterFallbackBehavior)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConverterFallbackBehaviorAttribute"/>
+            </summary>
+            <param name="fallbackBehavior">The value to indicate if converter fallback is allowed or disallowed.</param>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.DefaultConverterContext">
+            <summary>
+            A type defining the information needed for an input conversion operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.DefaultConverterContext.TargetType">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.DefaultConverterContext.Source">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.DefaultConverterContext.FunctionContext">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.DefaultConverterContext.Properties">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.DefaultConverterContextFactory">
+            <summary>
+            A factory for creating <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConverterContext"/> instances.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.DefaultConverterContextFactory.Create(System.Type,System.Object,Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.DefaultConverterContextFactory.Create(System.Type,System.Object,Microsoft.Azure.Functions.Worker.FunctionContext,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.DefaultInputConverterProvider">
+            <summary>
+            An implementation of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.IInputConverterProvider"/> to get IInputConverter instances.
+             - Provides IInputConverter instances from what is defined in WorkerOptions.InputConverters
+             - Provides IInputConverter instances when requested for a specific type explicitly.
+             - Internally caches the instances created.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Converters.DefaultInputConverterProvider._converterCache">
+            <summary>
+            Stores all input converters.
+            Key is assembly qualified name of the Converter implementation and value is the instance of it.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.DefaultInputConverterProvider.RegisteredInputConverters">
+            <summary>
+            Get a collection of registered converter instances.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.DefaultInputConverterProvider.GetOrCreateConverterInstance(System.Type)">
+            <summary>
+            Gets an instance of the converter for the type requested.
+            </summary>
+            <param name="converterType">The type for which we are requesting an IInputConverter instance.</param>
+            <exception cref="T:System.InvalidOperationException">Throws when the converterType param is null.</exception>
+            <returns>IConverter instance of the requested type.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.DefaultInputConverterProvider.GetOrCreateConverterInstance(System.String)">
+            <summary>
+            Gets an instance of the converter for the type requested.
+            </summary>
+            <param name="converterTypeName">The assembly qualified name of the type for which we are requesting an IInputConverter instance.</param>
+            <exception cref="T:System.ArgumentNullException">Throws when the converterTypeName param is null.</exception>
+            <returns>IConverter instance of the requested type.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.DefaultInputConverterProvider.EnsureTypeCanBeAssigned(System.Type)">
+            <summary>
+            Make sure the converter type is a type which has implemented <see cref="T:Microsoft.Azure.Functions.Worker.Converters.IInputConverter"/> interface 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.IConverterContextFactory">
+            <summary>
+            An abstraction to create <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConverterContext"/> instances.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.IConverterContextFactory.Create(System.Type,System.Object,Microsoft.Azure.Functions.Worker.FunctionContext,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConverterContext"/>
+            </summary>
+            <param name="targetType">The target type.</param>
+            <param name="source">The source.</param>
+            <param name="functionContext">The function context.</param>
+            <param name="properties">A property bag for specifying additional metadata.</param>
+            <returns>A new instance of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConverterContext"/></returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.IInputConverter">
+            <summary>
+            Provides a mechanism for input conversion.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.IInputConverter.ConvertAsync(Microsoft.Azure.Functions.Worker.Converters.ConverterContext)">
+            <summary>
+            Executes an input conversion operation using the converter context provided.
+            </summary>
+            <param name="context">The converter context instance.</param>
+            <returns>An instance of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.ConversionResult"/> representing the result of the convert operation.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.IInputConverterProvider">
+            <summary>
+            An abstraction to get IInputConverter instances.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.IInputConverterProvider.RegisteredInputConverters">
+            <summary>
+            Gets a collection of registered input converter instances in the order they were registered.
+            This includes the default converters and the ones explicitly registered by user.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.IInputConverterProvider.GetOrCreateConverterInstance(System.Type)">
+            <summary>
+            Gets an instance of the converter for the type requested.
+            </summary>
+            <param name="converterType">The type for which we are requesting an IInputConverter instance.</param>
+            <returns>IInputConverter instance of the requested type.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.IInputConverterProvider.GetOrCreateConverterInstance(System.String)">
+            <summary>
+            Gets an instance of the converter for the type requested.
+            </summary>
+            <param name="converterTypeName">The assembly qualified name of the type for which we are requesting an IInputConverter instance.</param>
+            <returns>IInputConverter instance of the requested type.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.InputConverterAttribute">
+            <summary>
+            An attribute that can specify a type of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.IInputConverter"/> to use for function input conversion.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.InputConverterAttribute.ConverterType">
+            <summary>
+            Gets the input converter type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.InputConverterAttribute.#ctor(System.Type)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.InputConverterAttribute"/>
+            </summary>
+            <param name="converterType">The input converter type.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the converterType parameter value is a type which has not implemented Microsoft.Azure.Functions.Worker.Converters.IInputConverter</exception>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.SupportedTargetTypeAttribute">
+            <summary>
+            An attribute that can specify a target type supported by function input conversion.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Converters.SupportedTargetTypeAttribute.TargetType">
+            <summary>
+            Gets the input converter supported target type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Converters.SupportedTargetTypeAttribute.#ctor(System.Type)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.Azure.Functions.Worker.Converters.SupportedTargetTypeAttribute"/>
+            </summary>
+            <param name="targetType">Input converter target type.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when type is null</exception>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.DateTimeConverter">
+            <summary>
+            Converter to bind to DateTime/DateTimeOffset type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Converters.GuidConverter">
+            <summary>
+            Converter to bind Guid/Guid? type parameters.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.BindingDirection">
+            <summary>
+            Specifies the direction of the binding.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.BindingDirection.In">
+            <summary>
+            Identifies an input binding; a binding that provides data to the function.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.BindingDirection.Out">
+            <summary>
+            Identifies an output binding; a binding that receives data from the function.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.BindingMetadata">
+            <summary>
+            Contains metadata about an Azure Functions binding.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.BindingMetadata.Name">
+            <summary>
+            Gets the name of the binding metadata entry.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.BindingMetadata.Type">
+            <summary>
+            Gets the type of the binding. For example, "httpTrigger".
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.BindingMetadata.Direction">
+            <summary>
+            Gets the binding direction.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.FunctionDefinition">
+            <summary>
+            A representation of a function.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionDefinition.Parameters">
+            <summary>
+            Gets the parameters for the function.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionDefinition.PathToAssembly">
+            <summary>
+            Gets the path to the assembly that contains the function.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionDefinition.EntryPoint">
+            <summary>
+            Gets the method entry point to the function.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionDefinition.Id">
+            <summary>
+            Gets the unique function id, assigned by the Functions host.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionDefinition.Name">
+            <summary>
+            Gets the unique function name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionDefinition.InputBindings">
+            <summary>
+            Gets the input binding metadata.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionDefinition.OutputBindings">
+            <summary>
+            Gets the output binding metadata.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.FunctionParameter">
+            <summary>
+            Represents a parameter defined by the target function.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionParameter.#ctor(System.String,System.Type)">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Azure.Functions.Worker.FunctionParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="type">The <see cref="T:System.Type"/> of the parameter.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionParameter.#ctor(System.String,System.Type,System.Boolean,System.Object)">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Azure.Functions.Worker.FunctionParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="type">The <see cref="T:System.Type"/> of the parameter.</param>
+            <param name="hasDefaultValue">Value that indicates whether the parameter has a default value.</param>
+            <param name="defaultValue">Default value of the parameter.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionParameter.#ctor(System.String,System.Type,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Azure.Functions.Worker.FunctionParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="type">The <see cref="T:System.Type"/> of the parameter.</param>
+            <param name="properties">The properties of the parameter.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionParameter.#ctor(System.String,System.Type,System.Boolean,System.Object,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Azure.Functions.Worker.FunctionParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="type">The <see cref="T:System.Type"/> of the parameter.</param>
+            <param name="hasDefaultValue">Value that indicates whether the parameter has a default value.</param>
+            <param name="defaultValue">Default value of the parameter.</param>
+            <param name="properties">The properties of the parameter.</param>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionParameter.Name">
+            <summary>
+            Gets the parameter name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionParameter.Type">
+            <summary>
+            Gets the parameter <see cref="T:System.Type"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionParameter.HasDefaultValue">
+            <summary>
+            Gets a value that indicates whether this parameter has a default value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionParameter.IsReferenceOrNullableType">
+            <summary>
+            Gets a value indicating whether or not the parameter allows null values.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionParameter.DefaultValue">
+            <summary>
+            Gets the default value of the parameter if exists, else null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.FunctionParameter.Properties">
+            <summary>
+            A dictionary holding properties of this parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Diagnostics.ActivityExtensions.RecordException(System.Diagnostics.Activity,System.Exception,System.Boolean)">
+            <summary>
+            Records an exception as an ActivityEvent.
+            </summary>
+            <param name="activity">The Activity.</param>
+            <param name="ex">The exception.</param>
+            <param name="escaped">If the exception is re-thrown out of the current span, set to true. 
+            See https://opentelemetry.io/docs/reference/specification/trace/semantic_conventions/exceptions/#recording-an-exception.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Diagnostics.FieldInfoExtensionMethods.CreateSetter``2(System.Reflection.FieldInfo)">
+            <summary>
+            Create a re-usable setter for a <see cref="T:System.Reflection.FieldInfo"/>.
+            When cached and reused, This is quicker than using <see cref="M:System.Reflection.FieldInfo.SetValue(System.Object,System.Object)"/>.
+            </summary>
+            <typeparam name="TTarget">The target type of the object.</typeparam>
+            <typeparam name="TValue">The value type of the field.</typeparam>
+            <param name="fieldInfo">The field info.</param>
+            <returns>A re-usable action to set the field.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Diagnostics.FunctionActivitySourceFactory.GetMapping(Microsoft.Azure.Functions.Worker.Diagnostics.OpenTelemetrySchemaVersion)">
+            <summary>
+            Provides key mappings for different schema versions. For example, in early versions the invocation id may be
+            represented by "faas.execution" and then later change to "faas.invocation". We want to allow for each of these as
+            exporters may be relying on them.
+            </summary>
+            <param name="schemaVersion"></param>
+            <returns>The mapped key name.</returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Diagnostics.IWorkerDiagnostics">
+            <summary>
+            Represents an interface for sending logs directly to the Functions host.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.FunctionInputConverterException">
+            <summary>
+            The exception that is thrown when input conversion for the function invocation fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionInputConverterException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the FunctionInputConverterException class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionInputConverterException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the FunctionInputConverterException class with a specified error message
+            and a reference to the inner exception that is thecause of this exception.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception
+            or a null reference if no inner exception is specified..</param>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.FunctionWorkerException">
+            <summary>
+            The exception that is thrown when an error occurs during function invocation in the .NET isolated model.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionWorkerException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the FunctionWorkerException class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionWorkerException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the FunctionWorkerException class with a specified error message
+            and a reference to the inner exception that is thecause of this exception.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception
+            or a null reference if no inner exception is specified..</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.WorkerMessage.Define(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,System.String)">
+            <summary>
+            Creates a delegate which can be invoked for logging a message. This message is treated as a "system" log
+            and forwarded to the Functions host in addition to other loggers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.WorkerMessage.Define``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,System.String)">
+            <summary>
+            Creates a delegate which can be invoked for logging a message. This message is treated as a "system" log
+            and forwarded to the Functions host in addition to other loggers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.WorkerMessage.Define``2(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,System.String)">
+            <summary>
+            Creates a delegate which can be invoked for logging a message. This message is treated as a "system" log
+            and forwarded to the Functions host in addition to other loggers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.ObjectDisposedThrowHelper.ThrowIf(System.Boolean,System.Object)">
+            <summary>Throws an <see cref="T:System.ObjectDisposedException"/> if the specified <paramref name="condition"/> is <see langword="true"/>.</summary>
+            <param name="condition">The condition to evaluate.</param>
+            <param name="instance">The object whose type's full name should be included in any resulting <see cref="T:System.ObjectDisposedException"/>.</param>
+            <exception cref="T:System.ObjectDisposedException">The <paramref name="condition"/> is <see langword="true"/>.</exception>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.IAutoConfigureStartup">
+            <summary>
+            Represents an interface for auto-configuration of an <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.
+            Classes implementing this interface provide a method to configure an <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.IAutoConfigureStartup.Configure(Microsoft.Extensions.Hosting.IHostBuilder)">
+            <summary>
+            Configures an <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> instance for startup.
+            Implementing classes define the configuration logic within this method.
+            This method will be invoked during the bootstrapping process of the function app.
+            </summary>
+            <param name="hostBuilder">The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> instance to configure.</param>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder">
+            <summary>
+            Represents a builder for a Functions Worker Application.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder.Services">
+            <summary>
+            The collection of services for the current <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder.Use(System.Func{Microsoft.Azure.Functions.Worker.Middleware.FunctionExecutionDelegate,Microsoft.Azure.Functions.Worker.Middleware.FunctionExecutionDelegate})">
+            <summary>
+            Registers a custom middleware in the worker's invocation pipeline.
+            </summary>
+            <param name="middleware">The middleware to register.</param>
+            <returns>The same instance of the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> for chanining.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.InputConverterCollection">
+            <summary>
+            A collection of input converters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.InputConverterCollection.Register``1">
+            <summary>
+            Registers an input converter type.
+            </summary>
+            <typeparam name="T">The input converter type. This type must implement <see cref="T:Microsoft.Azure.Functions.Worker.Converters.IInputConverter"/></typeparam>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.InputConverterCollection.RegisterAt``1(System.Int32)">
+            <summary>
+            Registers an input converter type at the specific index.
+            </summary>
+            <typeparam name="T">The input converter type. This type must implement <see cref="T:Microsoft.Azure.Functions.Worker.Converters.IInputConverter"/></typeparam>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.InputConverterCollection.Clear">
+            <summary>
+            Removes all items from the collection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.InputConverterCollection.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.WorkerOptions">
+            <summary>
+            An options class for configuring the worker.
+            </summary>    
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.WorkerOptions.Serializer">
+            <summary>
+            The <see cref="T:Azure.Core.Serialization.ObjectSerializer"/> to use for all JSON serialization and deserialization. By default,
+            this is a default <see cref="T:Azure.Core.Serialization.JsonObjectSerializer"/> with default <see cref="T:System.Text.Json.JsonSerializerOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.WorkerOptions.InputConverters">
+            <summary>
+            Gets the collection of input converters.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.WorkerOptions.Capabilities">
+            <summary>
+            Gets the optional worker capabilities.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.WorkerOptions.EnableUserCodeException">
+            <summary>
+            Gets or sets the flag for opting in to unwrapping user-code-thrown
+            exceptions when they are surfaced to the Host. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.WorkerOptions.IncludeEmptyEntriesInMessagePayload">
+            <summary>
+            Gets or sets a value that determines if empty entries should be included in the function trigger message payload.
+            For example, if a set of entries were sent to a messaging service such as Service Bus or Event Hub and your function
+            app has a Service bus trigger or Event hub trigger, only the non-empty entries from the payload will be sent to the
+            function code as trigger data when this setting value is <see langword="false"/>. When it is <see langword="true"/>,
+            All entries will be sent to the function code as it is. Default value for this setting is <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.WorkerOptions.OpenTelemetrySchemaVersion">
+            <summary>
+            Gets or sets a value that determines the schema to use when generating Activities. Currently internal as there is only
+            one schema, but stubbing this out for future use.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Http.HttpCookie">
+            <summary>
+            Http response cookie object
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpCookie.#ctor(System.String,System.String)">
+            <summary>
+            Creates a cookie with name and value.
+            </summary>
+            <param name="name">Cookie name</param>
+            <param name="value">Cookie value</param>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpCookie.Domain">
+            <summary>
+            Gets or sets the allowed hosts to receive the cookie.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpCookie.Expires">
+            <summary>
+            Gets or sets expiration date of the cookie. An expiration date sets the 
+            cookie to expire at a specific date instead of when the client closes.
+            NOTE: It is generally recommended that you use MaxAge over Expires.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpCookie.HttpOnly">
+            <summary>
+            Gets or sets the HttpOnly attributes on the cookie. A value of true will make
+            the cookie inaccessible to JavaScript's Document.cookie API.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpCookie.MaxAge">
+            <summary>
+            Gets or sets the number of seconds until the cookie expires. A zero or negative
+            number will expire the cookie immediately.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpCookie.Name">
+            <summary>
+            Gets or sets the cookie name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpCookie.Path">
+            <summary>
+            Gets or sets the URL path that must exist in the requested URL.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpCookie.SameSite">
+            <summary>
+            Gets or sets an option to restrict the cookie to not be sent with cross-site requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpCookie.Secure">
+            <summary>
+            Gets or sets the Secure attribute on the cookie. A value of true will ensure that the cookie
+            is only sent with encrypted requests over HTTPS.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpCookie.Value">
+            <summary>
+            Gets or sets the cookie value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Http.HttpCookies">
+            <summary>
+            Provides functionality to help interact with HTTP cookies.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpCookies.Append(System.String,System.String)">
+            <summary>
+            Adds an HTTP cookie with the provided name and value.
+            </summary>
+            <param name="name">The cookie name</param>
+            <param name="value">The cookie value.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpCookies.Append(Microsoft.Azure.Functions.Worker.Http.IHttpCookie)">
+            <summary>
+            Adds the provided <see cref="T:Microsoft.Azure.Functions.Worker.Http.IHttpCookie"/>.
+            To create a cookie, you can use the <see cref="M:Microsoft.Azure.Functions.Worker.Http.HttpCookies.CreateNew"/> method.
+            </summary>
+            <param name="cookie">The <see cref="T:Microsoft.Azure.Functions.Worker.Http.IHttpCookie"/> to add.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpCookies.CreateNew">
+            <summary>
+            Creates an <see cref="T:Microsoft.Azure.Functions.Worker.Http.IHttpCookie"/> instance for the current environment.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Http.HttpHeadersCollection">
+            <summary>
+            A collection of HTTP Headers
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpHeadersCollection.#ctor">
+            <summary>
+            Initializes an empty collection of HTTP Headers
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpHeadersCollection.#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IEnumerable{System.String}}})">
+            <summary>
+            Initializes a collection of HTTP headers from an IEnumerable of key value pairs, 
+            where each key (HTTP header name) can have multiple header values.
+            </summary>
+            <param name="headers">A collection of key value pairs representing HTTP headers names and values.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpHeadersCollection.#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Initializes a collection of HTTP headers from an IEnumerable of key value pairs.
+            </summary>
+            <param name="headers">A collection of key value pairs representing HTTP header names and values.</param>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Http.HttpRequestData">
+            <summary>
+            A representation of the HTTP request sent by the host.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpRequestData.#ctor(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpRequestData"/> class.
+            </summary>
+            <param name="functionContext">The <see cref="P:Microsoft.Azure.Functions.Worker.Http.HttpRequestData.FunctionContext"/> for this request.</param>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpRequestData.Body">
+            <summary>
+            A <see cref="T:System.IO.Stream"/> containing the HTTP body data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpRequestData.Headers">
+            <summary>
+            Gets a <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpHeadersCollection"/> containing the request headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpRequestData.Cookies">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.IReadOnlyCollection`1"/> containing the request cookies.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpRequestData.Url">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> for this request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpRequestData.Identities">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing the request identities.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpRequestData.Method">
+            <summary>
+            Gets the HTTP method for this request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpRequestData.FunctionContext">
+            <summary>
+            Gets the <see cref="P:Microsoft.Azure.Functions.Worker.Http.HttpRequestData.FunctionContext"/> for this request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpRequestData.CreateResponse">
+            <summary>
+            Creates a response for this request.
+            </summary>
+            <returns>The response instance.</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpRequestData.Query">
+            <summary>
+            Gets the <see cref="T:System.Collections.Specialized.NameValueCollection"/> containing the request query. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Http.HttpRequestDataExtensions">
+            <summary>
+            Provides extension methods to work with an <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpRequestData"/> instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpRequestDataExtensions.ReadAsStringAsync(Microsoft.Azure.Functions.Worker.Http.HttpRequestData,System.Text.Encoding)">
+            <summary>
+            Reads the body payload as a string.
+            </summary>
+            <param name="request">The request from which to read.</param>
+            <param name="encoding">The encoding to use when reading the string. Defaults to UTF-8</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> that represents the asynchronous read operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpRequestDataExtensions.ReadAsString(Microsoft.Azure.Functions.Worker.Http.HttpRequestData,System.Text.Encoding)">
+            <summary>
+            Reads the body payload as a string.
+            </summary>
+            <param name="request">The request from which to read.</param>
+            <param name="encoding">The encoding to use when reading the string. Defaults to UTF-8</param>
+            <returns>A <see cref="T:System.String"/> that represents request body.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpRequestDataExtensions.ReadFromJsonAsync``1(Microsoft.Azure.Functions.Worker.Http.HttpRequestData,System.Threading.CancellationToken)">
+            <summary>
+            Reads the request using the default <see cref="T:Azure.Core.Serialization.ObjectSerializer"/> configured for this worker.
+            </summary>
+            <typeparam name="T">The target type of the JSON value.</typeparam>
+            <param name="request">The request to be read.</param>
+            <param name="cancellationToken">A token that may be used to cancel the read operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask`1"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpRequestDataExtensions.ReadFromJsonAsync``1(Microsoft.Azure.Functions.Worker.Http.HttpRequestData,Azure.Core.Serialization.ObjectSerializer,System.Threading.CancellationToken)">
+            <summary>
+            Reads the request using the provided <see cref="T:Azure.Core.Serialization.ObjectSerializer"/>.
+            </summary>
+            <typeparam name="T">The target type of the JSON value.</typeparam>
+            <param name="request">The request to be read.</param>
+            <param name="serializer">The <see cref="T:Azure.Core.Serialization.ObjectSerializer"/> to use for the deserialization.</param>
+            <param name="cancellationToken">A token that may be used to cancel the read operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask`1"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpRequestDataExtensions.CreateResponse(Microsoft.Azure.Functions.Worker.Http.HttpRequestData,System.Net.HttpStatusCode)">
+            <summary>
+            Creates a response for the the provided <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpRequestData"/>.
+            </summary>
+            <param name="request">The <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpRequestData"/> for this response.</param>
+            <param name="statusCode">The response status code.</param>
+            <returns>The response data.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Http.HttpResponseData">
+            <summary>
+            A representation of the outgoing HTTP response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseData.#ctor(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpResponseData"/> class.
+            </summary>
+            <param name="functionContext">The <see cref="P:Microsoft.Azure.Functions.Worker.Http.HttpResponseData.FunctionContext"/> for this response.</param>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpResponseData.StatusCode">
+            <summary>
+            Gets or sets the status code for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpResponseData.Headers">
+            <summary>
+            Gets or sets a <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpHeadersCollection"/> containing the response headers
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpResponseData.Body">
+            <summary>
+            Gets or sets the response body stream.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpResponseData.Cookies">
+            <summary>
+            Gets an <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpCookies"/> instance containing the request cookies.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.HttpResponseData.FunctionContext">
+            <summary>
+            Gets the <see cref="P:Microsoft.Azure.Functions.Worker.Http.HttpResponseData.FunctionContext"/> for this response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseData.CreateResponse(Microsoft.Azure.Functions.Worker.Http.HttpRequestData)">
+            <summary>
+            Creates an HTTP response for the provided request.
+            </summary>
+            <param name="request">The request for which we need to create a response.</param>
+            <returns>An <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpResponseData"/> that represens the response for the provided request.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions">
+            <summary>
+            Provides extension methods to work with an <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpResponseData"/> instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteString(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,System.String,System.Text.Encoding)">
+            <summary>
+            Writes the provided string to the response body using the specified encoding.
+            </summary>
+            <param name="response">The response to write the string to.</param>
+            <param name="value">The string content to write to the request body.</param>
+            <param name="encoding">The encoding to use when writing the string. Defaults to UTF-8</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteStringAsync(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,System.String,System.Text.Encoding)">
+            <summary>
+            Asynchronously writes the provided string to the response body using the specified encoding.
+            </summary>
+            <param name="response">The response to write the string to.</param>
+            <param name="value">The string content to write to the request body.</param>
+            <param name="encoding">The encoding to use when writing the string. Defaults to UTF-8</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteStringAsync(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,System.String,System.Threading.CancellationToken,System.Text.Encoding)">
+            <summary>
+            Asynchronously writes the provided string to the response body using the specified encoding, and monitors cancellation requests.
+            </summary>
+            <param name="response">The response to write the string to.</param>
+            <param name="value">The string content to write to the request body.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <param name="encoding">The encoding to use when writing the string. Defaults to UTF-8</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteAsJsonAsync``1(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,``0,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes the specified value as JSON to the response body using the default <see cref="T:Azure.Core.Serialization.ObjectSerializer"/> configured for this worker.
+            The response content-type will be set to <code>application/json; charset=utf-8</code> and the status code set to 200.
+            </summary>
+            <typeparam name="T">The type of object to write.</typeparam>
+            <param name="response">The response to write JSON to.</param>
+            <param name="instance">The instance to serialize and write as JSON.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> used to cancel the operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask"/> that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteAsJsonAsync``1(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,``0,System.Net.HttpStatusCode,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes the specified value as JSON to the response body using the default <see cref="T:Azure.Core.Serialization.ObjectSerializer"/> configured for this worker.
+            The response content-type will be set to <code>application/json; charset=utf-8</code> and the status code set to the provided <paramref name="statusCode"/>.
+            </summary>
+            <typeparam name="T">The type of object to write.</typeparam>
+            <param name="response">The response to write JSON to.</param>
+            <param name="instance">The instance to serialize and write as JSON.</param>
+            <param name="statusCode">The status code to set on the response.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> used to cancel the operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask"/> that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteAsJsonAsync``1(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,``0,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes the specified value as JSON to the response body using the default <see cref="T:Azure.Core.Serialization.ObjectSerializer"/> configured for this worker.
+            The response content-type will be set to the provided <paramref name="contentType"/> and the status code set to 200.
+            </summary>
+            <typeparam name="T">The type of object to write.</typeparam>
+            <param name="response">The response to write JSON to.</param>
+            <param name="instance">The instance to serialize and write as JSON.</param>
+            <param name="contentType">The content-type to set on the response.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> used to cancel the operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask"/> that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteAsJsonAsync``1(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,``0,System.String,System.Net.HttpStatusCode,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes the specified value as JSON to the response body using the default <see cref="T:Azure.Core.Serialization.ObjectSerializer"/> configured for this worker.
+            The response content-type will be set to the provided <paramref name="contentType"/> and the status code set to the provided <paramref name="statusCode"/>.
+            </summary>
+            <typeparam name="T">The type of object to write.</typeparam>
+            <param name="response">The response to write JSON to.</param>
+            <param name="instance">The instance to serialize and write as JSON.</param>
+            <param name="contentType">The content-type to set on the response.</param>
+            <param name="statusCode">The status code to set on the response.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> used to cancel the operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask"/> that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteAsJsonAsync``1(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,``0,Azure.Core.Serialization.ObjectSerializer,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes the specified value as JSON to the response body using the provided <see cref="T:Azure.Core.Serialization.ObjectSerializer"/>.
+            The response content-type will be set to <code>application/json; charset=utf-8</code> and the status code set to 200.
+            </summary>
+            <typeparam name="T">The type of object to write.</typeparam>
+            <param name="response">The response to write JSON to.</param>
+            <param name="instance">The instance to serialize and write as JSON.</param>
+            <param name="serializer">The serializer used to serialize the instance.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> used to cancel the operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask"/> that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteAsJsonAsync``1(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,``0,Azure.Core.Serialization.ObjectSerializer,System.Net.HttpStatusCode,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes the specified value as JSON to the response body using the provided <see cref="T:Azure.Core.Serialization.ObjectSerializer"/>.
+            The response content-type will be set to <code>application/json; charset=utf-8</code> and the status code set to the provided <paramref name="statusCode"/>.
+            </summary>
+            <typeparam name="T">The type of object to write.</typeparam>
+            <param name="response">The response to write JSON to.</param>
+            <param name="instance">The instance to serialize and write as JSON.</param>
+            <param name="serializer">The serializer used to serialize the instance.</param>
+            <param name="statusCode">The status code to set on the response.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> used to cancel the operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask"/> that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteAsJsonAsync``1(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,``0,Azure.Core.Serialization.ObjectSerializer,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes the specified value as JSON to the response body using the provided <see cref="T:Azure.Core.Serialization.ObjectSerializer"/>.
+            The response content-type will be set to the provided <paramref name="contentType"/> and the status code set to 200.
+            </summary>
+            <typeparam name="T">The type of object to write.</typeparam>
+            <param name="response">The response to write JSON to.</param>
+            <param name="instance">The instance to serialize and write as JSON.</param>
+            <param name="serializer">The serializer used to serialize the instance.</param>
+            <param name="contentType">The content-type to set on the response.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> used to cancel the operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask"/> that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteAsJsonAsync``1(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,``0,Azure.Core.Serialization.ObjectSerializer,System.String,System.Net.HttpStatusCode,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes the specified value as JSON to the response body using the provided <see cref="T:Azure.Core.Serialization.ObjectSerializer"/>.
+            The response content-type will be set to the provided <paramref name="contentType"/> and the status code set to the provided <paramref name="statusCode"/>.
+            </summary>
+            <typeparam name="T">The type of object to write.</typeparam>
+            <param name="response">The response to write JSON to.</param>
+            <param name="instance">The instance to serialize and write as JSON.</param>
+            <param name="serializer">The serializer used to serialize the instance.</param>
+            <param name="contentType">The content-type to set on the response.</param>
+            <param name="statusCode">The status code to set on the response.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> used to cancel the operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask"/> that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteBytes(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,System.Byte[])">
+            <summary>
+            Writes the provided bytes to the response body.
+            </summary>
+            <param name="response">The response to write the string to.</param>
+            <param name="value">The byte content to write to the request body.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteBytesAsync(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,System.Byte[])">
+            <summary>
+            Asynchronously writes the provided bytes to the response body.
+            </summary>
+            <param name="response">The response to write the string to.</param>
+            <param name="value">The byte content to write to the request body.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.HttpResponseDataExtensions.WriteBytesAsync(Microsoft.Azure.Functions.Worker.Http.HttpResponseData,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously writes the provided bytes to the response body, and monitors cancellation requests.
+            </summary>
+            <param name="response">The response to write the string to.</param>
+            <param name="value">The byte content to write to the request body.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Http.IHttpCookie">
+            <summary>
+            A representation of an HTTP cookie
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.IHttpCookie.Domain">
+            <summary>
+            Gets or sets the allowed hosts to receive the cookie.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.IHttpCookie.Expires">
+            <summary>
+            Gets or sets expiration date of the cookie. An expiration date sets the 
+            cookie to expire at a specific date instead of when the client closes.
+            NOTE: It is generally recommended that you use MaxAge over Expires.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.IHttpCookie.HttpOnly">
+            <summary>
+            Gets or sets the HttpOnly attributes on the cookie. A value of true will make
+            the cookie inaccessible to JavaScript's Document.cookie API.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.IHttpCookie.MaxAge">
+            <summary>
+            Gets or sets the number of seconds until the cookie expires. A zero or negative
+            number will expire the cookie immediately.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.IHttpCookie.Name">
+            <summary>
+            Gets or sets the cookie name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.IHttpCookie.Path">
+            <summary>
+            Gets or sets the URL path that must exist in the requested URL.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.IHttpCookie.SameSite">
+            <summary>
+            Gets or sets an option to restrict the cookie to not be sent with cross-site requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.IHttpCookie.Secure">
+            <summary>
+            Gets or sets the Secure attribute on the cookie. A value of true will ensure that the cookie
+            is only sent with encrypted requests over HTTPS.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Http.IHttpCookie.Value">
+            <summary>
+            Gets or sets the cookie value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Http.IHttpRequestDataFeature">
+            <summary>
+            A representation of the HTTP request sent by the host
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.IHttpRequestDataFeature.GetHttpRequestDataAsync(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Azure.Functions.Worker.Http.HttpRequestData"/> instance if the FunctionContext contains an invocation for an http trigger.
+            </summary>
+            <param name="context">The FunctionContext instance.</param>
+            <returns>HttpRequestData instance if the invocation is http, else null</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Http.SameSite">
+            <summary>
+            Options to restrict the cookie to not be sent with cross-site requests
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Http.SameSite.None">
+            <summary>
+            Default cookie-sending behavior option for cross-site requests. The current default behavior is "Lax".
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Http.SameSite.Lax">
+            <summary>
+            Option to not send cookie on normal cross-site subrequests (example: loading images into a third party site),
+            but to send when a user is navigating to the origin site (i.e. when following a link).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Http.SameSite.Strict">
+            <summary>
+            Option to send cookie in a first-party context and not send along with requests initiated by third party websites.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Http.SameSite.ExplicitNone">
+            <summary>
+            Option to send cookie in all contexts (i.e in responses to both first-party and cross-origin requests).
+            If this property is set on a cookie, the cookie's Secure attribute must also be set (or the cookie will be blocked).
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Invocation.IFunctionExecutor">
+            <summary>
+            Provides a mechanism to execute function code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Invocation.IFunctionExecutor.ExecuteAsync(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Asynchronously executes the function code.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.Azure.Functions.Worker.FunctionContext"/> instance.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask"/> representing the completion of the operation.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.DefaultInvocationResult">
+            <summary>
+            A type wrapping the result of a function invocation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.DefaultInvocationResult.Value">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.DefaultInvocationResult`1">
+            <summary>
+            A type wrapping the result of a function invocation.
+            </summary>
+            <typeparam name="T">The type of invocation result value.</typeparam>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.DefaultInvocationResult`1.Value">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.IFunctionActivator">
+            <summary>
+            Defines a service that will be used to create function class instances.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.IFunctionActivator.CreateInstance(System.Type,Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Creates an instance of the provided type to be used as the target of the invocation.
+            </summary>
+            <param name="instanceType">The <see cref="T:System.Type"/> of the instance to create.</param>
+            <param name="context">The <see cref="T:Microsoft.Azure.Functions.Worker.FunctionContext"/> for the invocation triggering the instance creation.</param>
+            <returns>The created instance.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.InvocationResult">
+            <summary>
+            A type wrapping the result of a function invocation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.InvocationResult`1">
+            <summary>
+            A type wrapping the result of a function invocation.
+            </summary>
+            <typeparam name="T">The type of invocation result value.</typeparam>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.InvocationResult`1.Value">
+            <summary>
+            Gets or sets the invocation result value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Logging.ISystemLogWriter">
+            <summary>
+            An abstraction for writing system logs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Logging.ISystemLogWriter.WriteSystemLog``1(Microsoft.Extensions.Logging.IExternalScopeProvider,System.String,Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
+            <summary>
+            Writes a system log entry.
+            </summary>
+            <typeparam name="TState">The type of the object to be written.</typeparam>
+            <param name="scopeProvider">The provider of scope data.</param>
+            <param name="categoryName">The category name for messages produced by the logger.</param>
+            <param name="logLevel">Entry will be written on this level.</param>
+            <param name="eventId">Id of the event.</param>
+            <param name="state">The entry to be written. Can be also an object.</param>
+            <param name="exception">The exception related to this entry.</param>
+            <param name="formatter"> Function to create a <see cref="T:System.String"/> message of the state and exception.</param>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Logging.IUserLogWriter">
+            <summary>
+            An abstraction for writing user logs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Logging.IUserLogWriter.WriteUserLog``1(Microsoft.Extensions.Logging.IExternalScopeProvider,System.String,Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
+            <summary>
+            Writes a user log entry.
+            </summary>
+            <typeparam name="TState">The type of the object to be written.</typeparam>
+            <param name="scopeProvider">The provider of scope data.</param>
+            <param name="categoryName">The category name for messages produced by the logger.</param>
+            <param name="logLevel">Entry will be written on this level.</param>
+            <param name="eventId">Id of the event.</param>
+            <param name="state">The entry to be written. Can be also an object.</param>
+            <param name="exception">The exception related to this entry.</param>
+            <param name="formatter"> Function to create a <see cref="T:System.String"/> message of the state and exception.</param>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Logging.IUserMetricWriter">
+            <summary>
+            An abstraction for writing user metrics.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Logging.IUserMetricWriter.WriteUserMetric(Microsoft.Extensions.Logging.IExternalScopeProvider,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Writes user metrics.
+            </summary>
+            <param name="scopeProvider">The provider of scope data.</param>
+            <param name="state">Additional properties.</param>        
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Logging.ApplicationInsights.LogConstants">
+            <summary>
+            Keys used by the <see cref="T:Microsoft.Extensions.Logging.ILogger"/> infrastructure.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Logging.ApplicationInsights.LogConstants.NameKey">
+            <summary>
+            Gets the name of the key used to store the name of the function.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Logging.ApplicationInsights.LogConstants.MetricEventId">
+            <summary>
+            Gets the event id for a metric event.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Logging.ApplicationInsights.LogConstants.MetricValueKey">
+            <summary>
+            Gets the name of the key used to store a metric sum.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Logging.NullLogWriter">
+            <summary>
+            Minimalistic LogWriter that does nothing.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Logging.NullLogWriter.Instance">
+            <summary>
+            Returns the shared instance of <see cref="T:Microsoft.Azure.Functions.Worker.Logging.NullLogWriter"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Logging.NullLogWriter.WriteSystemLog``1(Microsoft.Extensions.Logging.IExternalScopeProvider,System.String,Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Logging.NullLogWriter.WriteUserLog``1(Microsoft.Extensions.Logging.IExternalScopeProvider,System.String,Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Logging.NullLogWriter.WriteUserMetric(Microsoft.Extensions.Logging.IExternalScopeProvider,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Logging.NullLogWriter.WriteUserMetric(Microsoft.Extensions.Logging.IExternalScopeProvider,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.DefaultInputBindingData`1">
+            <summary>
+            A type representing the input binding data.
+            </summary>
+            <typeparam name="T">The type of binding data value.</typeparam>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.DefaultInputBindingData`1.BindingMetadata">
+            <summary>
+            Gets the binding metadata part of this input binding data instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.DefaultInputBindingData`1.Value">
+            <summary>
+            Gets or sets the value of the binding result.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.OutputBindings.OutputBindingsInfo">
+            <summary>
+            Encapsulates the information about all output bindings in a Function
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.OutputBindings.OutputBindingsInfo.BindOutputInContext(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Binds output from a function <paramref name="context"/> to the output bindings
+            </summary>
+            <param name="context">The Function context to bind the data to.</param>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.InputBindingData`1">
+            <summary>
+            A type representing the input binding data.
+            </summary>
+            <typeparam name="T">The type of binding data value.</typeparam>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.InputBindingData`1.BindingMetadata">
+            <summary>
+            Gets the binding metadata part of this input binding data instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.InputBindingData`1.Value">
+            <summary>
+            Gets or sets the value of the binding result.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.OutputBindingData`1">
+            <summary>
+            A type representing an output binding entry.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.OutputBindingData`1.BindingType">
+            <summary>
+            Gets the type of the binding entry.
+            Ex: "http","queue" etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.OutputBindingData`1.Name">
+            <summary>
+            Gets the name of the output binding entry.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.OutputBindingData`1.Value">
+            <summary>
+            Gets or sets the value of the output binding entry.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Middleware.FunctionExecutionDelegate">
+            <summary>
+            A delegate that can process an event.
+            </summary>
+            <param name="context">The context for the event invocation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that represents the invocation process.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Middleware.IFunctionsWorkerMiddleware">
+            <summary>
+            Represents a middleware to be used in the worker execution pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Middleware.IFunctionsWorkerMiddleware.Invoke(Microsoft.Azure.Functions.Worker.FunctionContext,Microsoft.Azure.Functions.Worker.Middleware.FunctionExecutionDelegate)">
+            <summary>
+            Invokes the middleware.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.Azure.Functions.Worker.FunctionContext"/> for the current invocation.</param>
+            <param name="next">The next middleware in the pipeline.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous invocation.</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.Hosting.CoreWorkerHostBuilderExtensions">
+            <summary>
+            Provides extension methods to work with a <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.CoreWorkerHostBuilderExtensions.ConfigureFunctionsWorker(Microsoft.Extensions.Hosting.IHostBuilder,System.Action{Microsoft.Extensions.Hosting.HostBuilderContext,Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder},System.Action{Microsoft.Azure.Functions.Worker.WorkerOptions})">
+            <summary>
+            Configures the core set of Functions Worker services to the provided <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>,
+            with a delegate to configure a provided <see cref="T:Microsoft.Extensions.Hosting.HostBuilderContext"/> and an <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/>,
+            and a delegate to configure the <see cref="T:Microsoft.Azure.Functions.Worker.WorkerOptions"/>.
+            NOTE: You must configure required services for an operational worker when using this method.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> to configure.</param>
+            <param name="configure">A delegate that will be invoked to configure the provided <see cref="T:Microsoft.Extensions.Hosting.HostBuilderContext"/> and an <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/>.</param>
+            <param name="configureOptions">A delegate that will be invoked to configure the provided <see cref="T:Microsoft.Azure.Functions.Worker.WorkerOptions"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.CoreWorkerHostBuilderExtensions.InvokeAutoGeneratedConfigureMethods(Microsoft.Extensions.Hosting.IHostBuilder)">
+            <summary>
+            Invokes auto-generated configuration methods for a given <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.
+            This method searches for classes that implement the <see cref="T:Microsoft.Azure.Functions.Worker.IAutoConfigureStartup"/> interface,
+            excluding interfaces and abstract classes. For each identified class, it locates the
+            <c>Configure</c> method with the signature <c>void Configure(IHostBuilder hostBuilder)</c>,
+            and executes the method using an instance of the class.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> to configure.</param>
+            <returns>The same <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> after the auto-generated configuration methods are invoked.</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.Hosting.MiddlewareWorkerApplicationBuilderExtensions">
+            <summary>
+            Provides extension methods to work with Worker Middleware against a <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.MiddlewareWorkerApplicationBuilderExtensions.UseDefaultWorkerMiddleware(Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder)">
+            <summary>
+            Configures the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to use the default set of middleware used by the worker, in the following order:
+            <list type="number">
+                <item>
+                    <description><see cref="T:Microsoft.Azure.Functions.Worker.OutputBindings.OutputBindingsMiddleware"/></description>
+                </item>
+                <item>
+                    <description><see cref="T:Microsoft.Azure.Functions.Worker.Pipeline.FunctionExecutionMiddleware"/></description>
+                </item>
+            </list>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to configure.</param>
+            <returns>The same instance of the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.MiddlewareWorkerApplicationBuilderExtensions.UseFunctionExecutionMiddleware(Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder)">
+            <summary>
+            Configures the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to use the default <see cref="T:Microsoft.Azure.Functions.Worker.Pipeline.FunctionExecutionMiddleware"/>.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to configure.</param>
+            <returns>The same instance of the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.MiddlewareWorkerApplicationBuilderExtensions.UseOutputBindingsMiddleware(Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder)">
+            <summary>
+            Configures the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to use the default <see cref="T:Microsoft.Azure.Functions.Worker.OutputBindings.OutputBindingsMiddleware"/>.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to configure.</param>
+            <returns>The same instance of the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.MiddlewareWorkerApplicationBuilderExtensions.UseMiddleware``1(Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder)">
+            <summary>
+            Configures the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to use the provided middleware type.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to configure.</param>
+            <returns>The same instance of the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.MiddlewareWorkerApplicationBuilderExtensions.UseWhen``1(Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder,System.Func{Microsoft.Azure.Functions.Worker.FunctionContext,System.Boolean})">
+            <summary>
+            Configures the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to use the provided middleware type, when the provided predicate expression returns true.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to configure.</param>
+            <param name="predicate">Predicate which gets invoked to determine if middleware should be executed during a function invocation.</param>
+            <returns>The same instance of the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.MiddlewareWorkerApplicationBuilderExtensions.UseMiddleware(Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder,System.Func{Microsoft.Azure.Functions.Worker.FunctionContext,System.Func{System.Threading.Tasks.Task},System.Threading.Tasks.Task})">
+            <summary>
+            Configures the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to use the provided inline middleware delegate.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to configure.</param>
+            <param name="middleware">The middleware to add to the invocation pipeline.</param>
+            <returns>The same <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.MiddlewareWorkerApplicationBuilderExtensions.UseWhen(Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder,System.Func{Microsoft.Azure.Functions.Worker.FunctionContext,System.Boolean},System.Func{Microsoft.Azure.Functions.Worker.FunctionContext,System.Func{System.Threading.Tasks.Task},System.Threading.Tasks.Task})">
+            <summary>
+            Configures the <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to use the provided inline middleware delegate when the provided predicate expression returns true.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> to configure.</param>
+            <param name="predicate">Predicate which gets invoked to determine if middleware should be executed during a function invocation.</param>
+            <param name="middleware">The middleware to add to the invocation pipeline.</param>
+            <returns>The same <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> for chaining.</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions">
+            <summary>
+            Azure Functions extensions for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddFunctionsWorkerCore(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.Azure.Functions.Worker.WorkerOptions})">
+            <summary>
+            Adds the core set of services for the Azure Functions worker.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <param name="configure">The action used to configure <see cref="T:Microsoft.Azure.Functions.Worker.WorkerOptions"/>.</param>
+            <returns>The same <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddDefaultInputConvertersToWorkerOptions(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds the built-in input converters to worker options.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.RunExtensionStartupCode(Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder)">
+            <summary>
+            Run extension startup execution code.
+            Our source generator creates a class(WorkerExtensionStartupCodeExecutor)
+            which internally calls the "Configure" method on each of the participating
+            extensions. Here we are calling the uber "Configure" method on the generated class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.Logging.ILoggerExtensions">
+            <summary>
+            Extensions for <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Logging.ILoggerExtensions.LogMetric(Microsoft.Extensions.Logging.ILogger,System.String,System.Double,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a metric value. Log will be at an information level.
+            </summary>
+            <param name="logger">The ILogger.</param>
+            <param name="name">The name of the metric.</param>
+            <param name="value">The value of the metric.</param>
+            <param name="properties">Named string values for classifying and filtering metrics.</param>
+        </member>
+        <member name="T:StartupHook">
+            <summary>
+            This code is called by the .NET infrastructure the following MUST remain unchanged:
+             - The type name must be StartupHook
+             - The type must be at the top level, with no namespaces
+             - The type must be internal
+             - The initialization method must be named Initialize
+             - The initialization method must be static, with a void return.
+             For more information, see: https://github.com/dotnet/core-setup/blob/master/Documentation/design-docs/host-startup-hook.md
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.Functions.Worker.ApplicationInsights</id>
+    <version>2.0.0</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/Azure/azure-functions-dotnet-worker</projectUrl>
+    <iconUrl>https://aka.ms/azure-functions-package-icon</iconUrl>
+    <description>Package Description</description>
+    <releaseNotes>## What's Changed
+
+### Microsoft.Azure.Functions.Worker.ApplicationInsights 1.4.0
+- Updating `Azure.Identity` to 1.12.0</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <repository type="git" url="https://github.com/Azure/azure-functions-dotnet-worker" commit="d8b5fe998a8c92819b8ee41d2569d2525413e9c5" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Azure.Functions.Worker.Core" version="2.0.0" exclude="Build,Analyzers" />
+        <dependency id="Azure.Identity" version="1.12.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ApplicationInsights.PerfCounterCollector" version="2.22.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Bcl.AsyncInterfaces" version="8.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

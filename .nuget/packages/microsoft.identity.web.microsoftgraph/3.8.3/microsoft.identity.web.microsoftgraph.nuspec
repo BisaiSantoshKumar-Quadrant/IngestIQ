@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Identity.Web.MicrosoftGraph</id>
+    <version>3.8.3</version>
+    <title>Microsoft Identity Web, Microsoft Graph helper</title>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/AzureAD/microsoft-identity-web</projectUrl>
+    <description>This package enables ASP.NET Core web apps and web APIs to use the Microsoft identity platform (formerly Azure AD v2.0).
+      This package is specifically used for web applications, which sign-in users and call Microsoft Graph, and for protected web APIs
+      that call Microsoft Graph.</description>
+    <releaseNotes>The release notes are available at https://github.com/AzureAD/microsoft-identity-web/releases and the roadmap at https://github.com/AzureAD/microsoft-identity-web/wiki#roadmap</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Microsoft Identity Web UI Microsoft identity platform Microsoft Identity Web .NET ASP.NET Core Web App Web API B2C Azure Active Directory AAD Identity Authentication Authorization</tags>
+    <repository type="git" url="https://github.com/AzureAD/microsoft-identity-web" commit="7974a55333d8168ee962249c0d70c6c438641ba5" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.2">
+        <dependency id="Microsoft.Identity.Web.TokenAcquisition" version="3.8.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Graph" version="4.36.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="Microsoft.Identity.Web.TokenAcquisition" version="3.8.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Graph" version="4.36.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="Microsoft.Identity.Web.TokenAcquisition" version="3.8.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Graph" version="4.36.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net7.0">
+        <dependency id="Microsoft.Identity.Web.TokenAcquisition" version="3.8.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Graph" version="4.36.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="Microsoft.Identity.Web.TokenAcquisition" version="3.8.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Graph" version="4.36.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="Microsoft.Identity.Web.TokenAcquisition" version="3.8.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Graph" version="4.36.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Identity.Web.TokenAcquisition" version="3.8.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Graph" version="4.36.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.IO" targetFramework=".NETFramework4.7.2" />
+      <frameworkAssembly assemblyName="System.Net.Http" targetFramework=".NETFramework4.7.2" />
+      <frameworkAssembly assemblyName="System.Runtime" targetFramework=".NETFramework4.7.2" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.Algorithms" targetFramework=".NETFramework4.7.2" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.Encoding" targetFramework=".NETFramework4.7.2" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.Primitives" targetFramework=".NETFramework4.7.2" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.X509Certificates" targetFramework=".NETFramework4.7.2" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

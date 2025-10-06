@@ -1,0 +1,438 @@
+ê2<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #todo-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 8px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            padding: 8px;
+            margin: 5px 0;
+            background: #e2e2e2;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="todo-container"
+        style="max-width: 800px; margin:0 auto; padding: 20px; background-color: white; border-radius : 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        <header>
+
+            <h1> portfolio</h1>
+            <a>
+                <button>about</button>
+            </a>
+            <a>
+                <button>projects</button>
+            </a>
+            <a>
+                <button>skills</button>
+            </a>
+            <a>
+                <button>contact</button>
+            </a>
+
+
+        </header>
+
+        <main>
+            <section id="about">
+                <h1> Hi this is xyz</h1>
+                <p>i am a web developer</p>
+                <br>
+                <p>i like to code and design</p>
+            </section>
+
+            <section id="skills">
+                <img src="img001.png" alt="this is a image" height="90px" width="90px"></img></br>
+                <video src="qassessment.mp4" controls height="300px" width="400px"> </video>
+                <br>
+            </section>
+            <section id="projects">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/lGKGDxwvrEQ?si=g-0VgFZEB7o5JH97"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </section>
+            <section id="contact">
+                <h1>contact me</h1>
+                <p>feel free to get in touch with me</p></br>
+                <form>
+                    <label for="name">Name:</label>
+                    <input id="name" type="text">
+                </form></br>
+                <label for="email">Email:</label>
+                <input id="email" type="email">
+                </br>
+                <b>choose your gender:</b>
+                <input type="radio" name="male" value="male">
+                <label for="male">male</label">
+                    <input type="radio" name="female" value="female">
+                    <label for="" female>female</label>
+                    </br>
+                    <b>Select your interests:</b>
+
+                    <input type="checkbox" name="coding" value="coding">
+                    <label for="coding">coding</label>
+                    <input type="checkbox" name="dancing" value="dancing">
+                    <label for="dancing">dancing</label>
+                    <input type="checkbox" name="singing" value="singing">
+                    <label for="singing">singing</label>
+                    </br>
+                    <label for="message">message:</label>
+                    <input type="text" id="message">
+                    </br>
+                    <button type="submit">submit</button>
+                    </form>
+            </section>
+        </main>
+
+
+<footer>copyright xyz</footer>
+
+
+        <!-- <h1>
+            To-Do List</h1>
+        <div class="input-section">
+            <input type="text" id="taskInput" placeholder="enter new task">
+            <button onClick="addTask()">
+                <span>
+                    Add Task
+                </span>
+            </button>
+            <ul id = "taskList"></ul>
+        </div> -->
+
+        <script>
+            <!--js functions added here-->
+
+            let tasks = [];
+
+            window.onload = function () {
+                const storedTasks = localStorage.getItem("tasks");
+                if (storedTasks) {
+                    tasks = JSON.parse(storedTasks);
+                    tasks.forEach(task => renderTask(task));
+                }
+
+            };
+
+
+
+            function addTask() {
+                const taskInput = document.getElementById("taskInput");
+                const taskText = taskInput.value.trim();
+                if (taskText === "") {
+                    alert("Please enter a task");
+                    return;
+                }
+                tasks.push(taskText);
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+                renderTask(taskText);
+                taskInput.value = "";
+            }
+            function renderTask(taskText) {
+                const taskList = document.getElementById("taskList");
+
+                const li = document.createElement("li");
+                li.textContent = taskText;
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "Delete";
+                deleteBtn.style.marginLeft = "10px";
+
+                deleteBtn.onclick = function () {
+                    taskList.removeChild(li);
+                    tasks = tasks.filter(task => task != taskText);
+                    localStorage.setItem("tasks", JSON.stringify(tasks));
+                };
+
+                li.appendChild(deleteBtn);
+                taskList.appendChild(li);
+            }
+
+        </script>
+</body>
+
+</html> 2# *$ba763ea3-1e60-466b-9cac-8ad507c46c4d08#%3%¢ *$ba763ea3-1e60-466b-9cac-8ad507c46c4d08
+¢¨ 4¨∂ *$ba763ea3-1e60-466b-9cac-8ad507c46c4d08
+∂¡ 
+¡Õ 
+ÕŒ 
+Œı 
+ıˆ ˆ¯
+¯˘ 4˘˙ *$3ddf55bd-0919-434c-be68-318eed4050cb08˙˚4˚ç *$3ddf55bd-0919-434c-be68-318eed4050cb08çô4ô¶ *$3ddf55bd-0919-434c-be68-318eed4050cb08¶ß4ß® *$3ddf55bd-0919-434c-be68-318eed4050cb08®™4™´ *$3ddf55bd-0919-434c-be68-318eed4050cb08
+´æ 
+æƒ ƒ≈
+≈∆ 
+∆‘ 
+‘Á 
+ÁÒ ÒÚ
+Ú˛ 
+˛ç çé
+éè 
+èù 
+ùÆ 
+Æº 
+ºƒ 2ƒÀ*$e4232667-3eac-44eb-98f0-8b6a7d0bced608
+ÀŸ 
+ŸÎ 
+Î˘ 
+˘á 
+áï ïò
+ò§ 
+§ß 
+ß∂ ∂–
+–⁄ 
+⁄› ›ﬂ
+ﬂÚ 2Ú¯*$a027aa92-bfdc-46ba-b81f-f41cf9b3e4cf08
+¯˘ ˘˙
+˙â 
+âî 
+îû 
+û¢ 
+¢Ø 
+ØΩ Ω–
+–⁄ 
+⁄€ 
+€› ›ﬂ
+ﬂÌ ÌÓ
+ÓÔ 
+Ô˝ 
+˝è 
+èù 
+ù≠ 
+≠∑ 
+∑∫ ∫º
+º∆ ∆«
+«» 
+»÷ ÷›
+›· ·Â
+ÂÁ ÁÎ
+Îˆ 
+ˆ˘ ˘˚
+˚Ö ÖÜ
+Üá 
+áï ï¢
+¢∞ 
+∞∂ ∂∂
+∂æ 
+æÃ 
+Ã‡ 
+‡Ó 
+Ó¸ 
+¸ä	 ä	ê	
+ê	õ	 õ	®	
+®	∑	 ∑	∫	
+∫	∆	 ∆	…	
+…	‘	 
+‘	€	 
+€	â
+ 
+â
+ä
+ ä
+å
+
+å
+ç
+ 
+ç
+ï
+ ï
+ñ
+
+ñ
+°
+ 
+°
+¢
+ ¢
+≠
+
+≠
+Æ
+ Æ
+Õ
+
+Õ
+“
+ “
+Ò
+
+Ò
+Ú
+ 4Ú
+¯
+ *$9bb75592-bc41-4ae2-85ea-40a8ccb897ec08¯
+Ü4Üâ *$9bb75592-bc41-4ae2-85ea-40a8ccb897ec08âÆ4ÆØ *$9bb75592-bc41-4ae2-85ea-40a8ccb897ec08
+Øª 
+ª√ 
+√ö öú
+ú¶ 
+¶Ø Ø±
+±¡ 
+¡– 
+–⁄ ⁄⁄
+⁄‚ 
+‚∑ ∑Ω
+Ω   “
+“† †°
+°¢ 
+¢ß 
+ß≥ 
+≥ª 
+ªü! 
+ü!™! 
+™!±! 
+±!¥! 4¥!∑! *$bcff0668-cf68-4536-a705-ab9dda775b5508
+∑!¡! 
+¡!«! 2«!»!*$93ed764f-b328-4ccc-8ad6-dd9df8e1247908
+»!Ã! 
+Ã!! 
+!Ú! 
+Ú!¯! 
+¯!Ó" Ó"Ô"
+Ô"°# 
+°#¢# ¢#•#
+•#¶# 
+¶#ü$ 
+ü$°$ 
+°$∞$ 
+∞$π$ 2π$…$*$5ddf0c5c-8f0a-40d6-8262-feccd63d334108
+…$È$ 
+È$Í$ 4Í$Î$ *$d169ac4c-8072-4ddf-9f55-b3e4bdf816eb08
+Î$Ò$ 
+Ò$ˇ$ 
+ˇ$ù% 
+ù%ü% 
+ü%°% 
+°%¨% 
+¨%¿% 
+¿%≈% 
+≈%‰% ‰%Â%
+Â%Á% Á%Ë%
+Ë%È% 
+È%˚% 
+˚%≠& 
+≠&ø& 
+ø&¡& ¡&¬&
+¬&œ& œ&–&
+–&—& 
+—&Á& 
+Á&˙& ˙&Ö'
+Ö'Ü' 
+Ü'ù' 
+ù'≈' 
+≈'◊' 
+◊'ÿ' 
+ÿ'„' 
+„'Ë' Ë'Í'
+Í'Ï' 
+Ï'Ó' 
+Ó'' 
+'Ù' 
+Ù'¸' ¸'˛'
+˛'ê( ê(ë(
+ë(í( 
+í(§( 
+§(€( 
+€(Ì( Ì(˛(4˛(ç) *$1ae2d513-ebf2-4eec-bf38-19dec119433f08ç)î)4î)ü) *$1ae2d513-ebf2-4eec-bf38-19dec119433f08
+ü)ß) 
+ß)ª) ª)º)
+º)Ω) 
+Ω)”) ”)ÿ)4ÿ)Ç* *$6f71d4d1-8df9-41e0-8ffc-1f7cb47e743a08
+Ç*Ü* 4Ü*è* *$6f71d4d1-8df9-41e0-8ffc-1f7cb47e743a08
+è*ê* 4ê*ú* *$6f71d4d1-8df9-41e0-8ffc-1f7cb47e743a08ú*ü*4ü*†* *$6f71d4d1-8df9-41e0-8ffc-1f7cb47e743a08
+†*≤* 
+≤*«* 
+«*Ÿ* 
+Ÿ*Ü+ 2Ü+ã+*$483767ea-0b76-4ae6-988d-71d46f5e8a1008
+ã+ç+ 2ç+é+*$483767ea-0b76-4ae6-988d-71d46f5e8a1008
+é+†+ 
+†+´+ 2´+≥+*$60741198-339f-4184-8618-036db34aa61908
+≥+¥+ 2¥+µ+*$60741198-339f-4184-8618-036db34aa61908
+µ+«+ 2«+‹+*$f8b05df8-6509-411a-9952-25556603b51808
+‹+Í+ Í+Î+
+Î+˘+ 
+˘+Ç, 
+Ç,ñ, ñ,ó,
+ó,ö, 
+ö,ú, 
+ú,®, ®,™,
+™,ﬂ, 
+ﬂ,Û, 
+Û,õ- 
+õ-≠- ≠-«-
+«-€- 
+€-é. 
+é.†. 
+†.¡. 
+¡.”. 
+”.˜. 
+˜.ã/ 
+ã/ß/ ß/®/
+®/™/ ™/´/
+´/¨/ 
+¨/¬/ 
+¬/€/ 
+€/Ò/ 
+Ò/ä0 ä0ã0
+ã0†0 
+†0∂0 
+∂0‘0 2‘0Ë0*$26b7aada-9801-4b4a-9156-c5c8d9d91f0108
+Ë0È0 2È0Î0*$26b7aada-9801-4b4a-9156-c5c8d9d91f0108
+Î0˝0 
+˝0ˇ0 
+ˇ0Å1 Å1É1
+É1ì1 
+ì1≠1 
+≠1ø1 
+ø1”1 
+”1Ê1 Ê1Á1
+Á1Ô1 
+Ô1˛1 4˛1Ö2 *$ba763ea3-1e60-466b-9cac-8ad507c46c4d08Ö2á24á2ê2 *$ba763ea3-1e60-466b-9cac-8ad507c46c4d082Ffile:///c:/Users/BisaiSantoshKumar%28Qu/Desktop/ToDoListApp/index.html

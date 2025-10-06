@@ -1,0 +1,610 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AutoGen.Core</name>
+    </assembly>
+    <members>
+        <member name="M:AutoGen.Core.IAgent.GenerateReplyAsync(System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},AutoGen.Core.GenerateReplyOptions,System.Threading.CancellationToken)">
+            <summary>
+            Generate reply
+            </summary>
+            <param name="messages">conversation history</param>
+            <param name="options">completion option. If provided, it should override existing option if there's any</param>
+        </member>
+        <member name="M:AutoGen.Core.GenerateReplyOptions.#ctor(AutoGen.Core.GenerateReplyOptions)">
+            <summary>
+            Copy constructor
+            </summary>
+            <param name="other">other option to copy from</param>
+        </member>
+        <member name="P:AutoGen.Core.GenerateReplyOptions.OutputSchema">
+            <summary>
+            Structural schema for the output. This property only applies to certain LLMs.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.IMiddlewareAgent.Agent">
+            <summary>
+            Get the inner agent.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.IMiddlewareAgent.Middlewares">
+            <summary>
+            Get the middlewares.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.IMiddlewareAgent.Use(AutoGen.Core.IMiddleware)">
+            <summary>
+            Use middleware.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.IMiddlewareStreamAgent.StreamingAgent">
+            <summary>
+            Get the inner agent.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.IMiddlewareAgent`1.TAgent">
+            <summary>
+            Get the typed inner agent.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.IMiddlewareStreamAgent`1.TStreamingAgent">
+            <summary>
+            Get the typed inner agent.
+            </summary>
+        </member>
+        <member name="T:AutoGen.Core.IStreamingAgent">
+            <summary>
+            agent that supports streaming reply
+            </summary>
+        </member>
+        <member name="T:AutoGen.Core.MiddlewareAgent">
+            <summary>
+            An agent that allows you to add middleware and modify the behavior of an existing agent.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.MiddlewareAgent.#ctor(AutoGen.Core.IAgent,System.String,System.Collections.Generic.IEnumerable{AutoGen.Core.IMiddleware})">
+            <summary>
+            Create a new instance of <see cref="T:AutoGen.Core.MiddlewareAgent"/>
+            </summary>
+            <param name="innerAgent">the inner agent where middleware will be added.</param>
+            <param name="name">the name of the agent if provided. Otherwise, the name of <paramref name="innerAgent"/> will be used.</param>
+        </member>
+        <member name="M:AutoGen.Core.MiddlewareAgent.#ctor(AutoGen.Core.MiddlewareAgent)">
+            <summary>
+            Create a new instance of <see cref="T:AutoGen.Core.MiddlewareAgent"/> by copying the middlewares from another <see cref="T:AutoGen.Core.MiddlewareAgent"/>.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.MiddlewareAgent.Agent">
+            <summary>
+            Get the inner agent.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.MiddlewareAgent.Middlewares">
+            <summary>
+            Get the middlewares.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.MiddlewareAgent.Use(System.Func{System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},AutoGen.Core.GenerateReplyOptions,AutoGen.Core.IAgent,System.Threading.CancellationToken,System.Threading.Tasks.Task{AutoGen.Core.IMessage}},System.String)">
+            <summary>
+            Add a middleware to the agent. If multiple middlewares are added, they will be executed in the LIFO order.
+            Call into the next function to continue the execution of the next middleware.
+            Short cut middleware execution by not calling into the next function.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.MiddlewareAgent`1.TAgent">
+            <summary>
+            Get the inner agent of type <typeparamref name="T"/>.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.MiddlewareStreamingAgent.StreamingAgent">
+            <summary>
+            Get the inner agent.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.MiddlewareStreamingAgent.StreamingMiddlewares">
+            <summary>
+            Get the streaming middlewares.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.MiddlewareStreamingAgent`1.TStreamingAgent">
+            <summary>
+            Get the inner agent.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.AgentExtension.SendAsync(AutoGen.Core.IAgent,AutoGen.Core.IMessage,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Threading.CancellationToken)">
+            <summary>
+            Send message to an agent.
+            </summary>
+            <param name="message">message to send. will be added to the end of <paramref name="chatHistory"/> if provided </param>
+            <param name="agent">sender agent.</param>
+            <param name="chatHistory">chat history.</param>
+            <returns>conversation history</returns>
+        </member>
+        <member name="M:AutoGen.Core.AgentExtension.SendAsync(AutoGen.Core.IAgent,System.String,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Threading.CancellationToken)">
+            <summary>
+            Send message to an agent.
+            </summary>
+            <param name="agent">sender agent.</param>
+            <param name="message">message to send. will be added to the end of <paramref name="chatHistory"/> if provided </param>
+            <param name="chatHistory">chat history.</param>
+            <returns>conversation history</returns>
+        </member>
+        <member name="M:AutoGen.Core.AgentExtension.SendAsync(AutoGen.Core.IAgent,AutoGen.Core.IAgent,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Send message to another agent and iterate over the responses.
+            </summary>
+            <param name="agent">sender agent.</param>
+            <param name="receiver">receiver agent.</param>
+            <param name="chatHistory">chat history.</param>
+            <param name="maxRound">max conversation round.</param>
+            <returns>conversation history</returns>
+        </member>
+        <member name="M:AutoGen.Core.AgentExtension.SendAsync(AutoGen.Core.IAgent,AutoGen.Core.IAgent,System.String,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Send message to another agent and iterate over the responses.
+            </summary>
+            <param name="agent">sender agent.</param>
+            <param name="message">message to send. will be added to the end of <paramref name="chatHistory"/> if provided </param>
+            <param name="receiver">receiver agent.</param>
+            <param name="chatHistory">chat history.</param>
+            <param name="maxRound">max conversation round.</param>
+            <returns>conversation history</returns>
+        </member>
+        <member name="M:AutoGen.Core.AgentExtension.InitiateChatAsync(AutoGen.Core.IAgent,AutoGen.Core.IAgent,System.String,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Shortcut API to send message to another agent and get all responses.
+            To iterate over the responses, use <see cref="M:AutoGen.Core.AgentExtension.SendAsync(AutoGen.Core.IAgent,AutoGen.Core.IAgent,System.String,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Int32,System.Threading.CancellationToken)"/> or <see cref="M:AutoGen.Core.AgentExtension.SendAsync(AutoGen.Core.IAgent,AutoGen.Core.IAgent,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Int32,System.Threading.CancellationToken)"/>
+            </summary>
+            <param name="agent">sender agent</param>
+            <param name="receiver">receiver agent</param>
+            <param name="message">message to send</param>
+            <param name="maxRound">max round</param>
+        </member>
+        <member name="M:AutoGen.Core.GroupChatExtension.SendAsync(AutoGen.Core.IGroupChat,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Send messages to a <see cref="T:AutoGen.Core.IGroupChat"/> and return new messages from the group chat.
+            </summary>
+            <param name="groupChat"></param>
+            <param name="chatHistory"></param>
+            <param name="maxRound"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AutoGen.Core.GroupChatExtension.SendIntroduction(AutoGen.Core.IAgent,System.String,AutoGen.Core.IGroupChat)">
+            <summary>
+            Send an instruction message to the group chat.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.GroupChatExtension.IsGroupChatTerminateMessage(AutoGen.Core.IMessage)">
+            <summary>
+            Return true if <see cref="T:AutoGen.Core.IMessage"/> contains <see cref="F:AutoGen.Core.GroupChatExtension.TERMINATE"/>, otherwise false.
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AutoGen.Core.MessageExtension.GetContent(AutoGen.Core.IMessage)">
+            <summary>
+            Get the content from the message
+            <para>if the message implements <see cref="T:AutoGen.Core.ICanGetTextContent"/>, return the content from the message by calling <see cref="M:AutoGen.Core.ICanGetTextContent.GetContent"/></para>
+            <para>if the message is a <see cref="T:AutoGen.Core.AggregateMessage`2"/> where TMessage1 is <see cref="T:AutoGen.Core.ToolCallMessage"/> and TMessage2 is <see cref="T:AutoGen.Core.ToolCallResultMessage"/> and the second message only contains one function call, return the result of that function call</para>
+            <para>for all other situation, return null.</para>
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:AutoGen.Core.MessageExtension.GetRole(AutoGen.Core.IMessage)">
+            <summary>
+            Get the role from the message if it's available.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.MessageExtension.GetToolCalls(AutoGen.Core.IMessage)">
+            <summary>
+            Return the tool calls from the message if it's available.
+            <para>if the message implements <see cref="T:AutoGen.Core.ICanGetToolCalls"/>, return the tool calls from the message by calling <see cref="M:AutoGen.Core.ICanGetToolCalls.GetToolCalls"/></para>
+            <para>if the message is a <see cref="T:AutoGen.Core.AggregateMessage`2"/> where TMessage1 is <see cref="T:AutoGen.Core.ToolCallMessage"/> and TMessage2 is <see cref="T:AutoGen.Core.ToolCallResultMessage"/>, return the tool calls from the first message</para>
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AutoGen.Core.MiddlewareExtension.RegisterReply``1(``0,System.Func{System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Threading.CancellationToken,System.Threading.Tasks.Task{AutoGen.Core.IMessage}})">
+            <summary>
+            Register a auto reply hook to an agent. The hook will be called before the agent generate the reply.
+            If the hook return a non-null reply, then that non-null reply will be returned directly without calling the agent.
+            Otherwise, the agent will generate the reply.
+            This is useful when you want to override the agent reply in some cases.
+            </summary>
+            <param name="agent"></param>
+            <param name="replyFunc"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception">throw when agent name is null.</exception>
+        </member>
+        <member name="M:AutoGen.Core.MiddlewareExtension.RegisterPostProcess``1(``0,System.Func{System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},AutoGen.Core.IMessage,System.Threading.CancellationToken,System.Threading.Tasks.Task{AutoGen.Core.IMessage}})">
+            <summary>
+            Register a post process hook to an agent. The hook will be called before the agent return the reply and after the agent generate the reply.
+            This is useful when you want to customize arbitrary behavior before the agent return the reply.
+            
+            One example is <see cref="M:AutoGen.Core.PrintMessageMiddlewareExtension.RegisterPrintMessage``1(``0)" />, which print the formatted message to console before the agent return the reply.
+            </summary>
+            <exception cref="T:System.Exception">throw when agent name is null.</exception>
+        </member>
+        <member name="M:AutoGen.Core.MiddlewareExtension.RegisterPreProcess``1(``0,System.Func{System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage}}})">
+            <summary>
+            Register a pre process hook to an agent. The hook will be called before the agent generate the reply. This is useful when you want to modify the conversation history before the agent generate the reply.
+            </summary>
+            <exception cref="T:System.Exception">throw when agent name is null.</exception>
+        </member>
+        <member name="M:AutoGen.Core.MiddlewareExtension.RegisterMiddleware``1(``0,System.Func{System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},AutoGen.Core.GenerateReplyOptions,AutoGen.Core.IAgent,System.Threading.CancellationToken,System.Threading.Tasks.Task{AutoGen.Core.IMessage}},System.String)">
+            <summary>
+            Register a middleware to an existing agent and return a new agent with the middleware.
+            To register a streaming middleware, use <see cref="M:AutoGen.Core.StreamingMiddlewareExtension.RegisterStreamingMiddleware``1(AutoGen.Core.MiddlewareStreamingAgent{``0},AutoGen.Core.IStreamingMiddleware)"/>.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.MiddlewareExtension.RegisterMiddleware``1(``0,AutoGen.Core.IMiddleware)">
+            <summary>
+            Register a middleware to an existing agent and return a new agent with the middleware.
+            To register a streaming middleware, use <see cref="M:AutoGen.Core.StreamingMiddlewareExtension.RegisterStreamingMiddleware``1(AutoGen.Core.MiddlewareStreamingAgent{``0},AutoGen.Core.IStreamingMiddleware)"/>.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.MiddlewareExtension.RegisterMiddleware``1(AutoGen.Core.MiddlewareAgent{``0},System.Func{System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},AutoGen.Core.GenerateReplyOptions,AutoGen.Core.IAgent,System.Threading.CancellationToken,System.Threading.Tasks.Task{AutoGen.Core.IMessage}},System.String)">
+            <summary>
+            Register a middleware to an existing agent and return a new agent with the middleware.
+            To register a streaming middleware, use <see cref="M:AutoGen.Core.StreamingMiddlewareExtension.RegisterStreamingMiddleware``1(AutoGen.Core.MiddlewareStreamingAgent{``0},AutoGen.Core.IStreamingMiddleware)"/>.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.MiddlewareExtension.RegisterMiddleware``1(AutoGen.Core.MiddlewareAgent{``0},AutoGen.Core.IMiddleware)">
+            <summary>
+            Register a middleware to an existing agent and return a new agent with the middleware.
+            To register a streaming middleware, use <see cref="M:AutoGen.Core.StreamingMiddlewareExtension.RegisterStreamingMiddleware``1(AutoGen.Core.MiddlewareStreamingAgent{``0},AutoGen.Core.IStreamingMiddleware)"/>.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.PrintMessageMiddlewareExtension.RegisterPrintMessage``1(``0)">
+            <summary>
+            Register a <see cref="T:AutoGen.Core.PrintMessageMiddleware"/> to <paramref name="agent"/> which print formatted message to console.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.PrintMessageMiddlewareExtension.RegisterPrintMessage``1(AutoGen.Core.MiddlewareAgent{``0})">
+            <summary>
+            Register a <see cref="T:AutoGen.Core.PrintMessageMiddleware"/> to <paramref name="agent"/> which print formatted message to console.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.PrintMessageMiddlewareExtension.RegisterPrintMessage``1(AutoGen.Core.MiddlewareStreamingAgent{``0})">
+            <summary>
+            Register a <see cref="T:AutoGen.Core.PrintMessageMiddleware"/> to <paramref name="agent"/> which print formatted message to console.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.StreamingMiddlewareExtension.RegisterStreamingMiddleware``1(``0,AutoGen.Core.IStreamingMiddleware)">
+            <summary>
+            Register an <see cref="T:AutoGen.Core.IStreamingMiddleware"/> to an existing <see cref="T:AutoGen.Core.IStreamingAgent"/> and return a new agent with the registered middleware.
+            For registering an <see cref="T:AutoGen.Core.IMiddleware"/>, please refer to <see cref="M:AutoGen.Core.MiddlewareExtension.RegisterMiddleware``1(AutoGen.Core.MiddlewareAgent{``0},AutoGen.Core.IMiddleware)"/>
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.StreamingMiddlewareExtension.RegisterStreamingMiddleware``1(AutoGen.Core.MiddlewareStreamingAgent{``0},AutoGen.Core.IStreamingMiddleware)">
+            <summary>
+            Register an <see cref="T:AutoGen.Core.IStreamingMiddleware"/> to an existing <see cref="T:AutoGen.Core.IStreamingAgent"/> and return a new agent with the registered middleware.
+            For registering an <see cref="T:AutoGen.Core.IMiddleware"/>, please refer to <see cref="M:AutoGen.Core.MiddlewareExtension.RegisterMiddleware``1(AutoGen.Core.MiddlewareAgent{``0},AutoGen.Core.IMiddleware)"/>
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.FunctionContract.Namespace">
+            <summary>
+            The namespace of the function.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.FunctionContract.ClassName">
+            <summary>
+            The class name of the function.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.FunctionContract.Name">
+            <summary>
+            The name of the function.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.FunctionContract.Description">
+            <summary>
+            The description of the function.
+            If a structured comment is available, the description will be extracted from the summary section.
+            Otherwise, the description will be null.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.FunctionContract.Parameters">
+            <summary>
+            The parameters of the function.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.FunctionContract.ReturnType">
+            <summary>
+            The return type of the function.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.FunctionContract.ReturnDescription">
+            <summary>
+            The description of the return section.
+            If a structured comment is available, the description will be extracted from the return section.
+            Otherwise, the description will be null.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.FunctionParameterContract.Name">
+            <summary>
+            The name of the parameter.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.FunctionParameterContract.Description">
+            <summary>
+            The description of the parameter.
+            This will be extracted from the param section of the structured comment if available.
+            Otherwise, the description will be null.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.FunctionParameterContract.ParameterType">
+            <summary>
+            The type of the parameter.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.FunctionParameterContract.IsRequired">
+            <summary>
+            If the parameter is a required parameter.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.FunctionParameterContract.DefaultValue">
+            <summary>
+            The default value of the parameter.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.Graph.Transitions">
+            <summary>
+            Get the transitions of the workflow.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.Graph.TransitToNextAvailableAgentsAsync(AutoGen.Core.IAgent,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Threading.CancellationToken)">
+            <summary>
+            Get the next available agents that the messages can be transit to.
+            </summary>
+            <param name="fromAgent">the from agent</param>
+            <param name="messages">messages</param>
+            <returns>A list of agents that the messages can be transit to</returns>
+        </member>
+        <member name="T:AutoGen.Core.Transition">
+            <summary>
+            Represents a transition between two agents.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.Transition.#ctor(AutoGen.Core.IAgent,AutoGen.Core.IAgent,System.Func{AutoGen.Core.IAgent,AutoGen.Core.IAgent,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Boolean}})">
+            <summary>
+            Create a new instance of <see cref="T:AutoGen.Core.Transition"/>.
+            This constructor is used for testing purpose only.
+            To create a new instance of <see cref="T:AutoGen.Core.Transition"/>, use <see cref="M:AutoGen.Core.Transition.Create``2(``0,``1,System.Func{``0,``1,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Threading.Tasks.Task{System.Boolean}})"/>.
+            </summary>
+            <param name="from">from agent</param>
+            <param name="to">to agent</param>
+            <param name="canTransitionAsync">detect if the transition is allowed, default to be always true</param>
+        </member>
+        <member name="M:AutoGen.Core.Transition.Create``2(``0,``1)">
+            <summary>
+            Create a new instance of <see cref="T:AutoGen.Core.Transition"/> without transition condition check.
+            </summary>
+            <returns><see cref="T:AutoGen.Core.Transition"/></returns>"
+        </member>
+        <member name="M:AutoGen.Core.Transition.Create``2(``0,``1,System.Func{``0,``1,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Threading.Tasks.Task{System.Boolean}})">
+            <summary>
+            Create a new instance of <see cref="T:AutoGen.Core.Transition"/>.
+            </summary>
+            <returns><see cref="T:AutoGen.Core.Transition"/></returns>"
+        </member>
+        <member name="M:AutoGen.Core.Transition.Create``2(``0,``1,System.Func{``0,``1,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Boolean}})">
+            <summary>
+            Create a new instance of <see cref="T:AutoGen.Core.Transition"/> with cancellation token.
+            </summary>
+            <returns><see cref="T:AutoGen.Core.Transition"/></returns>"
+        </member>
+        <member name="M:AutoGen.Core.Transition.CanTransitionAsync(System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},System.Threading.CancellationToken)">
+            <summary>
+            Check if the transition is allowed.
+            </summary>
+            <param name="messages">messages</param>
+        </member>
+        <member name="M:AutoGen.Core.GroupChat.#ctor(System.Collections.Generic.IEnumerable{AutoGen.Core.IAgent},AutoGen.Core.IAgent,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage},AutoGen.Core.Graph)">
+            <summary>
+            Create a group chat. The next speaker will be decided by a combination effort of the admin and the workflow.
+            </summary>
+            <param name="admin">admin agent. If provided, the admin will be invoked to decide the next speaker.</param>
+            <param name="workflow">workflow of the group chat. If provided, the next speaker will be decided by the workflow.</param>
+            <param name="members">group members.</param>
+            <param name="initializeMessages"></param>
+        </member>
+        <member name="M:AutoGen.Core.GroupChat.#ctor(System.Collections.Generic.IEnumerable{AutoGen.Core.IAgent},AutoGen.Core.IOrchestrator,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage})">
+            <summary>
+            Create a group chat which uses the <paramref name="orchestrator"/> to decide the next speaker(s).
+            </summary>
+            <param name="members"></param>
+            <param name="orchestrator"></param>
+            <param name="initializeMessages"></param>
+        </member>
+        <member name="M:AutoGen.Core.GroupChat.SelectNextSpeakerAsync(AutoGen.Core.IAgent,System.Collections.Generic.IEnumerable{AutoGen.Core.IMessage})">
+            <summary>
+            Select the next speaker based on the conversation history.
+            The next speaker will be decided by a combination effort of the admin and the workflow.
+            Firstly, a group of candidates will be selected by the workflow. If there's only one candidate, then that candidate will be the next speaker.
+            Otherwise, the admin will be invoked to decide the next speaker using role-play prompt.
+            </summary>
+            <param name="currentSpeaker">current speaker</param>
+            <param name="conversationHistory">conversation history</param>
+            <returns>next speaker.</returns>
+        </member>
+        <member name="M:AutoGen.Core.GroupChat.AddInitializeMessage(AutoGen.Core.IMessage)">
+            <inheritdoc />
+        </member>
+        <member name="M:AutoGen.Core.IGroupChat.SendIntroduction(AutoGen.Core.IMessage)">
+            <summary>
+            Send an introduction message to the group chat.
+            </summary>
+        </member>
+        <member name="T:AutoGen.Core.SequentialGroupChat">
+            <summary>
+            Obsolete: please use <see cref="T:AutoGen.Core.RoundRobinGroupChat"/>
+            </summary>
+        </member>
+        <member name="T:AutoGen.Core.RoundRobinGroupChat">
+            <summary>
+            A group chat that allows agents to talk in a round-robin manner.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:AutoGen.Core.ImageMessage.#ctor(AutoGen.Core.Role,System.String,System.String,System.String)" -->
+        <member name="T:AutoGen.Core.IMessage">
+            <summary>
+            The universal message interface for all message types in AutoGen.
+            <para>Related PR: https://github.com/microsoft/autogen/pull/1676</para>
+            <para>Built-in message types</para>
+            <list type="bullet">
+            <item>
+            <see cref="T:AutoGen.Core.TextMessage"/>: plain text message.
+            </item>
+            <item>
+            <see cref="T:AutoGen.Core.ImageMessage"/>: image message.
+            </item>
+            <item>
+            <see cref="T:AutoGen.Core.MultiModalMessage"/>: message type for multimodal message. The current support message items are <see cref="T:AutoGen.Core.TextMessage"/> and <see cref="T:AutoGen.Core.ImageMessage"/>.
+            </item>
+            <item>
+            <see cref="T:AutoGen.Core.ToolCallMessage"/>: message type for tool call. This message supports both single and parallel tool call.
+            </item>
+            <item>
+            <see cref="T:AutoGen.Core.ToolCallResultMessage"/>: message type for tool call result.
+            </item>
+            <item>
+            <see cref="T:AutoGen.Core.Message"/>: This type is used by previous version of AutoGen. And it's reserved for backward compatibility.
+            </item>
+            <item>
+            <see cref="T:AutoGen.Core.AggregateMessage`2"/>: an aggregate message type that contains two message types.
+            This type is useful when you want to combine two message types into one unique message type. One example is when invoking a tool call and you want to return both <see cref="T:AutoGen.Core.ToolCallMessage"/> and <see cref="T:AutoGen.Core.ToolCallResultMessage"/>.
+            One example of how this type is used in AutoGen is <see cref="T:AutoGen.Core.FunctionCallMiddleware"/> and its return message <see cref="T:AutoGen.Core.ToolCallAggregateMessage"/>
+            </item>
+            </list>
+            </summary>
+        </member>
+        <member name="T:AutoGen.Core.ICanGetTextContent">
+            <summary>
+            The interface for messages that can get text content.
+            This interface will be used by <see cref="M:AutoGen.Core.MessageExtension.GetContent(AutoGen.Core.IMessage)"/> to get the content from the message.
+            </summary>
+        </member>
+        <member name="T:AutoGen.Core.ICanGetToolCalls">
+            <summary>
+            The interface for messages that can get a list of <see cref="T:AutoGen.Core.ToolCall"/>
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.Message.Value">
+            <summary>
+            raw message
+            </summary>
+        </member>
+        <member name="T:AutoGen.Core.ToolCallAggregateMessage">
+            <summary>
+            An aggregate message that contains a tool call message and a tool call result message.
+            This message type is used by <see cref="T:AutoGen.Core.FunctionCallMiddleware"/> to return both <see cref="T:AutoGen.Core.ToolCallMessage"/> and <see cref="T:AutoGen.Core.ToolCallResultMessage"/>.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.ToolCallMessage.Content">
+            <summary>
+            Some LLMs might also include text content in a tool call response, like GPT.
+            This field is used to store the text content in that case.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.ToolCallResultMessage.ToolCalls">
+            <summary>
+            The original tool call message
+            </summary>
+        </member>
+        <member name="T:AutoGen.Core.DelegateMiddleware.MiddlewareDelegate">
+            <summary>
+            middleware delegate. Call into the next function to continue the execution of the next middleware. Otherwise, short cut the middleware execution.
+            </summary>
+            <param name="cancellationToken">cancellation token</param>
+        </member>
+        <member name="T:AutoGen.Core.FunctionCallMiddleware">
+            <summary>
+            The middleware that process function call message that both send to an agent or reply from an agent.
+            <para>If the last message is <see cref="T:AutoGen.Core.ToolCallMessage"/> and the tool calls is available in this middleware's function map,
+            the tools from the last message will be invoked and a <see cref="T:AutoGen.Core.ToolCallResultMessage"/> will be returned. In this situation,
+            the inner agent will be short-cut and won't be invoked.</para>
+            <para>Otherwise, the message will be sent to the inner agent. In this situation</para>
+            <para>if the reply from the inner agent is <see cref="T:AutoGen.Core.ToolCallMessage"/>,
+            and the tool calls is available in this middleware's function map, the tools from the reply will be invoked,
+            and a <see cref="T:AutoGen.Core.ToolCallAggregateMessage"/> will be returned.
+            </para>
+            <para>If the reply from the inner agent is <see cref="T:AutoGen.Core.ToolCallMessage"/> but the tool calls is not available in this middleware's function map,
+            or the reply from the inner agent is not <see cref="T:AutoGen.Core.ToolCallMessage"/>, the original reply from the inner agent will be returned.</para>
+            <para>
+            When used as a streaming middleware, if the streaming reply from the inner agent is <see cref="T:AutoGen.Core.ToolCallMessageUpdate"/> or <see cref="T:AutoGen.Core.TextMessageUpdate"/>,
+            This middleware will update the message accordingly and invoke the function if the tool call is available in this middleware's function map.
+            If the streaming reply from the inner agent is other types of message, the most recent message will be used to invoke the function.
+            </para>
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.FunctionCallMiddleware.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Extensions.AI.AIFunction},System.String)">
+            <summary>
+            Create a new instance of <see cref="T:AutoGen.Core.FunctionCallMiddleware"/> with a list of <see cref="T:Microsoft.Extensions.AI.AIFunction"/>.
+            </summary>
+            <param name="functions">function list</param>
+            <param name="name">optional middleware name. If not provided, the class name <see cref="T:AutoGen.Core.FunctionCallMiddleware"/> will be used.</param>
+        </member>
+        <member name="T:AutoGen.Core.IMiddleware">
+            <summary>
+            The middleware interface. For streaming-version middleware, check <see cref="T:AutoGen.Core.IStreamingMiddleware"/>.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.IMiddleware.Name">
+            <summary>
+            the name of the middleware
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.IMiddleware.InvokeAsync(AutoGen.Core.MiddlewareContext,AutoGen.Core.IAgent,System.Threading.CancellationToken)">
+            <summary>
+            The method to invoke the middleware
+            </summary>
+        </member>
+        <member name="T:AutoGen.Core.IStreamingMiddleware">
+            <summary>
+            The streaming middleware interface. For non-streaming version middleware, check <see cref="T:AutoGen.Core.IMiddleware"/>.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.IStreamingMiddleware.InvokeAsync(AutoGen.Core.MiddlewareContext,AutoGen.Core.IStreamingAgent,System.Threading.CancellationToken)">
+            <summary>
+            The streaming version of <see cref="M:AutoGen.Core.IMiddleware.InvokeAsync(AutoGen.Core.MiddlewareContext,AutoGen.Core.IAgent,System.Threading.CancellationToken)"/>.
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.MiddlewareContext.Messages">
+            <summary>
+            Messages to send to the agent
+            </summary>
+        </member>
+        <member name="P:AutoGen.Core.MiddlewareContext.Options">
+            <summary>
+            Options to generate the reply
+            </summary>
+        </member>
+        <member name="T:AutoGen.Core.PrintMessageMiddleware">
+            <summary>
+            The middleware that prints the reply from agent to the console.
+            </summary>
+        </member>
+        <member name="M:AutoGen.Core.IOrchestrator.GetNextSpeakerAsync(AutoGen.Core.OrchestrationContext,System.Threading.CancellationToken)">
+            <summary>
+            Return the next agent as the next speaker. return null if no agent is selected.
+            </summary>
+            <param name="context">orchestration context, such as candidate agents and chat history.</param>
+            <param name="cancellationToken">cancellation token</param>
+        </member>
+        <member name="T:AutoGen.Core.RoundRobinOrchestrator">
+            <summary>
+            Return the next agent in a round-robin fashion.
+            <para>
+            If the last message is from one of the candidates, the next agent will be the next candidate in the list.
+            </para>
+            <para>
+            Otherwise, the first agent in <see cref="P:AutoGen.Core.OrchestrationContext.Candidates"/> will be returned.
+            </para>
+            <para>
+            </para>
+            </summary>
+        </member>
+    </members>
+</doc>

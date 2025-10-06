@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>JsonSchema.Net.Generation</id>
+    <version>4.5.1</version>
+    <authors>Greg Dennis</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>json-logo-256.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/json-everything/json-everything</projectUrl>
+    <description>Extends JsonSchema.Net to provide schema generation functionality</description>
+    <releaseNotes>Release notes can be found at https://docs.json-everything.net/rn-json-schema-generation/</releaseNotes>
+    <tags>json-schema validation schema json generation schema-generation</tags>
+    <repository type="git" url="https://github.com/json-everything/json-everything" commit="4d6c74255fa576e9ab546db70450b463e48797aa" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="JsonSchema.Net" version="7.2.3" exclude="Build,Analyzers" />
+        <dependency id="Humanizer.Core" version="2.14.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="JsonSchema.Net" version="7.2.3" exclude="Build,Analyzers" />
+        <dependency id="Humanizer.Core" version="2.14.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

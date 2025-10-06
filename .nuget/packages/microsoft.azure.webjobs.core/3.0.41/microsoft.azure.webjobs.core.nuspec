@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.WebJobs.Core</id>
+    <version>3.0.41</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>webjobs.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>http://go.microsoft.com/fwlink/?LinkID=320972</projectUrl>
+    <description>This package provides the core Types and Attribute definitions for the WebJobs SDK. For more information, please visit https://go.microsoft.com/fwlink/?linkid=2279708.</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Microsoft Azure WebJobs AzureFunctions</tags>
+    <repository type="git" url="https://github.com/Azure/azure-webjobs-sdk" commit="264601e23d9b53b63e1407ffbbe49f08f22aa754" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.ComponentModel.Annotations" version="4.4.0" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.TraceSource" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Memory.Data" version="1.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

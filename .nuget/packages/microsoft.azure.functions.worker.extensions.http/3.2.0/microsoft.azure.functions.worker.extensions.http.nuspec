@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.Functions.Worker.Extensions.Http</id>
+    <version>3.2.0</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <projectUrl>https://github.com/Azure/azure-functions-dotnet-worker</projectUrl>
+    <iconUrl>https://aka.ms/azure-functions-package-icon</iconUrl>
+    <description>HTTP extensions for .NET isolated functions</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <repository type="git" url="https://github.com/Azure/azure-functions-dotnet-worker" commit="455e59d097cdf0e45cd2a981ec1f2cfee4902382" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Azure.Functions.Worker.Extensions.Abstractions" version="1.3.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Azure.Functions.Worker.Core" version="1.18.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.Functions.Worker.Extensions.Http</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.Functions.Worker.AuthorizationLevel">
+            <summary>
+            Defines the required authorization level for an HTTP function.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.AuthorizationLevel.Anonymous">
+            <summary>
+            Allow access to anonymous requests.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.AuthorizationLevel.User">
+            <summary>
+            Allow access to requests that include a valid user authentication token
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.AuthorizationLevel.Function">
+            <summary>
+            Allow access to requests that include a function key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.AuthorizationLevel.System">
+            <summary>
+            Allows access to requests that include a system key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.AuthorizationLevel.Admin">
+            <summary>
+            Allow access to requests that include the master key
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Extensions.Http.Converters.IFromBodyConversionFeature">
+            <summary>
+            Defines an interface for model binding conversion used when binding to
+            the body of an HTTP request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Extensions.Http.Converters.IFromBodyConversionFeature.ConvertAsync(Microsoft.Azure.Functions.Worker.FunctionContext,System.Type)">
+            <summary>
+            Converts the body of an HTTP request to the specified type.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.Azure.Functions.Worker.FunctionContext"/> for the invocation.</param>
+            <param name="targetType">The target type for the conversion.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask`1"/> that completes when the conversion is finished.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Http.FromBodyAttribute">
+            <summary>
+            Specifies that a parameter should be bound using the HTTP request body when using the <see cref="T:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Http.FromBodyAttribute.#ctor">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Azure.Functions.Worker.Http.FromBodyAttribute"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.HttpResultAttribute">
+            <summary>
+            Attribute used to mark an HTTP Response on an HTTP Trigger function with multiple output bindings.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute">
+            <summary>
+            Attribute used to mark a function that should be invoked over HTTP.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute.#ctor">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute.#ctor(System.String[])">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute"/>, specifying the HTTP methods
+            the function supports.
+            </summary>
+            <param name="methods">The HTTP methods supported by the function.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute.#ctor(Microsoft.Azure.Functions.Worker.AuthorizationLevel)">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute"/>, specifying the
+            required <see cref="T:Microsoft.Azure.Functions.Worker.AuthorizationLevel"/>.
+            </summary>
+            <param name="authLevel">The <see cref="T:Microsoft.Azure.Functions.Worker.AuthorizationLevel"/> to apply.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute.#ctor(Microsoft.Azure.Functions.Worker.AuthorizationLevel,System.String[])">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute"/>, specifying the
+            required <see cref="T:Microsoft.Azure.Functions.Worker.AuthorizationLevel"/> and supported HTTP methods.
+            </summary>
+            <param name="authLevel">The <see cref="T:Microsoft.Azure.Functions.Worker.AuthorizationLevel"/> to apply.</param>
+            <param name="methods">The http methods to allow.</param>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute.Route">
+            <summary>
+            Gets or sets the route template for the function. Can include
+            route parameters using ASP.NET Core supported syntax. If not specified,
+            will default to the function name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute.Methods">
+            <summary>
+            Gets the HTTP methods that are supported for the function.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.HttpTriggerAttribute.AuthLevel">
+            <summary>
+            Gets the authorization level for the function.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,104 @@
+<!--
+***********************************************************************************************
+Microsoft.NET.Sdk.Functions.targets
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your projects from the command-line or the IDE.
+
+***********************************************************************************************
+-->
+<Project ToolsVersion="14.0" InitialTargets="_InitializeFunctionsSdk"
+         xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <_FunctionsTaskFramework>net6.0</_FunctionsTaskFramework>
+    <_FunctionsTasksDir Condition=" '$(_FunctionsTasksDir)'=='' ">$(MSBuildThisFileDirectory)..\tools\$(_FunctionsTaskFramework)\</_FunctionsTasksDir>
+    <_FunctionsTaskAssemblyFullPath Condition=" '$(_FunctionsTaskAssemblyFullPath)'=='' ">$(_FunctionsTasksDir)\Microsoft.NET.Sdk.Functions.MSBuild.dll</_FunctionsTaskAssemblyFullPath>
+    <DebugSymbols Condition="'$(DebugSymbols)' == ''">true</DebugSymbols>
+    <DebugType Condition="'$(DebugType)' == ''">pdbonly</DebugType>
+    <IsPackable Condition="'$(IsPackable)' == ''">false</IsPackable>
+    <WarnOnPackingNonPackableProject Condition="'$(WarnOnPackingNonPackableProject)' == '' and '$(IsPackable)' == 'false'">true</WarnOnPackingNonPackableProject>
+    <IsZipDeploySupported>true</IsZipDeploySupported>
+    <MSBuildFunctionsTargetsPath>$(MSBuildExtensionsPath)\Microsoft\VisualStudio\Managed.Functions\</MSBuildFunctionsTargetsPath>
+
+    <_ToolingSuffix></_ToolingSuffix>
+    <_ToolingSuffix Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp' And '$(TargetFrameworkVersion)' == 'v8.0'">net8-in-process</_ToolingSuffix>
+    <_ToolingSuffix Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp' And '$(TargetFrameworkVersion)' == 'v6.0'">net6-in-process</_ToolingSuffix>
+    <FunctionsToolingSuffix Condition="'$(FunctionsToolingSuffix)' == ''">$(_ToolingSuffix)</FunctionsToolingSuffix>
+    <AzureFunctionsVersion Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp' And (('$(TargetFrameworkVersion)' == 'v8.0') Or ('$(TargetFrameworkVersion)' == 'v6.0')) And $(AzureFunctionsVersion.StartsWith('v4'))">$(AzureFunctionsVersion.Replace("v4","v0"))</AzureFunctionsVersion>
+  </PropertyGroup>
+
+  <UsingTask TaskName="GenerateFunctions"
+             AssemblyFile="$(_FunctionsTaskAssemblyFullPath)"/>
+
+  <UsingTask TaskName="CreateZipFileTask"
+           AssemblyFile="$(_FunctionsTaskAssemblyFullPath)"/>
+  
+  <UsingTask TaskName="ZipDeployTask"
+            AssemblyFile="$(_FunctionsTaskAssemblyFullPath)"/>
+
+  <ItemGroup>
+    <ProjectCapability Include="AzureFunctions"/>
+  </ItemGroup>
+
+  <!--
+  ***********************************************************************************************
+  Import the Build target
+  ***********************************************************************************************
+ -->
+  <Import Project="$(MSBuildThisFileDirectory)Microsoft.NET.Sdk.Functions.Build.targets"
+          Condition="Exists('$(MSBuildThisFileDirectory)Microsoft.NET.Sdk.Functions.Build.targets')" />
+  
+  <!--
+  ***********************************************************************************************
+  Import the Publish target
+  ***********************************************************************************************
+ -->
+  <Import Project="$(MSBuildThisFileDirectory)Microsoft.NET.Sdk.Functions.Publish.targets"
+          Condition="Exists('$(MSBuildThisFileDirectory)Microsoft.NET.Sdk.Functions.Publish.targets')" />
+
+  <!--
+  ***********************************************************************************************
+  Import the Functions designtime targets if they exist
+  ***********************************************************************************************
+-->
+  <Import Project="$(MSBuildFunctionsTargetsPath)Microsoft.Azure.Functions.Designtime.targets" 
+         Condition="Exists('$(MSBuildFunctionsTargetsPath)Microsoft.Azure.Functions.Designtime.targets')" />
+
+  <!--
+  ***********************************************************************************************
+  Import the ExtensionsMetadataGenerator targets, but only if it has not already been imported.
+  This must be imported after the Functions Build and Publish targets.
+  ***********************************************************************************************
+ -->
+  <PropertyGroup>
+    <_ExtensionsMetadataGeneratorTargetsPath>$(_NuGetPackageRoot)microsoft.azure.webjobs.script.extensionsmetadatagenerator\$(ExtensionsMetadataGeneratorVersion)\build\Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator.targets</_ExtensionsMetadataGeneratorTargetsPath>
+  </PropertyGroup>
+  
+  <Import Project="$(_ExtensionsMetadataGeneratorTargetsPath)"
+          Condition="'$(_ExtensionsMetadataGeneratorTargetsImported)' == '' And Exists('$(_ExtensionsMetadataGeneratorTargetsPath)')" />
+
+  <!--
+  ***********************************************************************************************
+  Ensure that ExtensionsMetadataGenerator is imported. The ExtensionsMetadataGenerator package
+  runs its initialization after this target, so do not change the name.
+  ***********************************************************************************************
+ -->
+  <Target Name="_InitializeFunctionsSdk">
+    <Warning Text="The ExtensionsMetadataGenerator package was not imported correctly. Are you missing '$(_ExtensionsMetadataGeneratorTargetsPath)' or '$(_ExtensionsMetadataGeneratorPropsPath)'?"
+             Condition="!$(AzureFunctionsVersion.StartsWith('v1')) And ('$(_ExtensionsMetadataGeneratorTargetsImported)' == '' Or '$(_ExtensionsMetadataGeneratorPropsImported)' == '')" />
+   
+    <GetAssemblyIdentity AssemblyFiles="$(_FunctionsTaskAssemblyFullPath)">
+        <Output
+            TaskParameter="Assemblies"
+            ItemName="_FunctionsTaskAssemblyIdentity"/>
+    </GetAssemblyIdentity>
+
+    <PropertyGroup>
+      <FunctionsSdkVersion>%(_FunctionsTaskAssemblyIdentity.Version)</FunctionsSdkVersion>
+    </PropertyGroup>
+    
+  </Target>
+
+</Project>

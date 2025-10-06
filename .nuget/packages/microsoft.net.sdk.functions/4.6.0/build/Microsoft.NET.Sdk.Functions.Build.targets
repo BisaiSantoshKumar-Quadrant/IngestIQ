@@ -1,0 +1,115 @@
+<!--
+***********************************************************************************************
+Microsoft.NET.Sdk.Functions.Build.targets
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your projects from the command-line or the IDE.
+
+***********************************************************************************************
+-->
+<Project ToolsVersion="14.0"
+         xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!--
+    ============================================================
+                  _GenerateFunctionsPostBuild
+
+    Generates the function.json for all the functions in the project.
+    ============================================================
+    -->
+  <Target Name="_GenerateFunctionsPostBuild"
+          AfterTargets="Build"
+          DependsOnTargets="_FunctionsPostBuildCollectFiles;_FunctionsPostBuildCopyFiles">
+
+    <ItemGroup>
+      <UserProvidedFunctionJsonFiles Include="@(None);@(Content)" Condition="Exists(%(Identity))
+                                     AND $([System.String]::Copy('%(Identity)').Replace('/','\').EndsWith('\function.json'))
+                                     AND ('%(None.CopyToOutputDirectory)' == 'Always' OR '%(None.CopyToOutputDirectory)' == 'PreserveNewest'
+                                           OR '%(Content.CopyToOutputDirectory)' == 'Always' OR '%(Content.CopyToOutputDirectory)' == 'PreserveNewest')"/>
+    </ItemGroup>
+
+    <GenerateFunctions
+      TargetPath="$(TargetDir)bin\$(TargetFileName)"
+      OutputPath="$(TargetDir)"
+      UserProvidedFunctionJsonFiles="@(UserProvidedFunctionJsonFiles)" 
+      FunctionsInDependencies="$(FunctionsInDependencies)"
+      TaskAssemblyDirectory="$(_FunctionsTasksDir)"/>
+  </Target>
+
+
+  <!--
+    ============================================================
+        _FunctionsPostBuildCollectFiles
+
+    Initializes the Files to copy.
+    ============================================================
+    -->
+  <Target Name="_FunctionsPostBuildCollectFiles">
+
+    <ItemGroup>
+      <FunctionsBuildAssemblies Include="$(TargetDir)**\*.dll;
+                                         $(TargetDir)**\*.pdb"
+                                Exclude="$(TargetDir)bin\**"/>
+    </ItemGroup>
+
+  </Target>
+  
+  <!--
+    ============================================================
+        _FunctionsPostBuildCopyFiles
+
+    Copies the dlls from build output to the bin folder.
+    ============================================================
+    -->
+  <Target Name="_FunctionsPostBuildCopyFiles" 
+          Inputs="@(FunctionsBuildAssemblies)"
+          Outputs="$(TargetDir)bin\%(RecursiveDir)%(Filename)%(Extension)">
+
+    <!-- Copy the assemblies to the bin folder-->
+    <Copy SourceFiles="@(FunctionsBuildAssemblies)"
+          DestinationFiles="$(TargetDir)bin\%(RecursiveDir)%(Filename)%(Extension)"
+          OverwriteReadOnlyFiles="true" />
+    
+  </Target>
+
+  <!--
+    ============================================================
+        _FunctionsPostBuildDepsCopy
+
+    Copies the deps file to the Functions bin folder
+    ============================================================
+    -->
+  <Target Name="_FunctionsPostBuildDepsCopy" 
+          AfterTargets="PostBuildEvent" 
+          Condition="'$(SkipFunctionsDepsCopy)' != 'true'">
+    
+    <Copy SourceFiles="$(OutDir)$(AssemblyName).deps.json" 
+          DestinationFiles="$(OutDir)bin\function.deps.json" 
+          Condition="Exists('$(OutDir)$(AssemblyName).deps.json')"/>
+  </Target>
+ 
+
+  <!--
+    ============================================================
+                     _CleanFunctions
+
+    Cleans up all the files in $(TargetDir)
+    ============================================================
+    -->
+  <Target
+    Name="_CleanFunctions"
+    AfterTargets="Clean">
+
+    <ItemGroup>
+      <_FilesInTargetDir Include="$(TargetDir)**\*" />
+    </ItemGroup>
+
+    <Delete Files="@(_FilesInTargetDir)"
+            ContinueOnError="true" />
+
+    <RemoveDir Directories="$(TargetDir)"
+               ContinueOnError="true" />
+  </Target>
+
+</Project>

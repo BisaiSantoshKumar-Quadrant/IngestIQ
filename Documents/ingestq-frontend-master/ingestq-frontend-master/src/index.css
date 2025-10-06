@@ -1,0 +1,140 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Data Quality Platform Design System */
+
+@layer base {
+  :root {
+    /* Core Brand Colors - Professional Data Analytics */
+    --background: 0 0% 99%;
+    --foreground: 210 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 15%;
+
+    /* Primary - Data Blue */
+    --primary: 214 84% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 214 84% 50%;
+
+    /* Secondary - Neutral Gray */
+    --secondary: 210 15% 96%;
+    --secondary-foreground: 210 20% 15%;
+
+    --muted: 210 15% 96%;
+    --muted-foreground: 210 10% 45%;
+
+    --accent: 210 15% 94%;
+    --accent-foreground: 210 20% 15%;
+
+    /* Status Colors for Data Quality */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 40% 95%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 38 50% 95%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-light: 0 50% 96%;
+
+    /* Data Visualization Colors */
+    --chart-1: 214 84% 56%;
+    --chart-2: 142 71% 45%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(214 84% 70%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 60%));
+    --gradient-data: linear-gradient(135deg, hsl(214 84% 56%), hsl(280 65% 60%));
+    --gradient-background: linear-gradient(135deg, hsl(0 0% 99%), hsl(210 15% 98%));
+
+    /* Shadows */
+    --shadow-card: 0 2px 8px hsl(210 20% 15% / 0.08);
+    --shadow-elevated: 0 8px 24px hsl(210 20% 15% / 0.12);
+    --shadow-data: 0 4px 16px hsl(214 84% 56% / 0.15);
+
+    --border: 210 15% 90%;
+    --input: 210 15% 94%;
+    --ring: 214 84% 56%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 84% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 84% 5%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 84% 5%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 214 84% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 214 84% 50%;
+
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 18%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --destructive-light: 0 30% 15%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 30% 15%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 38 30% 15%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 212 27% 84%;
+
+    --sidebar-background: 240 6% 10%;
+    --sidebar-foreground: 240 5% 96%;
+    --sidebar-primary: 224 76% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4% 16%;
+    --sidebar-accent-foreground: 240 5% 96%;
+    --sidebar-border: 240 4% 16%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

@@ -1,0 +1,512 @@
+<?xml version="1.0"?>
+<doc xml:lang="en">
+    <assembly>
+        <name>Microsoft.ApplicationInsights.WorkerService</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions">
+            <summary>
+            Extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> that allow adding Application Insights services to application.
+            </summary>
+            <summary>
+            Extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> that allow adding Application Insights services to application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.AddApplicationInsightsTelemetryWorkerService(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            Adds Application Insights services into service collection.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> instance.</param>
+            <param name="instrumentationKey">Instrumentation key to use for telemetry.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.AddApplicationInsightsTelemetryWorkerService(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Adds Application Insights services into service collection.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> instance.</param>
+            <param name="configuration">Configuration to use for sending telemetry.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.AddApplicationInsightsTelemetryWorkerService(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions})">
+            <summary>
+            Adds Application Insights services into service collection.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> instance.</param>
+            <param name="options">The action used to configure the options.</param>
+            <returns>
+            The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.AddApplicationInsightsTelemetryWorkerService(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions)">
+            <summary>
+            Adds Application Insights services into service collection.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> instance.</param>
+            <param name="options">The options instance used to configure with.</param>
+            <returns>
+            The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.AddApplicationInsightsTelemetryWorkerService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds Application Insights services into service collection.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> instance.</param>
+            <returns>
+            The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.AddApplicationInsightsTelemetryProcessor``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds an Application Insights Telemetry Processor into a service collection via a <see cref="T:Microsoft.ApplicationInsights.WorkerService.ITelemetryProcessorFactory"/>.
+            </summary>
+            <typeparam name="T">Type of the telemetry processor to add.</typeparam>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> instance.</param>
+            <returns>
+            The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.AddApplicationInsightsTelemetryProcessor(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)">
+            <summary>
+            Adds an Application Insights Telemetry Processor into a service collection via a <see cref="T:Microsoft.ApplicationInsights.WorkerService.ITelemetryProcessorFactory"/>.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> instance.</param>
+            <param name="telemetryProcessorType">Type of the telemetry processor to add.</param>
+            <returns>
+            The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="telemetryProcessorType"/> argument is null.</exception>
+            <exception cref="T:System.ArgumentException">The <paramref name="telemetryProcessorType"/> type does not implement <see cref="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryProcessor"/>.</exception>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.ConfigureTelemetryModule``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{``0})">
+            <summary>
+            Extension method to provide configuration logic for application insights telemetry module.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> instance.</param>
+            <param name="configModule">Action used to configure the module.</param>
+            <returns>
+            The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.ConfigureTelemetryModule``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{``0,Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions})">
+            <summary>
+            Extension method to provide configuration logic for application insights telemetry module.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> instance.</param>
+            <param name="configModule">Action used to configure the module.</param>
+            <returns>
+            The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.AddApplicationInsightsSettings(Microsoft.Extensions.Configuration.IConfigurationBuilder,System.Nullable{System.Boolean},System.String,System.String)">
+            <summary>
+            Adds Application Insight specific configuration properties to <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/>.
+            </summary>
+            <param name="configurationSourceRoot">The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/> instance.</param>
+            <param name="developerMode">Enables or disables developer mode.</param>
+            <param name="endpointAddress">Sets telemetry endpoint address.</param>
+            <param name="instrumentationKey">Sets instrumentation key.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.AddApplicationInsightsSettings(Microsoft.Extensions.Configuration.IConfigurationBuilder,System.String,System.Nullable{System.Boolean},System.String,System.String)">
+            <summary>
+            Adds Application Insight specific configuration properties to <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/>.
+            </summary>
+            <param name="configurationSourceRoot">The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/> instance.</param>
+            <param name="connectionString">Sets connection string.</param>
+            <param name="developerMode">Enables or disables developer mode.</param>
+            <param name="endpointAddress">Sets telemetry endpoint address.</param>
+            <param name="instrumentationKey">Sets instrumentation key.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.AddTelemetryConfiguration(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions)">
+            <summary>
+            Read configuration from appSettings.json, appsettings.{env.EnvironmentName}.json,
+            IConfiguation used in an application and EnvironmentVariables.
+            Bind configuration to ApplicationInsightsServiceOptions.
+            Values can also be read from environment variables to support azure web sites configuration.
+            </summary>
+            <param name="config">Configuration to read variables from.</param>
+            <param name="serviceOptions">Telemetry configuration to populate.</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationInsightsExtensions.AddSingletonIfNotExists``2(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            The AddSingleton method will not check if a class has already been added as an ImplementationType.
+            This extension method is to encapsulate those checks.
+            </summary>
+            <remarks>
+            Must check all three properties to avoid duplicates or null ref exceptions.
+            </remarks>
+            <typeparam name="TService">The type of the service to add.</typeparam>
+            <typeparam name="TImplementation">The type of the implementation to use.</typeparam>
+            <param name="services">The Microsoft.Extensions.DependencyInjection.IServiceCollection to add the service to.</param>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.TelemetryConfigurationOptions">
+            <summary>
+            The <see cref="T:Microsoft.Extensions.Options.IOptions`1"/> implementation that create new <see cref="T:Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration"/> every time when called".
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.TelemetryConfigurationOptions.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Extensions.Options.IConfigureOptions{Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.TelemetryConfigurationOptions"/> class.
+            </summary>
+            <param name="configureOptions">Collection of options to be configured.</param>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.TelemetryConfigurationOptions.Value">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.TelemetryConfigurationOptionsSetup">
+            <summary>
+            Initializes TelemetryConfiguration based on values in <see cref="T:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions"/>
+            and registered <see cref="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryInitializer"/>s and <see cref="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryModule"/>s.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.TelemetryConfigurationOptionsSetup.#ctor(System.IServiceProvider,Microsoft.Extensions.Options.IOptions{Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions},System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.Extensibility.ITelemetryInitializer},System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.Extensibility.ITelemetryModule},System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.WorkerService.ITelemetryProcessorFactory},System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.WorkerService.ITelemetryModuleConfigurator})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.TelemetryConfigurationOptionsSetup"/> class.
+            </summary>
+            <param name="serviceProvider">Instance of IServiceProvider.</param>
+            <param name="applicationInsightsServiceOptions">Instance of IOptions&lt;ApplicationInsightsServiceOptions>.</param>
+            <param name="initializers">Instance of IEnumerable&lt;ITelemetryInitializer>.</param>
+            <param name="modules">Instance of IEnumerable&lt;ITelemetryModule>.</param>
+            <param name="telemetryProcessorFactories">Instance of IEnumerable&lt;ITelemetryProcessorFactory>.</param>
+            <param name="telemetryModuleConfigurators">Instance of IEnumerable&lt;ITelemetryModuleConfigurator>.</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.TelemetryConfigurationOptionsSetup.Configure(Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.WorkerService.DefaultApplicationInsightsServiceConfigureOptions">
+            <summary>
+            <see cref="T:Microsoft.Extensions.Options.IConfigureOptions`1"/> implementation that reads options from provided IConfiguration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.DefaultApplicationInsightsServiceConfigureOptions.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.WorkerService.DefaultApplicationInsightsServiceConfigureOptions"/> class.
+            </summary>
+            <param name="configuration"><see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> from which configuration for ApplicationInsights can be retrieved.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.DefaultApplicationInsightsServiceConfigureOptions.Configure(Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.WorkerService.Implementation.Tracing.WorkerServiceEventSource">
+            <summary>
+            Event source for Application Insights Worker Service SDK.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.WorkerService.Implementation.Tracing.WorkerServiceEventSource.Instance">
+            <summary>
+            The singleton instance of this event source.
+            Due to how EventSource initialization works this has to be a public field and not
+            a property otherwise the internal state of the event source will not be enabled.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.Implementation.Tracing.WorkerServiceEventSource.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Microsoft.ApplicationInsights.WorkerService.Implementation.Tracing.WorkerServiceEventSource"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.Implementation.Tracing.WorkerServiceEventSource.LogInformational(System.String,System.String)">
+            <summary>
+            Logs informational message.
+            </summary>
+            <param name="message">Message.</param>
+            <param name="appDomainName">An ignored placeholder to make EventSource happy.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.Implementation.Tracing.WorkerServiceEventSource.LogWarning(System.String,System.String)">
+            <summary>
+            Logs warning message.
+            </summary>
+            <param name="message">Message.</param>
+            <param name="appDomainName">An ignored placeholder to make EventSource happy.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.Implementation.Tracing.WorkerServiceEventSource.LogError(System.String,System.String)">
+            <summary>
+            Logs error message.
+            </summary>
+            <param name="message">Message.</param>
+            <param name="appDomainName">An ignored placeholder to make EventSource happy.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.Implementation.Tracing.WorkerServiceEventSource.UnableToFindModuleToConfigure(System.String,System.String)">
+            <summary>
+            Logs an event when a TelemetryModule is not found to configure.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.Implementation.Tracing.WorkerServiceEventSource.TelemetryConfigurationSetupFailure(System.String,System.String)">
+            <summary>
+            Logs an event when TelemetryConfiguration configure has failed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.Implementation.Tracing.WorkerServiceEventSource.TelemetryModuleInitialziationSetupFailure(System.String,System.String,System.String)">
+            <summary>
+            Logs an event when TelemetryModule initialization has failed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.WorkerService.Implementation.Tracing.WorkerServiceEventSource.Keywords">
+            <summary>
+            Keywords for the AspNetEventSource.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ApplicationInsights.WorkerService.Implementation.Tracing.WorkerServiceEventSource.Keywords.Diagnostics">
+            <summary>
+            Keyword for errors that trace at Verbose level.
+            </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions">
+            <summary>
+            Application Insights service options defines the custom behavior of the features to add, as opposed to the default selection of features obtained from Application Insights.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableQuickPulseMetricStream">
+            <summary>
+            Gets or sets a value indicating whether QuickPulseTelemetryModule and QuickPulseTelemetryProcessor are registered with the configuration.
+            Setting EnableQuickPulseMetricStream to <value>false</value>, will disable the default quick pulse metric stream. Defaults to <value>true</value>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnablePerformanceCounterCollectionModule">
+            <summary>
+            Gets or sets a value indicating whether PerformanceCollectorModule should be enabled.
+            Defaults to <value>true</value>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableAppServicesHeartbeatTelemetryModule">
+            <summary>
+            Gets or sets a value indicating whether AppServicesHeartbeatTelemetryModule should be enabled.
+            Defaults to <value>true</value>.
+            IMPORTANT: This setting will be ignored if either <see cref="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableDiagnosticsTelemetryModule"/> or <see cref="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableHeartbeat"/> are set to false.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableAzureInstanceMetadataTelemetryModule">
+            <summary>
+            Gets or sets a value indicating whether AzureInstanceMetadataTelemetryModule should be enabled.
+            Defaults to <value>true</value>.
+            IMPORTANT: This setting will be ignored if either <see cref="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableDiagnosticsTelemetryModule"/> or <see cref="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableHeartbeat"/> are set to false.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableDependencyTrackingTelemetryModule">
+            <summary>
+            Gets or sets a value indicating whether DependencyTrackingTelemetryModule should be enabled.
+            Defaults to <value>true</value>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableEventCounterCollectionModule">
+            <summary>
+            Gets or sets a value indicating whether EventCounterCollectionModule should be enabled.
+            Defaults to <value>true</value>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableAdaptiveSampling">
+            <summary>
+            Gets or sets a value indicating whether telemetry processor that controls sampling is added to the service.
+            Setting EnableAdaptiveSampling to <value>false</value>, will disable the default adaptive sampling feature. Defaults to <value>true</value>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.InstrumentationKey">
+            <summary>
+            Gets or sets the default instrumentation key for the application.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.ConnectionString">
+            <summary>
+            Gets or sets the connection string for the application.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.ApplicationVersion">
+            <summary>
+            Gets or sets the application version reported with telemetries.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.DeveloperMode">
+            <summary>
+            Gets or sets a value indicating whether telemetry channel should be set to developer mode.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EndpointAddress">
+            <summary>
+            Gets or sets the endpoint address of the channel.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableDebugLogger">
+            <summary>
+            Gets or sets a value indicating whether a logger would be registered automatically in debug mode.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableHeartbeat">
+            <summary>
+            Gets or sets a value indicating whether heartbeats are enabled.
+            IMPORTANT: This setting will be ignored if <see cref="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableDiagnosticsTelemetryModule"/> is set to false.
+            IMPORTANT: Disabling this will cause the following settings to be ignored:
+            <see cref="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableAzureInstanceMetadataTelemetryModule"/>.
+            <see cref="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableAppServicesHeartbeatTelemetryModule"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.AddAutoCollectedMetricExtractor">
+            <summary>
+            Gets or sets a value indicating whether AutoCollectedMetricExtractors are added or not.
+            Defaults to <value>true</value>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableDiagnosticsTelemetryModule">
+            <summary>
+            Gets or sets a value indicating whether the <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule"/> should be enabled.
+            IMPORTANT: Disabling this will cause the following settings to be ignored:
+            <see cref="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableHeartbeat"/>.
+            <see cref="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableAzureInstanceMetadataTelemetryModule"/>.
+            <see cref="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.EnableAppServicesHeartbeatTelemetryModule"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.DependencyCollectionOptions">
+            <summary>
+            Gets <see cref="P:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.DependencyCollectionOptions"/> that allow to manage <see cref="T:Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions.CopyPropertiesTo(Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions)">
+            <summary>
+            Copy the properties from this <see cref="T:Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions"/> to a target instance.
+            </summary>
+            <param name="target">Target instance to copy properties to.</param>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.WorkerService.DependencyCollectionOptions">
+            <summary>
+            Default collection options define the custom behavior or non-default features of dependency collection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.DependencyCollectionOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.WorkerService.DependencyCollectionOptions"/> class and fills default values.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.DependencyCollectionOptions.EnableLegacyCorrelationHeadersInjection">
+            <summary>
+            Gets or sets a value indicating whether to enable legacy (x-ms*) correlation headers injection.
+            </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.WorkerService.ITelemetryModuleConfigurator">
+            <summary>
+            Represents method used to configure <see cref="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryModule"/> with dependency injection support.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.ITelemetryModuleConfigurator.TelemetryModuleType">
+            <summary>
+            Gets the type of <see cref="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryModule"/> to be configured.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.ITelemetryModuleConfigurator.Configure(Microsoft.ApplicationInsights.Extensibility.ITelemetryModule)">
+            <summary>
+            Configures the given <see cref="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryModule"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.ITelemetryModuleConfigurator.Configure(Microsoft.ApplicationInsights.Extensibility.ITelemetryModule,Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions)">
+            <summary>
+            Configures the given <see cref="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryModule"/>.
+            </summary>
+            <param name="telemetryModule">Module to be configured.</param>
+            <param name="options">Configuration options.</param>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.WorkerService.ITelemetryProcessorFactory">
+            <summary>
+            Represents factory used to create <see cref="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryProcessor"/> with dependency injection support.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.ITelemetryProcessorFactory.Create(Microsoft.ApplicationInsights.Extensibility.ITelemetryProcessor)">
+            <summary>
+            Creates an instance of the telemetry processor, passing the
+            next <see cref="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryProcessor"/> in the call chain to
+            its constructor.
+            </summary>
+            <param name="nextProcessor">The next processor in the chain.</param>
+            <returns>Returns a new TelemetryProcessor with it's Next property set to the provided processor.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.WorkerService.NoOpTelemetryModule">
+            <summary>
+            No-op telemetry module that is added instead of actual one, when the actual module is disabled.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.NoOpTelemetryModule.Initialize(Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration)">
+            <summary>
+            This is a no-op and will do nothing.
+            </summary>
+            <param name="configuration">This does nothing.</param>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.WorkerService.TelemetryModuleConfigurator">
+            <summary>
+            Represents method used to configure <see cref="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryModule"/> with dependency injection support.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.TelemetryModuleConfigurator.#ctor(System.Action{Microsoft.ApplicationInsights.Extensibility.ITelemetryModule,Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions},System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.WorkerService.TelemetryModuleConfigurator"/> class.
+            </summary>
+            <param name="configure">The action used to configure telemetry module.</param>
+            <param name="telemetryModuleType">The type of the telemetry module being configured.</param>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WorkerService.TelemetryModuleConfigurator.TelemetryModuleType">
+            <summary>
+            Gets the type of <see cref="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryModule"/> to be configured.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.TelemetryModuleConfigurator.Configure(Microsoft.ApplicationInsights.Extensibility.ITelemetryModule,Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions)">
+            <summary>
+            Configures telemetry module.
+            </summary>
+            <param name="telemetryModule">Module to be configured.</param>
+            <param name="options">Configuration options.</param>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.WorkerService.TelemetryProcessorFactory">
+            <summary>
+            A generic factory for telemetry processors of a given type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.TelemetryProcessorFactory.#ctor(System.IServiceProvider,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.WorkerService.TelemetryProcessorFactory"/> class.
+            </summary>
+            <param name="serviceProvider">The service provider.</param>
+            <param name="telemetryProcessorType">The type of telemetry processor to create.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.TelemetryProcessorFactory.Create(Microsoft.ApplicationInsights.Extensibility.ITelemetryProcessor)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.WorkerService.TelemetryInitializers.ComponentVersionTelemetryInitializer">
+            <summary>
+            A telemetry initializer that populates telemetry.Context.Component.Version to the value read from configuration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.TelemetryInitializers.ComponentVersionTelemetryInitializer.#ctor(Microsoft.Extensions.Options.IOptions{Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.WorkerService.TelemetryInitializers.ComponentVersionTelemetryInitializer" /> class.
+            </summary>
+            <param name="options">Provides the Application Version to be added to the telemetry.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.TelemetryInitializers.ComponentVersionTelemetryInitializer.Initialize(Microsoft.ApplicationInsights.Channel.ITelemetry)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.WorkerService.TelemetryInitializers.DomainNameRoleInstanceTelemetryInitializer">
+            <summary>
+            A telemetry initializer that populates cloud context role instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WorkerService.TelemetryInitializers.DomainNameRoleInstanceTelemetryInitializer.Initialize(Microsoft.ApplicationInsights.Channel.ITelemetry)">
+            <summary>
+            Initializes role instance name and node name with the host name.
+            </summary>
+            <param name="telemetry">Telemetry item.</param>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Shared.Internals.ApplicationNameProvider">
+            <summary>
+            This class provides the assembly name for the EventSource implementations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Shared.Internals.ApplicationNameProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.Shared.Internals.ApplicationNameProvider"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.Shared.Internals.ApplicationNameProvider.Name">
+            <summary>
+            Gets name of the current assembly.
+            </summary>
+        </member>
+    </members>
+</doc>

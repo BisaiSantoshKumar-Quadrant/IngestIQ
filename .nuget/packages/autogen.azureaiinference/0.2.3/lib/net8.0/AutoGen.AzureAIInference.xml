@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AutoGen.AzureAIInference</name>
+    </assembly>
+    <members>
+        <member name="T:AutoGen.AzureAIInference.ChatCompletionsClientAgent">
+            <summary>
+            ChatCompletions client agent. This agent is a thin wrapper around <see cref="T:Azure.AI.Inference.ChatCompletionsClient"/> to provide a simple interface for chat completions.
+            <para><see cref="T:AutoGen.AzureAIInference.ChatCompletionsClientAgent" /> supports the following message types:</para>
+            <list type="bullet">
+            <item>
+            <see cref="T:AutoGen.Core.MessageEnvelope`1"/> where T is <see cref="T:Azure.AI.Inference.ChatRequestMessage"/>: chat request message.
+            </item>
+            </list>
+            <para><see cref="T:AutoGen.AzureAIInference.ChatCompletionsClientAgent" /> returns the following message types:</para>
+            <list type="bullet">
+            <item>
+            <see cref="T:AutoGen.Core.MessageEnvelope`1"/> where T is <see cref="T:Azure.AI.Inference.ChatResponseMessage"/>: chat response message.
+            <see cref="T:AutoGen.Core.MessageEnvelope`1"/> where T is <see cref="T:Azure.AI.Inference.StreamingChatCompletionsUpdate"/>: streaming chat completions update.
+            </item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:AutoGen.AzureAIInference.ChatCompletionsClientAgent.#ctor(Azure.AI.Inference.ChatCompletionsClient,System.String,System.String,System.String,System.Single,System.Int32,System.Nullable{System.Int32},Azure.AI.Inference.ChatCompletionsResponseFormat,System.Collections.Generic.IEnumerable{Azure.AI.Inference.FunctionDefinition})">
+            <summary>
+            Create a new instance of <see cref="T:AutoGen.AzureAIInference.ChatCompletionsClientAgent"/>.
+            </summary>
+            <param name="chatCompletionsClient">chat completions client</param>
+            <param name="name">agent name</param>
+            <param name="modelName">model name. e.g. gpt-turbo-3.5</param>
+            <param name="systemMessage">system message</param>
+            <param name="temperature">temperature</param>
+            <param name="maxTokens">max tokens to generated</param>
+            <param name="responseFormat">response format, set it to <see cref="T:Azure.AI.Inference.ChatCompletionsResponseFormatJSON"/> to enable json mode.</param>
+            <param name="seed">seed to use, set it to enable deterministic output</param>
+            <param name="functions">functions</param>
+        </member>
+        <member name="M:AutoGen.AzureAIInference.ChatCompletionsClientAgent.#ctor(Azure.AI.Inference.ChatCompletionsClient,System.String,Azure.AI.Inference.ChatCompletionsOptions,System.String)">
+            <summary>
+            Create a new instance of <see cref="T:AutoGen.AzureAIInference.ChatCompletionsClientAgent"/>.
+            </summary>
+            <param name="chatCompletionsClient">chat completions client</param>
+            <param name="name">agent name</param>
+            <param name="systemMessage">system message</param>
+            <param name="options">chat completion option. The option can't contain messages</param>
+        </member>
+        <member name="M:AutoGen.AzureAIInference.Extension.ChatComptionClientAgentExtension.RegisterMessageConnector(AutoGen.AzureAIInference.ChatCompletionsClientAgent,AutoGen.AzureAIInference.AzureAIInferenceChatRequestMessageConnector)">
+            <summary>
+            Register an <see cref="T:AutoGen.AzureAIInference.AzureAIInferenceChatRequestMessageConnector"/> to the <see cref="T:AutoGen.AzureAIInference.ChatCompletionsClientAgent"/>
+            </summary>
+            <param name="connector">the connector to use. If null, a new instance of <see cref="T:AutoGen.AzureAIInference.AzureAIInferenceChatRequestMessageConnector"/> will be created.</param>
+        </member>
+        <member name="M:AutoGen.AzureAIInference.Extension.ChatComptionClientAgentExtension.RegisterMessageConnector(AutoGen.Core.MiddlewareStreamingAgent{AutoGen.AzureAIInference.ChatCompletionsClientAgent},AutoGen.AzureAIInference.AzureAIInferenceChatRequestMessageConnector)">
+            <summary>
+            Register an <see cref="T:AutoGen.AzureAIInference.AzureAIInferenceChatRequestMessageConnector"/> to the <see cref="T:AutoGen.Core.MiddlewareAgent`1"/> where T is <see cref="T:AutoGen.AzureAIInference.ChatCompletionsClientAgent"/>
+            </summary>
+            <param name="connector">the connector to use. If null, a new instance of <see cref="T:AutoGen.AzureAIInference.AzureAIInferenceChatRequestMessageConnector"/> will be created.</param>
+        </member>
+        <member name="M:AutoGen.AzureAIInference.Extension.FunctionContractExtension.ToAzureAIInferenceFunctionDefinition(AutoGen.Core.FunctionContract)">
+            <summary>
+            Convert a <see cref="T:AutoGen.Core.FunctionContract"/> to a <see cref="T:Azure.AI.Inference.FunctionDefinition"/> that can be used in gpt funciton call.
+            </summary>
+            <param name="functionContract">function contract</param>
+            <returns><see cref="T:Azure.AI.Inference.FunctionDefinition"/></returns>
+        </member>
+        <member name="T:AutoGen.AzureAIInference.AzureAIInferenceChatRequestMessageConnector">
+            <summary>
+            This middleware converts the incoming <see cref="T:AutoGen.Core.IMessage"/> to <see cref="T:AutoGen.Core.IMessage`1" /> where T is <see cref="T:Azure.AI.Inference.ChatRequestMessage"/> before sending to agent. And converts the output <see cref="T:Azure.AI.Inference.ChatResponseMessage"/> to <see cref="T:AutoGen.Core.IMessage"/> after receiving from agent.
+            <para>Supported <see cref="T:AutoGen.Core.IMessage"/> are</para>
+            <para>- <see cref="T:AutoGen.Core.TextMessage"/></para> 
+            <para>- <see cref="T:AutoGen.Core.ImageMessage"/></para> 
+            <para>- <see cref="T:AutoGen.Core.MultiModalMessage"/></para>
+            <para>- <see cref="T:AutoGen.Core.ToolCallMessage"/></para>
+            <para>- <see cref="T:AutoGen.Core.ToolCallResultMessage"/></para>
+            <para>- <see cref="T:AutoGen.Core.IMessage`1"/> where T is <see cref="T:Azure.AI.Inference.ChatRequestMessage"/></para>
+            <para>- <see cref="T:AutoGen.Core.AggregateMessage`2"/> where TMessage1 is <see cref="T:AutoGen.Core.ToolCallMessage"/> and TMessage2 is <see cref="T:AutoGen.Core.ToolCallResultMessage"/></para>
+            </summary>
+        </member>
+        <member name="M:AutoGen.AzureAIInference.AzureAIInferenceChatRequestMessageConnector.#ctor(System.Boolean)">
+            <summary>
+            Create a new instance of <see cref="T:AutoGen.AzureAIInference.AzureAIInferenceChatRequestMessageConnector"/>.
+            </summary>
+            <param name="strictMode">If true, <see cref="T:AutoGen.AzureAIInference.AzureAIInferenceChatRequestMessageConnector"/> will throw an <see cref="T:System.InvalidOperationException"/>
+            When the message type is not supported. If false, it will ignore the unsupported message type.</param>
+        </member>
+    </members>
+</doc>

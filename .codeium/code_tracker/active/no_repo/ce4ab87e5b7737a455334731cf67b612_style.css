@@ -1,0 +1,191 @@
+”body{
+            background-color: white;
+          
+}
+h1{
+            background-color: green;
+}
+p{
+            color:brown;
+}
+#p1{
+    color: black;
+}
+#p2{
+    color: green;
+}
+#p3{
+    color: black;
+    font-family: monospace;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: underline;
+    font-style: italic;
+    border-style:solid;
+    border-radius: 20px;
+    background-image: url(img001.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+}
+
+.a{
+    color: rgb(145, 3, 3);
+    background-color: white;
+    font-family: "Merriweather", "consolas"; 
+        background: linear-gradient(blue,green);
+
+  
+}
+
+#box1{
+    border: 5px solid;
+    width: 250px;
+    height: 250px;
+    background: red;
+    margin-top:50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+#box2{
+    border: 5px solid;
+    width: 250px;
+    height: 250px;
+    background: rgb(16, 219, 97);
+    margin-top:50px;
+    margin:50px;
+}
+
+#box3{
+    border: 5px solid;
+    width: 250px;
+    height: 250px;
+    background: skyblue;
+}
+
+
+#box4{
+    border: 5px solid;
+    width: 150px;
+    height: 150px;
+    background: red;
+}
+
+
+a:visited{
+    color: red;
+}
+a:hover{
+    color: blue;
+}
+a:link{
+    color: green;
+}
+a{
+    text-shadow: 5px 5px 5px red;
+}
+a:hover{
+    box-shadow: 5px 5px 5px green;
+
+}
+
+
+@keyframes ex1{
+    from{
+        margin-right:100%;
+    }
+    to{
+        margin-right:0%;
+    }
+}
+
+#box5{
+    height: 150px;
+    border:2px solid;
+    width:150px;
+   justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+body{
+    min-height: 500px;
+    border: 5px solid;
+    display: flex;
+    gap:5px;
+}% %++- -9 	9 †
+†‹ 
+‹¨ 4¨¸ *$61cd0d08-071d-4a7a-8147-093e8bf15cf308¸½4½Ô *$61cd0d08-071d-4a7a-8147-093e8bf15cf308
+ÔÙ 4ÙÜ *$61cd0d08-071d-4a7a-8147-093e8bf15cf308
+Üí 
+íö 
+ö 
+ 
+ 
+“ 
+“ Ÿ
+Ÿ  
+ « 
+«º 
+º» 
+»Å 
+ÅÔ Ôİ
+İŞ 
+Şè 
+èù ùÿ
+ÿ€ 
+€Š 
+Š’ ’•
+•– 
+– 4Ÿ *$61cd0d08-071d-4a7a-8147-093e8bf15cf308
+Ÿ¬ 4¬´ *$d0865f0a-f68b-4b01-9adc-9900555d312808
+´Á 4ÁÂ *$d0865f0a-f68b-4b01-9adc-9900555d312808
+ÂÌ 
+ÌÚ Úß
+ßæ 
+æô 
+ôø 
+øù ùû
+ûü üş
+ş€ €
+• •Ã
+Ã 4¥ *$0ec9adaa-fba5-4f1e-b176-ba2ac230956108
+¥© 4©­ *$0ec9adaa-fba5-4f1e-b176-ba2ac230956108
+­¯ ¯¿
+¿Ã 
+Ãı ı‰
+‰ 
+“ “”
+”û 
+ûı ı
+¡ 
+¡¢ ¢©4©ı *$e52c19d8-3f52-48c7-a439-ff99a584688e08ı„	4„	ˆ	 *$e52c19d8-3f52-48c7-a439-ff99a584688e08ˆ	Œ	
+Œ	’	 ’	“	
+“	¹	 ¹	º	
+º	Í	 Í	Î	
+Î	å	 
+å	è	 
+è	ì	 
+ì	 
+ 2 
+¬
+*$4527b1ad-05fa-4156-8c05-b1ea126de61108
+¬
+÷
+ ÷
+„
+„” 
+”  
+ Ë 
+ËÕ Õç
+çí 
+í÷ 
+÷ 
+‘ 
+‘— 
+—ç 
+ç› 
+›ï 
+ï… …‘
+‘“ 
+“” 2Efile:///c:/Users/BisaiSantoshKumar%28Qu/Desktop/ToDoListApp/style.css

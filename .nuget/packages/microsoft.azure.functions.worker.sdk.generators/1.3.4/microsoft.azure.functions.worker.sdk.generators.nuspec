@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.Functions.Worker.Sdk.Generators</id>
+    <version>1.3.4</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <projectUrl>https://github.com/Azure/azure-functions-dotnet-worker</projectUrl>
+    <iconUrl>https://aka.ms/azure-functions-package-icon</iconUrl>
+    <description>This package provides source generation for the Azure Functions .NET Worker.</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <repository type="git" url="https://github.com/Azure/azure-functions-dotnet-worker" commit="6a324b7988fe58f125d30ce6a6537c93865e888d" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

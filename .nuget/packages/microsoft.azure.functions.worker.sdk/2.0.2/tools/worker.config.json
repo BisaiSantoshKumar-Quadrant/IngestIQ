@@ -1,0 +1,10 @@
+{
+  "description": {
+    "language": "dotnet-isolated",
+    "extensions": [ ".dll" ],
+    "defaultExecutablePath": "$functionExe$",
+    "defaultWorkerPath": "$functionWorker$",
+    "workerIndexing": "$enableWorkerIndexing$",
+    "canUsePlaceholder": true
+  }
+}

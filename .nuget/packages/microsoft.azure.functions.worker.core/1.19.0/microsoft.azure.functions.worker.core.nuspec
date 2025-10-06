@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.Functions.Worker.Core</id>
+    <version>1.19.0</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <projectUrl>https://github.com/Azure/azure-functions-dotnet-worker</projectUrl>
+    <iconUrl>https://aka.ms/azure-functions-package-icon</iconUrl>
+    <description>This library provides the core functionality to build an Azure Functions .NET Worker, adding support for the isolated, out-of-process execution model.</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <repository type="git" url="https://github.com/Azure/azure-functions-dotnet-worker" commit="24858b8af04145cfc668f2fbc0e1be57af2b70d7" />
+    <dependencies>
+      <group targetFramework="net5.0">
+        <dependency id="Azure.Core" version="1.41.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Hosting" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Hosting.Abstractions" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Collections.Immutable" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.DiagnosticSource" version="7.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Azure.Core" version="1.41.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Hosting" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Hosting.Abstractions" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging.Abstractions" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Options" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Collections.Immutable" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.DiagnosticSource" version="7.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Encodings.Web" version="8.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.5.4" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

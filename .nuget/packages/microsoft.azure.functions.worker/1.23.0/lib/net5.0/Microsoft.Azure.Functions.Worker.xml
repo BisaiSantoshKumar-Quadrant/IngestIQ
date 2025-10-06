@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.Functions.Worker</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.Functions.Worker.FunctionsWorkerHost">
+            <summary>
+            Hosting helpers to work with Azure Functions Workers
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionsWorkerHost.RunDefault(System.Action{Microsoft.Extensions.DependencyInjection.IServiceCollection})">
+            <summary>
+            Creates a default Azure Functions Worker configured host, runs and 
+            blocks the calling thread until the host shuts down.
+            </summary>
+            <param name="configureServices">An optional delegate to configure host services.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionsWorkerHost.RunDefaultAsync(System.Action{Microsoft.Extensions.DependencyInjection.IServiceCollection})">
+            <summary>
+            Creates a default Azure Functions Worker configured host, runs and
+            returns a <see cref="T:System.Threading.Tasks.Task"/> that will complete when the host shuts down.
+            </summary>
+            <param name="configureService">An option delegate to configure host services.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that will complete when the host shuts down.</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions">
+            <summary>
+            Azure Functions extensions for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddFunctionsWorkerDefaults(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.Azure.Functions.Worker.WorkerOptions})">
+            <summary>
+            Adds the core set of services for the Azure Functions worker.
+            This call also adds the default set of binding converters and gRPC support.
+            This call also adds a default ObjectSerializer that treats property names as case insensitive.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <param name="configure">The action used to configure <see cref="T:Microsoft.Azure.Functions.Worker.WorkerOptions"/>.</param>
+            <returns>The same <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> for chaining.</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.Hosting.WorkerHostBuilderExtensions">
+            <summary>
+            Provides extension methods to work with a <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.WorkerHostBuilderExtensions.ConfigureFunctionsWorkerDefaults(Microsoft.Extensions.Hosting.IHostBuilder)">
+            <summary>
+            Configures the default set of Functions Worker services to the provided <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.
+            The following defaults are configured:
+            <list type="bullet">
+                <item><description>A default set of converters.</description></item>
+                <item><description>Configures the default <see cref="T:System.Text.Json.JsonSerializerOptions"/> to ignore casing on property names.</description></item>
+                <item><description>Integration with Azure Functions logging.</description></item>
+                <item><description>Adds environment variables as a configuration source.</description></item>
+                <item><description>Adds command line arguments as a configuration source.</description></item>
+                <item><description>Output binding middleware and features.</description></item>
+                <item><description>Function execution middleware.</description></item>
+                <item><description>Default gRPC support.</description></item>
+            </list>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> to configure.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.WorkerHostBuilderExtensions.ConfigureFunctionsWorkerDefaults(Microsoft.Extensions.Hosting.IHostBuilder,System.Action{Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder})">
+            <summary>
+            Configures the default set of Functions Worker services to the provided <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>,
+            with a delegate to configure a provided <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/>.
+            The following defaults are configured:
+            <list type="bullet">
+                <item><description>A default set of converters.</description></item>
+                <item><description>Configures the default <see cref="T:System.Text.Json.JsonSerializerOptions"/> to ignore casing on property names.</description></item>
+                <item><description>Integration with Azure Functions logging.</description></item>
+                <item><description>Adds environment variables as a configuration source.</description></item>
+                <item><description>Adds command line arguments as a configuration source.</description></item>
+                <item><description>Output binding middleware and features.</description></item>
+                <item><description>Function execution middleware.</description></item>
+                <item><description>Default gRPC support.</description></item>
+            </list>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> to configure.</param>
+            <param name="configure">A delegate that will be invoked to configure the provided <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.WorkerHostBuilderExtensions.ConfigureFunctionsWorkerDefaults(Microsoft.Extensions.Hosting.IHostBuilder,System.Action{Microsoft.Azure.Functions.Worker.WorkerOptions})">
+            <summary>
+            Configures the default set of Functions Worker services to the provided <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>,
+            with a delegate to configure a provided <see cref="T:Microsoft.Azure.Functions.Worker.WorkerOptions"/>.
+            The following defaults are configured:
+            <list type="bullet">
+                <item><description>A default set of converters.</description></item>
+                <item><description>Configures the default <see cref="T:System.Text.Json.JsonSerializerOptions"/> to ignore casing on property names.</description></item>
+                <item><description>Integration with Azure Functions logging.</description></item>
+                <item><description>Adds environment variables as a configuration source.</description></item>
+                <item><description>Adds command line arguments as a configuration source.</description></item>
+                <item><description>Output binding middleware and features.</description></item>
+                <item><description>Function execution middleware.</description></item>
+                <item><description>Default gRPC support.</description></item>
+            </list>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> to configure.</param>
+            <param name="configureOptions">A delegate that will be invoked to configure the provided <see cref="T:Microsoft.Azure.Functions.Worker.WorkerOptions"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.</returns>     
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.WorkerHostBuilderExtensions.ConfigureFunctionsWorkerDefaults(Microsoft.Extensions.Hosting.IHostBuilder,System.Action{Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder},System.Action{Microsoft.Azure.Functions.Worker.WorkerOptions})">
+            <summary>
+            Configures the default set of Functions Worker services to the provided <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>,
+            with a delegate to configure a provided <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/> and a delegate to configure the <see cref="T:Microsoft.Azure.Functions.Worker.WorkerOptions"/>.
+            The following defaults are configured:
+            <list type="bullet">
+                <item><description>A default set of converters.</description></item>
+                <item><description>Configures the default <see cref="T:System.Text.Json.JsonSerializerOptions"/> to ignore casing on property names.</description></item>
+                <item><description>Integration with Azure Functions logging.</description></item>
+                <item><description>Adds environment variables as a configuration source.</description></item>
+                <item><description>Adds command line arguments as a configuration source.</description></item>
+                <item><description>Output binding middleware and features.</description></item>
+                <item><description>Function execution middleware.</description></item>
+                <item><description>Default gRPC support.</description></item>
+            </list>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> to configure.</param>
+            <param name="configure">A delegate that will be invoked to configure the provided <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/>.</param>
+            <param name="configureOptions">A delegate that will be invoked to configure the provided <see cref="T:Microsoft.Azure.Functions.Worker.WorkerOptions"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.WorkerHostBuilderExtensions.ConfigureFunctionsWorkerDefaults(Microsoft.Extensions.Hosting.IHostBuilder,System.Action{Microsoft.Extensions.Hosting.HostBuilderContext,Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder})">
+            <summary>
+            Configures the default set of Functions Worker services to the provided <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>,
+            with a delegate to configure a provided <see cref="T:Microsoft.Extensions.Hosting.HostBuilderContext"/> and an <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/>.
+            <list type="bullet">
+                <item><description>A default set of converters.</description></item>
+                <item><description>Configures the default <see cref="T:System.Text.Json.JsonSerializerOptions"/> to ignore casing on property names.</description></item>
+                <item><description>Integration with Azure Functions logging.</description></item>
+                <item><description>Adds environment variables as a configuration source.</description></item>
+                <item><description>Adds command line arguments as a configuration source.</description></item>
+                <item><description>Output binding middleware and features.</description></item>
+                <item><description>Function execution middleware.</description></item>
+                <item><description>Default gRPC support.</description></item>
+            </list>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> to configure.</param>
+            <param name="configure">A delegate that will be invoked to configure the provided <see cref="T:Microsoft.Extensions.Hosting.HostBuilderContext"/> and an <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.WorkerHostBuilderExtensions.ConfigureFunctionsWorkerDefaults(Microsoft.Extensions.Hosting.IHostBuilder,System.Action{Microsoft.Extensions.Hosting.HostBuilderContext,Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder},System.Action{Microsoft.Azure.Functions.Worker.WorkerOptions})">
+            <summary>
+            Configures the default set of Functions Worker services to the provided <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>,
+            with a delegate to configure a provided <see cref="T:Microsoft.Extensions.Hosting.HostBuilderContext"/> and an <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/>,
+            and a delegate to configure the <see cref="T:Microsoft.Azure.Functions.Worker.WorkerOptions"/>.
+            <list type="bullet">
+                <item><description>A default set of converters.</description></item>
+                <item><description>Configures the default <see cref="T:System.Text.Json.JsonSerializerOptions"/> to ignore casing on property names.</description></item>
+                <item><description>Integration with Azure Functions logging.</description></item>
+                <item><description>Adds environment variables as a configuration source.</description></item>
+                <item><description>Adds command line arguments as a configuration source.</description></item>
+                <item><description>Output binding middleware and features.</description></item>
+                <item><description>Function execution middleware.</description></item>
+                <item><description>Default gRPC support.</description></item>
+            </list>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> to configure.</param>
+            <param name="configure">A delegate that will be invoked to configure the provided <see cref="T:Microsoft.Extensions.Hosting.HostBuilderContext"/> and an <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/>.</param>
+            <param name="configureOptions">A delegate that will be invoked to configure the provided <see cref="T:Microsoft.Azure.Functions.Worker.WorkerOptions"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.FunctionHttpBinding">
+            <summary>
+            Represents an HttpTrigger binding. Internal class for deserializing raw binding info.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.HostJsonModel">
+            <summary>
+            Represents host.json. Internal class for deserializing.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.IHttpCoordinator.SetFunctionContextAsync(System.String,Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Sets the FunctionContext for the specified invocation. 
+            This will block until the ASP.NET middleware pipeline has signaled that it's ready to run the function.
+            </summary>
+            <param name="invocationId">The invocation id.</param>
+            <param name="context">The context.</param>
+            <returns>A Task that completes when the ASP.NET middleware has signaled that the Function middleware can continue.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.IHttpCoordinator.SetHttpContextAsync(System.String,Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Sets the HttpContext for the specified invocation.
+            </summary>
+            <param name="invocationId">The invocation id.</param>
+            <param name="context">The context.</param>
+            <returns>A Task that completes when the FunctionContext is available.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.IHttpCoordinator.RunFunctionInvocationAsync(System.String)">
+            <summary>
+            Signals the Functions middleware pipeline that it can continue with the specified invocation.
+            </summary>
+            <param name="invocationId">The invocation id.</param>
+            <returns>A Task that completes when the function invocation is complete.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.IHttpCoordinator.CompleteFunctionInvocation(System.String)">
+            <summary>
+            Signals that the function invocation is complete. Allows the ASP.NET middleware pipeline to continue.
+            </summary>
+            <param name="invocationId">A Task that completes when the function invocation is complete.</param>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.HttpContextConverter">
+            <summary>
+            Converter to bind HttpRequest type parameters.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.AspNetCoreHttpRequestDataFeature.Instance">
+            <summary>
+            Gets the singleton instance of the <see cref="T:Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.AspNetCoreHttpRequestDataFeature"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.AspNetCoreHttpRequestDataFeature.GetHttpRequestDataAsync(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.FunctionContextExtensions">
+            <summary>
+            Provides extension methods to work with <see cref="T:Microsoft.Azure.Functions.Worker.FunctionContext"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionContextExtensions.GetHttpContext(Microsoft.Azure.Functions.Worker.FunctionContext)">
+            <summary>
+            Retrieve the <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/> for the function execution.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.Azure.Functions.Worker.FunctionContext"/>.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/> for the function execution or null if it does not exist.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.FunctionContextExtensions.TryGetRequest(Microsoft.Azure.Functions.Worker.FunctionContext,Microsoft.AspNetCore.Http.HttpRequest@)">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> for the <see cref="T:Microsoft.Azure.Functions.Worker.FunctionContext"/>.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.Azure.Functions.Worker.FunctionContext"/>.</param>
+            <param name="request">The <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> for the context.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Builder.FunctionsApplicationBuilderAspNetCoreExtensions">
+            <summary>
+            ASP.NET Core extensions for <see cref="T:Microsoft.Azure.Functions.Worker.Builder.FunctionsApplicationBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Builder.FunctionsApplicationBuilderAspNetCoreExtensions.ConfigureFunctionsWebApplication(Microsoft.Azure.Functions.Worker.Builder.FunctionsApplicationBuilder)">
+            <summary>
+            Configures the worker to use the ASP.NET Core integration, enabling advanced HTTP features.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Azure.Functions.Worker.Builder.FunctionsApplicationBuilder"/> to configure.</param>
+            <returns>The <see cref="T:Microsoft.Azure.Functions.Worker.Builder.FunctionsApplicationBuilder"/> for chaining.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.WorkerBuilderExtensions">
+            <summary>
+            Provides extension methods to work with a <see cref="T:Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.WorkerBuilderExtensions.UseAspNetCoreIntegration(Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder)">
+            <summary>
+            Adds the services needed to integrate with AspNetCore
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:Microsoft.Extensions.Hosting.FunctionsHostBuilderExtensions">
+            <summary>
+            Provides extension methods to work with a <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.FunctionsHostBuilderExtensions.ConfigureFunctionsWebApplication(Microsoft.Extensions.Hosting.IHostBuilder)">
+            <summary>
+            Configures the worker to use the ASP.NET Core integration, enabling advanced HTTP features.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> to configure.</param>
+            <returns>The same instance of the <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.FunctionsHostBuilderExtensions.ConfigureFunctionsWebApplication(Microsoft.Extensions.Hosting.IHostBuilder,System.Action{Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder})">
+            <summary>
+            Configures the worker to use the ASP.NET Core integration, enabling advanced HTTP features.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> to configure.</param>
+            <param name="configureWorker">The worker configure callback.</param>
+            <returns>The same instance of the <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.FunctionsHostBuilderExtensions.ConfigureFunctionsWebApplication(Microsoft.Extensions.Hosting.IHostBuilder,System.Action{Microsoft.Extensions.Hosting.HostBuilderContext,Microsoft.Azure.Functions.Worker.IFunctionsWorkerApplicationBuilder})">
+            <summary>
+            Configures the worker to use the ASP.NET Core integration, enabling advanced HTTP features.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> to configure.</param>
+            <param name="configureWorker">The worker configure callback.</param>
+            <returns>The same instance of the <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> for chaining.</returns>
+        </member>
+    </members>
+</doc>

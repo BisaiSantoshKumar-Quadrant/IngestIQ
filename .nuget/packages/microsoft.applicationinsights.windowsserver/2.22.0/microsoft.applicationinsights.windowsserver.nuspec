@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.ApplicationInsights.WindowsServer</id>
+    <version>2.22.0</version>
+    <title>Application Insights Windows Server</title>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <projectUrl>https://go.microsoft.com/fwlink/?LinkId=392727</projectUrl>
+    <description>Application Insights Windows Server nuget package provides automatic collection of application insights telemetry for .NET applications. This package can be used as a dependent package for Application Insights platform specific packages or as a standalone package for .NET applications that are not covered by platform specific packages (like for .NET worker roles). Privacy statement: https://go.microsoft.com/fwlink/?LinkId=512156</description>
+    <releaseNotes>For the release notes please follow http://go.microsoft.com/fwlink/?LinkId=535037</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Azure Monitoring Analytics ApplicationInsights Telemetry AppInsights</tags>
+    <packageTypes>
+      <packageType name="Dependency" />
+    </packageTypes>
+    <repository type="Git" url="https://github.com/Microsoft/ApplicationInsights-dotnet" commit="43825e06a22cdfb702fc199a7ba99a7d541d48c6" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.2">
+        <dependency id="Microsoft.ApplicationInsights" version="2.22.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel" version="2.22.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ApplicationInsights.DependencyCollector" version="2.22.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ApplicationInsights.PerfCounterCollector" version="2.22.0" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.DiagnosticSource" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.ApplicationInsights" version="2.22.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel" version="2.22.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ApplicationInsights.DependencyCollector" version="2.22.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ApplicationInsights.PerfCounterCollector" version="2.22.0" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.DiagnosticSource" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Management" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.Net.Http" targetFramework=".NETFramework4.5.2" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

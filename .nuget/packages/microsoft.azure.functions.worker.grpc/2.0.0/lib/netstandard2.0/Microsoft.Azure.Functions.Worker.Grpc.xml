@@ -1,0 +1,1718 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.Functions.Worker.Grpc</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata">
+            <summary>
+            Information on how a Function should be loaded and its bindings
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.Name">
+            <summary>
+            TODO: do we want the host's name - the language worker might do a better job of assignment than the host
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.DirectoryFieldNumber">
+            <summary>Field number for the "directory" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.Directory">
+            <summary>
+            base directory for the Function
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.ScriptFileFieldNumber">
+            <summary>Field number for the "script_file" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.ScriptFile">
+            <summary>
+            Script file specified
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.EntryPointFieldNumber">
+            <summary>Field number for the "entry_point" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.EntryPoint">
+            <summary>
+            Entry point specified
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.BindingsFieldNumber">
+            <summary>Field number for the "bindings" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.Bindings">
+            <summary>
+            Bindings info
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.IsProxyFieldNumber">
+            <summary>Field number for the "is_proxy" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.IsProxy">
+            <summary>
+            Is set to true for proxy
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.StatusFieldNumber">
+            <summary>Field number for the "status" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.Status">
+            <summary>
+            Function indexing status
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.LanguageFieldNumber">
+            <summary>Field number for the "language" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.Language">
+            <summary>
+            Function language
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.RawBindingsFieldNumber">
+            <summary>Field number for the "raw_bindings" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.RawBindings">
+            <summary>
+            Raw binding info
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.FunctionIdFieldNumber">
+            <summary>Field number for the "function_id" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.FunctionId">
+            <summary>
+            unique function identifier (avoid name collisions, facilitate reload case)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.ManagedDependencyEnabledFieldNumber">
+            <summary>Field number for the "managed_dependency_enabled" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.ManagedDependencyEnabled">
+            <summary>
+            A flag indicating if managed dependency is enabled or not
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.RetryOptionsFieldNumber">
+            <summary>Field number for the "retry_options" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.RetryOptions">
+            <summary>
+            The optional function execution retry strategy to use on invocation failures.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.PropertiesFieldNumber">
+            <summary>Field number for the "properties" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcFunctionMetadata.Properties">
+            <summary>
+            Properties for function metadata
+            They're usually specific to a worker and largely passed along to the controller API for use
+            outside the host
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcRetryOptions">
+            <summary>
+            Retry policy which the worker sends the host when the worker indexes
+            a function.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcRetryOptions.MaxRetryCountFieldNumber">
+            <summary>Field number for the "max_retry_count" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcRetryOptions.MaxRetryCount">
+            <summary>
+            The maximum number of retries allowed per function execution.
+             -1 means to retry indefinitely.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcRetryOptions.DelayIntervalFieldNumber">
+            <summary>Field number for the "delay_interval" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcRetryOptions.DelayInterval">
+            <summary>
+            The delay that's used between retries when you're using a fixed delay strategy.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcRetryOptions.MinimumIntervalFieldNumber">
+            <summary>Field number for the "minimum_interval" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcRetryOptions.MinimumInterval">
+            <summary>
+            The minimum retry delay when you're using an exponential backoff strategy
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcRetryOptions.MaximumIntervalFieldNumber">
+            <summary>Field number for the "maximum_interval" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcRetryOptions.MaximumInterval">
+            <summary>
+            The maximum retry delay when you're using an exponential backoff strategy
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcRetryOptions.RetryStrategyFieldNumber">
+            <summary>Field number for the "retry_strategy" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcRetryOptions.Types">
+            <summary>Container for nested types declared in the RpcRetryOptions message type.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcRetryOptions.Types.RetryStrategy">
+            <summary>
+            The retry strategy to use. Valid values are fixed delay or exponential backoff.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie">
+            <summary>
+            Http cookie type. Note that only name and value are used for Http requests
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.Name">
+            <summary>
+            Cookie name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.ValueFieldNumber">
+            <summary>Field number for the "value" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.Value">
+            <summary>
+            Cookie value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.DomainFieldNumber">
+            <summary>Field number for the "domain" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.Domain">
+            <summary>
+            Specifies allowed hosts to receive the cookie
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.PathFieldNumber">
+            <summary>Field number for the "path" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.Path">
+            <summary>
+            Specifies URL path that must exist in the requested URL
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.ExpiresFieldNumber">
+            <summary>Field number for the "expires" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.Expires">
+            <summary>
+            Sets the cookie to expire at a specific date instead of when the client closes.
+            It is generally recommended that you use "Max-Age" over "Expires".
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.SecureFieldNumber">
+            <summary>Field number for the "secure" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.Secure">
+            <summary>
+            Sets the cookie to only be sent with an encrypted request
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.HttpOnlyFieldNumber">
+            <summary>Field number for the "http_only" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.HttpOnly">
+            <summary>
+            Sets the cookie to be inaccessible to JavaScript's Document.cookie API
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.SameSiteFieldNumber">
+            <summary>Field number for the "same_site" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.SameSite">
+            <summary>
+            Allows servers to assert that a cookie ought not to be sent along with cross-site requests
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.MaxAgeFieldNumber">
+            <summary>Field number for the "max_age" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.MaxAge">
+            <summary>
+            Number of seconds until the cookie expires. A zero or negative number will expire the cookie immediately.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.Types">
+            <summary>Container for nested types declared in the RpcHttpCookie message type.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttpCookie.Types.SameSite">
+            <summary>
+            Enum that lets servers require that a cookie shouldn't be sent with cross-site requests
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.StatusResult">
+            <summary>
+            Used by the host to determine success/failure/cancellation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StatusResult.StatusFieldNumber">
+            <summary>Field number for the "status" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StatusResult.Status">
+            <summary>
+            Status for the given result
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StatusResult.ResultFieldNumber">
+            <summary>Field number for the "result" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StatusResult.Result">
+            <summary>
+            Specific message about the result
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StatusResult.ExceptionFieldNumber">
+            <summary>Field number for the "exception" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StatusResult.Exception">
+            <summary>
+            Exception message (if exists) for the status
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StatusResult.LogsFieldNumber">
+            <summary>Field number for the "logs" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StatusResult.Logs">
+            <summary>
+            Captured logs or relevant details can use the logs property
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.StatusResult.Types">
+            <summary>Container for nested types declared in the StatusResult message type.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.StatusResult.Types.Status">
+            <summary>
+            Indicates Failure/Success/Cancelled
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionRpcReflection">
+            <summary>Holder for reflection information generated from FunctionRpc.proto</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionRpcReflection.Descriptor">
+            <summary>File descriptor for FunctionRpc.proto</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcDataType">
+            <summary>
+            Specify which type of data is contained in the shared memory region being read
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.RequestIdFieldNumber">
+            <summary>Field number for the "request_id" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.RequestId">
+            <summary>
+            Used to identify message between host and worker
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.StartStreamFieldNumber">
+            <summary>Field number for the "start_stream" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.StartStream">
+            <summary>
+            Worker initiates stream
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerInitRequestFieldNumber">
+            <summary>Field number for the "worker_init_request" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerInitRequest">
+            <summary>
+            Host sends capabilities/init data to worker
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerInitResponseFieldNumber">
+            <summary>Field number for the "worker_init_response" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerInitResponse">
+            <summary>
+            Worker responds after initializing with its capabilities &amp; status
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerHeartbeatFieldNumber">
+            <summary>Field number for the "worker_heartbeat" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerHeartbeat">
+            <summary>
+            MESSAGE NOT USED
+            Worker periodically sends empty heartbeat message to host
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerTerminateFieldNumber">
+            <summary>Field number for the "worker_terminate" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerTerminate">
+            <summary>
+            Host sends terminate message to worker.
+            Worker terminates if it can, otherwise host terminates after a grace period
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerStatusRequestFieldNumber">
+            <summary>Field number for the "worker_status_request" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerStatusRequest">
+            <summary>
+            Host periodically sends status request to the worker
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerStatusResponseFieldNumber">
+            <summary>Field number for the "worker_status_response" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FileChangeEventRequestFieldNumber">
+            <summary>Field number for the "file_change_event_request" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FileChangeEventRequest">
+            <summary>
+            On file change event, host sends notification to worker
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerActionResponseFieldNumber">
+            <summary>Field number for the "worker_action_response" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerActionResponse">
+            <summary>
+            Worker requests a desired action (restart worker, reload function)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionLoadRequestFieldNumber">
+            <summary>Field number for the "function_load_request" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionLoadRequest">
+            <summary>
+            Host sends required metadata to worker to load function
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionLoadResponseFieldNumber">
+            <summary>Field number for the "function_load_response" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionLoadResponse">
+            <summary>
+            Worker responds after loading with the load result
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.InvocationRequestFieldNumber">
+            <summary>Field number for the "invocation_request" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.InvocationRequest">
+            <summary>
+            Host requests a given invocation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.InvocationResponseFieldNumber">
+            <summary>Field number for the "invocation_response" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.InvocationResponse">
+            <summary>
+            Worker responds to a given invocation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.InvocationCancelFieldNumber">
+            <summary>Field number for the "invocation_cancel" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.InvocationCancel">
+            <summary>
+            Host sends cancel message to attempt to cancel an invocation.
+            If an invocation is cancelled, host will receive an invocation response with status cancelled.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.RpcLogFieldNumber">
+            <summary>Field number for the "rpc_log" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.RpcLog">
+            <summary>
+            Worker logs a message back to the host
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionEnvironmentReloadRequestFieldNumber">
+            <summary>Field number for the "function_environment_reload_request" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionEnvironmentReloadResponseFieldNumber">
+            <summary>Field number for the "function_environment_reload_response" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.CloseSharedMemoryResourcesRequestFieldNumber">
+            <summary>Field number for the "close_shared_memory_resources_request" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.CloseSharedMemoryResourcesRequest">
+            <summary>
+            Ask the worker to close any open shared memory resources for a given invocation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.CloseSharedMemoryResourcesResponseFieldNumber">
+            <summary>Field number for the "close_shared_memory_resources_response" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionsMetadataRequestFieldNumber">
+            <summary>Field number for the "functions_metadata_request" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionsMetadataRequest">
+            <summary>
+            Worker indexing message types
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionMetadataResponseFieldNumber">
+            <summary>Field number for the "function_metadata_response" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionLoadRequestCollectionFieldNumber">
+            <summary>Field number for the "function_load_request_collection" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionLoadRequestCollection">
+            <summary>
+            Host sends required metadata to worker to load functions
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionLoadResponseCollectionFieldNumber">
+            <summary>Field number for the "function_load_response_collection" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.FunctionLoadResponseCollection">
+            <summary>
+            Host gets the list of function load responses
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerWarmupRequestFieldNumber">
+            <summary>Field number for the "worker_warmup_request" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerWarmupRequest">
+            <summary>
+            Host sends required metadata to worker to warmup the worker
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerWarmupResponseFieldNumber">
+            <summary>Field number for the "worker_warmup_response" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.WorkerWarmupResponse">
+            <summary>
+            Worker responds after warming up with the warmup result
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.StreamingMessage.ContentOneofCase">
+            <summary>Enum of possible cases for the "content" oneof.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.StartStream">
+            <summary>
+            Worker sends the host information identifying itself
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.StartStream.WorkerIdFieldNumber">
+            <summary>Field number for the "worker_id" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.StartStream.WorkerId">
+            <summary>
+            id of the worker
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitRequest">
+            <summary>
+            Host requests the worker to initialize itself
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitRequest.HostVersionFieldNumber">
+            <summary>Field number for the "host_version" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitRequest.HostVersion">
+            <summary>
+            version of the host sending init request
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitRequest.CapabilitiesFieldNumber">
+            <summary>Field number for the "capabilities" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitRequest.Capabilities">
+            <summary>
+            A map of host supported features/capabilities
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitRequest.LogCategoriesFieldNumber">
+            <summary>Field number for the "log_categories" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitRequest.LogCategories">
+            <summary>
+            inform worker of supported categories and their levels
+            i.e. Worker = Verbose, Function.MyFunc = None
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitRequest.WorkerDirectoryFieldNumber">
+            <summary>Field number for the "worker_directory" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitRequest.WorkerDirectory">
+            <summary>
+            Full path of worker.config.json location
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitRequest.FunctionAppDirectoryFieldNumber">
+            <summary>Field number for the "function_app_directory" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitRequest.FunctionAppDirectory">
+            <summary>
+            base directory for function app
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitResponse">
+            <summary>
+            Worker responds with the result of initializing itself
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitResponse.WorkerVersionFieldNumber">
+            <summary>Field number for the "worker_version" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitResponse.WorkerVersion">
+            <summary>
+            PROPERTY NOT USED
+            TODO: Remove from protobuf during next breaking change release
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitResponse.CapabilitiesFieldNumber">
+            <summary>Field number for the "capabilities" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitResponse.Capabilities">
+            <summary>
+            A map of worker supported features/capabilities
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitResponse.ResultFieldNumber">
+            <summary>Field number for the "result" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitResponse.Result">
+            <summary>
+            Status of the response
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitResponse.WorkerMetadataFieldNumber">
+            <summary>Field number for the "worker_metadata" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerInitResponse.WorkerMetadata">
+            <summary>
+            Worker metadata captured for telemetry purposes
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerMetadata.RuntimeNameFieldNumber">
+            <summary>Field number for the "runtime_name" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerMetadata.RuntimeName">
+            <summary>
+            The runtime/stack name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerMetadata.RuntimeVersionFieldNumber">
+            <summary>Field number for the "runtime_version" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerMetadata.RuntimeVersion">
+            <summary>
+            The version of the runtime/stack
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerMetadata.WorkerVersionFieldNumber">
+            <summary>Field number for the "worker_version" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerMetadata.WorkerVersion">
+            <summary>
+            The version of the worker
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerMetadata.WorkerBitnessFieldNumber">
+            <summary>Field number for the "worker_bitness" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerMetadata.WorkerBitness">
+            <summary>
+            The worker bitness/architecture
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerMetadata.CustomPropertiesFieldNumber">
+            <summary>Field number for the "custom_properties" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerMetadata.CustomProperties">
+            <summary>
+            Optional additional custom properties
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerHeartbeat">
+            <summary>
+            MESSAGE NOT USED
+            TODO: Remove from protobuf during next breaking change release
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerTerminate">
+            <summary>
+            Warning before killing the process after grace_period
+            Worker self terminates ..no response on this
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerTerminate.GracePeriodFieldNumber">
+            <summary>Field number for the "grace_period" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FileChangeEventRequest">
+            <summary>
+            Host notifies worker of file content change
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FileChangeEventRequest.TypeFieldNumber">
+            <summary>Field number for the "type" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FileChangeEventRequest.Type">
+            <summary>
+            type for this event
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FileChangeEventRequest.FullPathFieldNumber">
+            <summary>Field number for the "full_path" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FileChangeEventRequest.FullPath">
+            <summary>
+            full file path for the file change notification
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FileChangeEventRequest.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FileChangeEventRequest.Name">
+            <summary>
+            Name of the function affected
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FileChangeEventRequest.Types">
+            <summary>Container for nested types declared in the FileChangeEventRequest message type.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FileChangeEventRequest.Types.Type">
+            <summary>
+            Types of File change operations (See link for more info: https://msdn.microsoft.com/en-us/library/t6xf43e0(v=vs.110).aspx)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerActionResponse">
+            <summary>
+            Indicates whether worker reloaded successfully or needs a restart
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerActionResponse.ActionFieldNumber">
+            <summary>Field number for the "action" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerActionResponse.Action">
+            <summary>
+            action for this response
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerActionResponse.ReasonFieldNumber">
+            <summary>Field number for the "reason" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerActionResponse.Reason">
+            <summary>
+            text reason for the response
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerActionResponse.Types">
+            <summary>Container for nested types declared in the WorkerActionResponse message type.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerActionResponse.Types.Action">
+            <summary>
+            indicates whether a restart is needed, or reload successfully
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerStatusRequest">
+            <summary>
+            Used by the host to determine worker health
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerStatusResponse">
+            <summary>
+            Worker responds with status message
+            TODO: Add any worker relevant status to response
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadRequest.EnvironmentVariablesFieldNumber">
+            <summary>Field number for the "environment_variables" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadRequest.EnvironmentVariables">
+            <summary>
+            Environment variables from the current process
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadRequest.FunctionAppDirectoryFieldNumber">
+            <summary>Field number for the "function_app_directory" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadRequest.FunctionAppDirectory">
+            <summary>
+            Current directory of function app
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadResponse.WorkerMetadataFieldNumber">
+            <summary>Field number for the "worker_metadata" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadResponse.WorkerMetadata">
+            <summary>
+            After specialization, worker sends capabilities &amp; metadata.
+            Worker metadata captured for telemetry purposes
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadResponse.CapabilitiesFieldNumber">
+            <summary>Field number for the "capabilities" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadResponse.Capabilities">
+            <summary>
+            A map of worker supported features/capabilities
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadResponse.ResultFieldNumber">
+            <summary>Field number for the "result" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadResponse.Result">
+            <summary>
+            Status of the response
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadResponse.CapabilitiesUpdateStrategyFieldNumber">
+            <summary>Field number for the "capabilities_update_strategy" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadResponse.CapabilitiesUpdateStrategy">
+            <summary>
+            If no strategy is defined, the host will default to merge
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadResponse.Types">
+            <summary>Container for nested types declared in the FunctionEnvironmentReloadResponse message type.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadResponse.Types.CapabilitiesUpdateStrategy.Merge">
+            <summary>
+            overwrites existing values and appends new ones
+            ex. worker init: {A: foo, B: bar} + env reload: {A:foo, B: foo, C: foo} -> {A: foo, B: foo, C: foo}
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionEnvironmentReloadResponse.Types.CapabilitiesUpdateStrategy.Replace">
+            <summary>
+            existing capabilities are cleared and new capabilities are applied
+            ex. worker init: {A: foo, B: bar} + env reload: {A:foo, C: foo} -> {A: foo, C: foo}
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.CloseSharedMemoryResourcesRequest">
+            <summary>
+            Tell the out-of-proc worker to close any shared memory maps it allocated for given invocation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.CloseSharedMemoryResourcesRequest.MapNamesFieldNumber">
+            <summary>Field number for the "map_names" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.CloseSharedMemoryResourcesResponse">
+            <summary>
+            Response from the worker indicating which of the shared memory maps have been successfully closed and which have not been closed
+            The key (string) is the map name and the value (bool) is true if it was closed, false if not
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.CloseSharedMemoryResourcesResponse.CloseMapResultsFieldNumber">
+            <summary>Field number for the "close_map_results" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadRequestCollection">
+            <summary>
+            Host tells the worker to load a list of Functions
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadRequestCollection.FunctionLoadRequestsFieldNumber">
+            <summary>Field number for the "function_load_requests" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadResponseCollection">
+            <summary>
+            Host gets the list of function load responses
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadResponseCollection.FunctionLoadResponsesFieldNumber">
+            <summary>Field number for the "function_load_responses" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadRequest">
+            <summary>
+            Load request of a single Function
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadRequest.FunctionIdFieldNumber">
+            <summary>Field number for the "function_id" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadRequest.FunctionId">
+            <summary>
+            unique function identifier (avoid name collisions, facilitate reload case)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadRequest.MetadataFieldNumber">
+            <summary>Field number for the "metadata" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadRequest.Metadata">
+            <summary>
+            Metadata for the request
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadRequest.ManagedDependencyEnabledFieldNumber">
+            <summary>Field number for the "managed_dependency_enabled" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadRequest.ManagedDependencyEnabled">
+            <summary>
+            A flag indicating if managed dependency is enabled or not
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadResponse">
+            <summary>
+            Worker tells host result of reload
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadResponse.FunctionIdFieldNumber">
+            <summary>Field number for the "function_id" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadResponse.FunctionId">
+            <summary>
+            unique function identifier
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadResponse.ResultFieldNumber">
+            <summary>Field number for the "result" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadResponse.Result">
+            <summary>
+            Result of load operation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadResponse.IsDependencyDownloadedFieldNumber">
+            <summary>Field number for the "is_dependency_downloaded" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionLoadResponse.IsDependencyDownloaded">
+            <summary>
+            Result of load operation
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionsMetadataRequest">
+            <summary>
+            Host tells worker it is ready to receive metadata
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionsMetadataRequest.FunctionAppDirectoryFieldNumber">
+            <summary>Field number for the "function_app_directory" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionsMetadataRequest.FunctionAppDirectory">
+            <summary>
+            base directory for function app
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionMetadataResponse">
+            <summary>
+            Worker sends function metadata back to host
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionMetadataResponse.FunctionMetadataResultsFieldNumber">
+            <summary>Field number for the "function_metadata_results" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionMetadataResponse.FunctionMetadataResults">
+            <summary>
+            list of function indexing responses
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionMetadataResponse.ResultFieldNumber">
+            <summary>Field number for the "result" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionMetadataResponse.Result">
+            <summary>
+            status of overall metadata request
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionMetadataResponse.UseDefaultMetadataIndexingFieldNumber">
+            <summary>Field number for the "use_default_metadata_indexing" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionMetadataResponse.UseDefaultMetadataIndexing">
+            <summary>
+            if set to true then host will perform indexing
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest">
+            <summary>
+            Host requests worker to invoke a Function
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest.InvocationIdFieldNumber">
+            <summary>Field number for the "invocation_id" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest.InvocationId">
+            <summary>
+            Unique id for each invocation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest.FunctionIdFieldNumber">
+            <summary>Field number for the "function_id" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest.FunctionId">
+            <summary>
+            Unique id for each Function
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest.InputDataFieldNumber">
+            <summary>Field number for the "input_data" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest.InputData">
+            <summary>
+            Input bindings (include trigger)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest.TriggerMetadataFieldNumber">
+            <summary>Field number for the "trigger_metadata" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest.TriggerMetadata">
+            <summary>
+            binding metadata from trigger
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest.TraceContextFieldNumber">
+            <summary>Field number for the "trace_context" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest.TraceContext">
+            <summary>
+            Populates activityId, tracestate and tags from host
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest.RetryContextFieldNumber">
+            <summary>Field number for the "retry_context" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest.RetryContext">
+            <summary>
+            Current retry context
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcTraceContext">
+            <summary>
+            Host sends ActivityId, traceStateString and Tags from host
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcTraceContext.TraceParentFieldNumber">
+            <summary>Field number for the "trace_parent" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcTraceContext.TraceParent">
+            <summary>
+            This corresponds to Activity.Current?.Id
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcTraceContext.TraceStateFieldNumber">
+            <summary>Field number for the "trace_state" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcTraceContext.TraceState">
+            <summary>
+            This corresponds to Activity.Current?.TraceStateString
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcTraceContext.AttributesFieldNumber">
+            <summary>Field number for the "attributes" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcTraceContext.Attributes">
+            <summary>
+            This corresponds to Activity.Current?.Tags
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RetryContext">
+            <summary>
+            Host sends retry context for a function invocation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RetryContext.RetryCountFieldNumber">
+            <summary>Field number for the "retry_count" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RetryContext.RetryCount">
+            <summary>
+            Current retry count
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RetryContext.MaxRetryCountFieldNumber">
+            <summary>Field number for the "max_retry_count" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RetryContext.MaxRetryCount">
+            <summary>
+            Max retry count
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RetryContext.ExceptionFieldNumber">
+            <summary>Field number for the "exception" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RetryContext.Exception">
+            <summary>
+            Exception that caused the retry
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationCancel">
+            <summary>
+            Host requests worker to cancel invocation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationCancel.InvocationIdFieldNumber">
+            <summary>Field number for the "invocation_id" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationCancel.InvocationId">
+            <summary>
+            Unique id for invocation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationCancel.GracePeriodFieldNumber">
+            <summary>Field number for the "grace_period" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationCancel.GracePeriod">
+            <summary>
+            PROPERTY NOT USED
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationResponse">
+            <summary>
+            Worker responds with status of Invocation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationResponse.InvocationIdFieldNumber">
+            <summary>Field number for the "invocation_id" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationResponse.InvocationId">
+            <summary>
+            Unique id for invocation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationResponse.OutputDataFieldNumber">
+            <summary>Field number for the "output_data" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationResponse.OutputData">
+            <summary>
+            Output binding data
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationResponse.ReturnValueFieldNumber">
+            <summary>Field number for the "return_value" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationResponse.ReturnValue">
+            <summary>
+            data returned from Function (for $return and triggers with return support)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationResponse.ResultFieldNumber">
+            <summary>Field number for the "result" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationResponse.Result">
+            <summary>
+            Status of the invocation (success/failure/canceled)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerWarmupRequest.WorkerDirectoryFieldNumber">
+            <summary>Field number for the "worker_directory" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerWarmupRequest.WorkerDirectory">
+            <summary>
+            Full path of worker.config.json location
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.WorkerWarmupResponse.ResultFieldNumber">
+            <summary>Field number for the "result" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData">
+            <summary>
+            Used to encapsulate data which could be a variety of types
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.StringFieldNumber">
+            <summary>Field number for the "string" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.HasString">
+            <summary>Gets whether the "string" field is set</summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.ClearString">
+            <summary> Clears the value of the oneof if it's currently set to "string" </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.JsonFieldNumber">
+            <summary>Field number for the "json" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.HasJson">
+            <summary>Gets whether the "json" field is set</summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.ClearJson">
+            <summary> Clears the value of the oneof if it's currently set to "json" </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.BytesFieldNumber">
+            <summary>Field number for the "bytes" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.HasBytes">
+            <summary>Gets whether the "bytes" field is set</summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.ClearBytes">
+            <summary> Clears the value of the oneof if it's currently set to "bytes" </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.StreamFieldNumber">
+            <summary>Field number for the "stream" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.HasStream">
+            <summary>Gets whether the "stream" field is set</summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.ClearStream">
+            <summary> Clears the value of the oneof if it's currently set to "stream" </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.HttpFieldNumber">
+            <summary>Field number for the "http" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.IntFieldNumber">
+            <summary>Field number for the "int" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.HasInt">
+            <summary>Gets whether the "int" field is set</summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.ClearInt">
+            <summary> Clears the value of the oneof if it's currently set to "int" </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.DoubleFieldNumber">
+            <summary>Field number for the "double" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.HasDouble">
+            <summary>Gets whether the "double" field is set</summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.ClearDouble">
+            <summary> Clears the value of the oneof if it's currently set to "double" </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.CollectionBytesFieldNumber">
+            <summary>Field number for the "collection_bytes" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.CollectionStringFieldNumber">
+            <summary>Field number for the "collection_string" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.CollectionDoubleFieldNumber">
+            <summary>Field number for the "collection_double" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.CollectionSint64FieldNumber">
+            <summary>Field number for the "collection_sint64" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.ModelBindingDataFieldNumber">
+            <summary>Field number for the "model_binding_data" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.CollectionModelBindingDataFieldNumber">
+            <summary>Field number for the "collection_model_binding_data" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.TypedData.DataOneofCase">
+            <summary>Enum of possible cases for the "data" oneof.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcSharedMemory">
+            <summary>
+            Used to provide metadata about shared memory region to read data from
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcSharedMemory.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcSharedMemory.Name">
+            <summary>
+            Name of the shared memory map containing data
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcSharedMemory.OffsetFieldNumber">
+            <summary>Field number for the "offset" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcSharedMemory.Offset">
+            <summary>
+            Offset in the shared memory map to start reading data from
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcSharedMemory.CountFieldNumber">
+            <summary>Field number for the "count" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcSharedMemory.Count">
+            <summary>
+            Number of bytes to read (starting from the offset)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcSharedMemory.TypeFieldNumber">
+            <summary>Field number for the "type" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcSharedMemory.Type">
+            <summary>
+            Final type to which the read data (in bytes) is to be interpreted as
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.CollectionString">
+            <summary>
+            Used to encapsulate collection string
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.CollectionString.StringFieldNumber">
+            <summary>Field number for the "string" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.CollectionBytes">
+            <summary>
+            Used to encapsulate collection bytes
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.CollectionBytes.BytesFieldNumber">
+            <summary>Field number for the "bytes" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.CollectionDouble">
+            <summary>
+            Used to encapsulate collection double
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.CollectionDouble.DoubleFieldNumber">
+            <summary>Field number for the "double" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.CollectionSInt64">
+            <summary>
+            Used to encapsulate collection sint64
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.CollectionSInt64.Sint64FieldNumber">
+            <summary>Field number for the "sint64" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.ParameterBinding">
+            <summary>
+            Used to describe a given binding on invocation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.ParameterBinding.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.ParameterBinding.Name">
+            <summary>
+            Name for the binding
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.ParameterBinding.DataFieldNumber">
+            <summary>Field number for the "data" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.ParameterBinding.Data">
+            <summary>
+            Data for the binding
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.ParameterBinding.RpcSharedMemoryFieldNumber">
+            <summary>Field number for the "rpc_shared_memory" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.ParameterBinding.RpcSharedMemory">
+            <summary>
+            Metadata about the shared memory region to read data from
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.ParameterBinding.RpcDataOneofCase">
+            <summary>Enum of possible cases for the "rpc_data" oneof.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.BindingInfo">
+            <summary>
+            Used to describe a given binding on load
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.BindingInfo.TypeFieldNumber">
+            <summary>Field number for the "type" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.BindingInfo.Type">
+            <summary>
+            Type of binding (e.g. HttpTrigger)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.BindingInfo.DirectionFieldNumber">
+            <summary>Field number for the "direction" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.BindingInfo.Direction">
+            <summary>
+            Direction of the given binding
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.BindingInfo.DataTypeFieldNumber">
+            <summary>Field number for the "data_type" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.BindingInfo.PropertiesFieldNumber">
+            <summary>Field number for the "properties" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.BindingInfo.Properties">
+            <summary>
+            Properties for binding metadata
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.BindingInfo.Types">
+            <summary>Container for nested types declared in the BindingInfo message type.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.BindingInfo.Types.Direction">
+            <summary>
+            Indicates whether it is an input or output binding (or a fancy inout binding)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.BindingInfo.Types.DataType">
+            <summary>
+            Indicates the type of the data for the binding
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog">
+            <summary>
+            Used to send logs back to the Host
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.InvocationIdFieldNumber">
+            <summary>Field number for the "invocation_id" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.InvocationId">
+            <summary>
+            Unique id for invocation (if exists)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.CategoryFieldNumber">
+            <summary>Field number for the "category" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.Category">
+            <summary>
+            TOD: This should be an enum
+            Category for the log (startup, load, invocation, etc.)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.LevelFieldNumber">
+            <summary>Field number for the "level" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.Level">
+            <summary>
+            Level for the given log message
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.MessageFieldNumber">
+            <summary>Field number for the "message" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.Message">
+            <summary>
+            Message for the given log
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.EventIdFieldNumber">
+            <summary>Field number for the "event_id" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.EventId">
+            <summary>
+            Id for the even associated with this log (if exists)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.ExceptionFieldNumber">
+            <summary>Field number for the "exception" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.Exception">
+            <summary>
+            Exception (if exists)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.PropertiesFieldNumber">
+            <summary>Field number for the "properties" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.Properties">
+            <summary>
+            json serialized property bag
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.LogCategoryFieldNumber">
+            <summary>Field number for the "log_category" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.LogCategory">
+            <summary>
+            Category of the log. Either user(default), system, or custom metric.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.PropertiesMapFieldNumber">
+            <summary>Field number for the "propertiesMap" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.PropertiesMap">
+            <summary>
+            strongly-typed (ish) property bag
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.Types">
+            <summary>Container for nested types declared in the RpcLog message type.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.Types.Level">
+            <summary>
+            Matching ILogger semantics
+            https://github.com/aspnet/Logging/blob/9506ccc3f3491488fe88010ef8b9eb64594abf95/src/Microsoft.Extensions.Logging/Logger.cs
+            Level for the Log
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcLog.Types.RpcLogCategory">
+            <summary>
+            Category of the log. Defaults to User if not specified.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcException">
+            <summary>
+            Encapsulates an Exception
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcException.SourceFieldNumber">
+            <summary>Field number for the "source" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcException.Source">
+            <summary>
+            Source of the exception
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcException.StackTraceFieldNumber">
+            <summary>Field number for the "stack_trace" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcException.StackTrace">
+            <summary>
+            Stack trace for the exception
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcException.MessageFieldNumber">
+            <summary>Field number for the "message" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcException.Message">
+            <summary>
+            Textual message describing the exception
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcException.IsUserExceptionFieldNumber">
+            <summary>Field number for the "is_user_exception" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcException.IsUserException">
+            <summary>
+            Worker specifies whether exception is a user exception,
+            for purpose of application insights logging. Defaults to false.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcException.TypeFieldNumber">
+            <summary>Field number for the "type" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcException.Type">
+            <summary>
+            Type of exception. If it's a user exception, the type is passed along to app insights.
+            Otherwise, it's ignored for now.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp">
+            <summary>
+            TODO - solidify this or remove it
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.MethodFieldNumber">
+            <summary>Field number for the "method" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.UrlFieldNumber">
+            <summary>Field number for the "url" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.HeadersFieldNumber">
+            <summary>Field number for the "headers" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.BodyFieldNumber">
+            <summary>Field number for the "body" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.ParamsFieldNumber">
+            <summary>Field number for the "params" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.StatusCodeFieldNumber">
+            <summary>Field number for the "status_code" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.QueryFieldNumber">
+            <summary>Field number for the "query" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.EnableContentNegotiationFieldNumber">
+            <summary>Field number for the "enable_content_negotiation" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.RawBodyFieldNumber">
+            <summary>Field number for the "rawBody" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.IdentitiesFieldNumber">
+            <summary>Field number for the "identities" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.CookiesFieldNumber">
+            <summary>Field number for the "cookies" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.NullableHeadersFieldNumber">
+            <summary>Field number for the "nullable_headers" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.NullableParamsFieldNumber">
+            <summary>Field number for the "nullable_params" field.</summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.RpcHttp.NullableQueryFieldNumber">
+            <summary>Field number for the "nullable_query" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.ModelBindingData">
+            <summary>
+            Message representing Microsoft.Azure.WebJobs.ParameterBindingData
+            Used for hydrating SDK-type bindings in out-of-proc workers
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.ModelBindingData.VersionFieldNumber">
+            <summary>Field number for the "version" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.ModelBindingData.Version">
+            <summary>
+            The version of the binding data content
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.ModelBindingData.SourceFieldNumber">
+            <summary>Field number for the "source" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.ModelBindingData.Source">
+            <summary>
+            The extension source of the binding data
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.ModelBindingData.ContentTypeFieldNumber">
+            <summary>Field number for the "content_type" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.ModelBindingData.ContentType">
+            <summary>
+            The content type of the binding data content
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.ModelBindingData.ContentFieldNumber">
+            <summary>Field number for the "content" field.</summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.ModelBindingData.Content">
+            <summary>
+            The binding data content
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.CollectionModelBindingData">
+            <summary>
+            Used to encapsulate collection model_binding_data
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Functions.Worker.Grpc.Messages.CollectionModelBindingData.ModelBindingDataFieldNumber">
+            <summary>Field number for the "model_binding_data" field.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionRpc">
+            <summary>
+            Interface exported by the server.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionRpc.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionRpc.FunctionRpcClient">
+            <summary>Client for FunctionRpc</summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionRpc.FunctionRpcClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for FunctionRpc</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionRpc.FunctionRpcClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for FunctionRpc that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionRpc.FunctionRpcClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionRpc.FunctionRpcClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Grpc.Messages.FunctionRpc.FunctionRpcClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+        </member>
+        <member name="T:Microsoft.Azure.Functions.Worker.Logging.GrpcFunctionsHostLogWriter">
+            <summary>
+            A logger that sends logs back to the Functions host.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Handlers.IInvocationHandler.InvokeAsync(Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest)">
+            <summary>
+            Invokes a function based on incoming <see cref="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationRequest"/> and returns
+            an <see cref="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationResponse"/>. This includes creating and keeping track of
+            an associated cancellation token source for the invocation.
+            </summary>
+            <param name="request">Function invocation request</param>
+            <returns><see cref="T:Microsoft.Azure.Functions.Worker.Grpc.Messages.InvocationResponse"/></returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Handlers.IInvocationHandler.TryCancel(System.String)">
+            <summary>
+            Cancels an invocation's associated <see cref="T:System.Threading.CancellationTokenSource"/>.
+            </summary>
+            <param name="invocationId">Invocation ID</param>
+            <returns>Returns bool indicating success or failure</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Rpc.RpcExtensions.ToRpcException(System.Exception)">
+            <summary>
+            Returns an RpcException for system exception scenarios.
+            </summary>
+            <returns>An RpcException</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Functions.Worker.Rpc.RpcExtensions.ToUserRpcException(System.Exception)">
+            <summary>
+            Returns an RpcException for when an exception is thrown by user's code. 
+            </summary>
+            <returns>An RpcException with IsUserException set to true.</returns>
+        </member>
+        <member name="T:ClaimsIdentityRpcReflection">
+            <summary>Holder for reflection information generated from identity/ClaimsIdentityRpc.proto</summary>
+        </member>
+        <member name="P:ClaimsIdentityRpcReflection.Descriptor">
+            <summary>File descriptor for identity/ClaimsIdentityRpc.proto</summary>
+        </member>
+        <member name="T:RpcClaimsIdentity">
+            <summary>
+            Light-weight representation of a .NET System.Security.Claims.ClaimsIdentity object.
+            This is the same serialization as found in EasyAuth, and needs to be kept in sync with
+            its ClaimsIdentitySlim definition, as seen in the WebJobs extension:
+            https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/ClaimsIdentitySlim.cs
+            </summary>
+        </member>
+        <member name="F:RpcClaimsIdentity.AuthenticationTypeFieldNumber">
+            <summary>Field number for the "authentication_type" field.</summary>
+        </member>
+        <member name="F:RpcClaimsIdentity.NameClaimTypeFieldNumber">
+            <summary>Field number for the "name_claim_type" field.</summary>
+        </member>
+        <member name="F:RpcClaimsIdentity.RoleClaimTypeFieldNumber">
+            <summary>Field number for the "role_claim_type" field.</summary>
+        </member>
+        <member name="F:RpcClaimsIdentity.ClaimsFieldNumber">
+            <summary>Field number for the "claims" field.</summary>
+        </member>
+        <member name="T:RpcClaim">
+            <summary>
+            Light-weight representation of a .NET System.Security.Claims.Claim object.
+            This is the same serialization as found in EasyAuth, and needs to be kept in sync with
+            its ClaimSlim definition, as seen in the WebJobs extension:
+            https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/ClaimSlim.cs
+            </summary>
+        </member>
+        <member name="F:RpcClaim.ValueFieldNumber">
+            <summary>Field number for the "value" field.</summary>
+        </member>
+        <member name="F:RpcClaim.TypeFieldNumber">
+            <summary>Field number for the "type" field.</summary>
+        </member>
+        <member name="T:NullableTypesReflection">
+            <summary>Holder for reflection information generated from shared/NullableTypes.proto</summary>
+        </member>
+        <member name="P:NullableTypesReflection.Descriptor">
+            <summary>File descriptor for shared/NullableTypes.proto</summary>
+        </member>
+        <member name="F:NullableString.ValueFieldNumber">
+            <summary>Field number for the "value" field.</summary>
+        </member>
+        <member name="P:NullableString.HasValue">
+            <summary>Gets whether the "value" field is set</summary>
+        </member>
+        <member name="M:NullableString.ClearValue">
+            <summary> Clears the value of the oneof if it's currently set to "value" </summary>
+        </member>
+        <member name="T:NullableString.StringOneofCase">
+            <summary>Enum of possible cases for the "string" oneof.</summary>
+        </member>
+        <member name="F:NullableDouble.ValueFieldNumber">
+            <summary>Field number for the "value" field.</summary>
+        </member>
+        <member name="P:NullableDouble.HasValue">
+            <summary>Gets whether the "value" field is set</summary>
+        </member>
+        <member name="M:NullableDouble.ClearValue">
+            <summary> Clears the value of the oneof if it's currently set to "value" </summary>
+        </member>
+        <member name="T:NullableDouble.DoubleOneofCase">
+            <summary>Enum of possible cases for the "double" oneof.</summary>
+        </member>
+        <member name="F:NullableBool.ValueFieldNumber">
+            <summary>Field number for the "value" field.</summary>
+        </member>
+        <member name="P:NullableBool.HasValue">
+            <summary>Gets whether the "value" field is set</summary>
+        </member>
+        <member name="M:NullableBool.ClearValue">
+            <summary> Clears the value of the oneof if it's currently set to "value" </summary>
+        </member>
+        <member name="T:NullableBool.BoolOneofCase">
+            <summary>Enum of possible cases for the "bool" oneof.</summary>
+        </member>
+        <member name="F:NullableTimestamp.ValueFieldNumber">
+            <summary>Field number for the "value" field.</summary>
+        </member>
+        <member name="T:NullableTimestamp.TimestampOneofCase">
+            <summary>Enum of possible cases for the "timestamp" oneof.</summary>
+        </member>
+    </members>
+</doc>

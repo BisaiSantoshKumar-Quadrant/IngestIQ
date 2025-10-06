@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Identity.Web.MicrosoftGraph</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Identity.Web.BaseRequestExtensions">
+            <summary>
+            Extension methods for Graph requests
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Web.BaseRequestExtensions.WithScopes``1(``0,System.String[])">
+            <summary>
+            Sets Microsoft Graph's scopes that will be used by <see cref="T:Microsoft.Graph.IAuthenticationProvider"/> to authenticate this request
+            and can be used to perform incremental scope consent.
+            This only works with the default authentication handler and default set of Microsoft Graph authentication providers.
+            If you use a custom authentication handler or authentication provider, you have to handle its retrieval in your implementation.
+            </summary>
+            <param name="baseRequest">The <see cref="T:Microsoft.Graph.IBaseRequest"/>.</param>
+            <param name="scopes">Microsoft Graph scopes used to authenticate this request.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Web.BaseRequestExtensions.WithAppOnly``1(``0,System.Boolean,System.String)">
+            <summary>
+            Applied to a request, expresses to use app only permissions for Graph.
+            </summary>
+            <typeparam name="T">Type of the request.</typeparam>
+            <param name="baseRequest">Request.</param>
+            <param name="appOnly">Should the permissions be app only or not.</param>
+            <param name="tenant">Tenant ID or domain for which we want to make the call..</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Identity.Web.BaseRequestExtensions.WithAuthenticationScheme``1(``0,System.String)">
+            <summary>
+            Sets the authentication scheme that will be used by <see cref="T:Microsoft.Graph.IAuthenticationProvider"/> to authenticate this request.
+            This only works with the default authentication handler and default set of Microsoft Graph authentication providers.
+            If you use a custom authentication handler or authentication provider, you have to handle its retrieval in your implementation.
+            </summary>
+            <param name="baseRequest">The <see cref="T:Microsoft.Graph.IBaseRequest"/>.</param>
+            <param name="authenticationScheme">Authentication scheme used to authenticate this request.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Web.BaseRequestExtensions.WithAuthenticationOptions``1(``0,System.Action{Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions})">
+            <summary>
+            Overrides authentication options for a given request.
+            </summary>
+            <typeparam name="T">Request</typeparam>
+            <param name="baseRequest">Request.</param>
+            <param name="overrideAuthenticationOptions">Delegate to override
+            the authentication options</param>
+            <returns>Base request</returns>
+        </member>
+        <member name="M:Microsoft.Identity.Web.BaseRequestExtensions.WithUser``1(``0,System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Overrides authentication options for a given request.
+            </summary>
+            <typeparam name="T">Request</typeparam>
+            <param name="baseRequest">Request.</param>
+            <param name="user">Delegate to override
+            the authentication options</param>
+            <returns>Base request</returns>
+        </member>
+        <member name="T:Microsoft.Identity.Web.GraphServiceCollectionExtensions">
+            <summary>
+            Extensions methods on a MicrosoftIdentityAppCallingWebApiAuthenticationBuilder builder
+            to add support to call Microsoft Graph.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Web.GraphServiceCollectionExtensions.AddMicrosoftGraph(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add support to call Microsoft Graph. From a named option and a configuration section.
+            </summary>
+            <param name="services">Builder.</param>
+            <returns>The service collection to chain.</returns>
+        </member>
+        <member name="M:Microsoft.Identity.Web.GraphServiceCollectionExtensions.AddMicrosoftGraph(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.Identity.Web.MicrosoftGraphOptions})">
+            <summary>
+            Add support to call Microsoft Graph. From a base Graph URL and a default scope.
+            </summary>
+            <param name="services">Builder.</param>
+            <param name="configureMicrosoftGraphOptions">Delegate to configure the graph service options</param>
+            <returns>The service collection to chain.</returns>
+        </member>
+        <member name="T:Microsoft.Identity.Web.MicrosoftGraphOptions">
+            <summary>
+            Options passed-in to call Microsoft Graph.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Web.MicrosoftGraphOptions.BaseUrl">
+            <summary>
+            Base URL for the Microsoft Graph API. By default: <c>"https://graph.microsoft.com/v1.0/"</c>
+            but it can be changed to use the Microsoft Graph Beta endpoint or national cloud versions
+            of MicrosoftGraph.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Web.MicrosoftGraphOptions.Scopes">
+            <summary>
+            Space separated scopes used to call Microsoft Graph,
+            for instance <c>user.read mail.read</c>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Web.TokenAcquisitionAuthenticationProvider">
+            <summary>
+            Authentication provider based on ITokenAcquisition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Web.TokenAcquisitionAuthenticationProvider.AuthenticateRequestAsync(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Adds an authorization header to an HttpRequestMessage.
+            </summary>
+            <param name="request">HttpRequest message to authenticate.</param>
+            <returns>A Task (as this is an async method).</returns>
+        </member>
+        <member name="M:Microsoft.Identity.Web.TokenAcquisitionAuthenticationProvider.GetMsalAuthProviderOption(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Extract TokenAcquisitionAuthenticationProviderOption from request.Properties if it is present
+            </summary>
+            <param name="httpRequestMessage">Current request message</param>
+            <returns>Options set for just this request.</returns>
+        </member>
+    </members>
+</doc>

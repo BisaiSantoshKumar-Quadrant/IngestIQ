@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.WebJobs</id>
+    <version>3.0.41</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>webjobs.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>http://go.microsoft.com/fwlink/?LinkID=320972</projectUrl>
+    <description>This package contains the runtime host components of the WebJobs SDK. For more information, please visit https://go.microsoft.com/fwlink/?linkid=2279708.</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Microsoft Azure WebJobs AzureFunctions</tags>
+    <repository type="git" url="https://github.com/Azure/azure-webjobs-sdk" commit="264601e23d9b53b63e1407ffbbe49f08f22aa754" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Azure.WebJobs.Core" version="3.0.41" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration" version="2.1.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Abstractions" version="2.1.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.EnvironmentVariables" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Json" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Hosting" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging" version="2.1.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging.Abstractions" version="2.1.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging.Configuration" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Memory.Data" version="1.0.2" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Dataflow" version="4.8.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
